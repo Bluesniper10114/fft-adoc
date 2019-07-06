@@ -1,0 +1,86 @@
+{% extends "layouts/layout.twig" %}
+
+{% block main %}
+  <main class="tpl-default group-planning" id="fft-main">
+    <!-- équivalent de l'ancien div.content_top -->
+    <div class="fft-main-top">
+      <ol id="fft-breadcrumb">
+        <li>Enseignement</li>
+        <li>
+          <a class="link" href="#">Accueil</a>
+        </li>
+      </ol>
+    </div>
+    <!-- équivalent de l'ancien div.content_bottom -->
+    <div class="fft-main-content" id="resaAppContainer">
+      <ul id="fft-tabs">
+        <li>
+          <a href="enseignement-accueil.html">Groupe</a>
+        </li>
+        <li :class="{current: view.mode=='planning' }">
+          <a @click="changeView('planning', null)">Planning</a>
+        </li>
+        <li :class="{current: view.mode=='eleves' }">
+          <a @click="changeView('eleves', null)">Elèves</a>
+        </li>
+      </ul>
+      <fft-group-search></fft-group-search>
+
+      <div>
+        <div class="planning wMargin">
+          <main class="tpl-default">
+
+            <div class="fft-main-content ">
+                <div class="resas resas--mini grid fGrid2">
+                  <div>
+                    <div class="fft-planning-header" v-show="view.mode=='eleves'">
+                      <div>
+                        <div class="radio-container">
+                        <span>
+                          <input type="checkbox" id="complets" />
+                          <label class="annotation" for="complets">Groupe complets</label>
+                        </span>
+                        </div>
+                      </div>
+                      <div class="fft-calendar-radio fft-form-select-valid">
+                        <div class="annotation">Affichage {{ drag }}</div>
+                        <div class="radio-container">
+                          <input id="rad-calendar" type="radio" value="true" name="groups-mode" v-model="planning_view" checked="checked">
+                          <label class="calendrier" for="rad-calendar">
+                            <span class="icon-calendrier icon-disabled"></span>
+                          </label>
+                          <input id="rad-folder" type="radio" value="false" name="groups-mode" v-model="planning_view">
+                          <label for="rad-folder">
+                            <span class="icon-folder icon-disabled"></span>
+                          </label>
+                          </div>
+                      </div>
+                    </div>
+
+                    <fft-planning v-if="view.mode=='planning' || planning_view=='true'" :drag="view.mode=='planning'"></fft-planning>
+                    <fft-groups v-if="view.mode=='eleves' && planning_view=='false'" ></fft-groups>
+                  </div>
+                  <div class="resas_cList">
+                    <fft-eleve-group v-if="view.mode=='eleves' && view.id"></fft-eleve-group>
+                    <fft-eleve-search v-if="view.mode=='eleves'"></fft-eleve-search>
+                    <fft-groups v-if="view.mode=='planning'" :drag="true"></fft-groups>
+                  </div>
+                </div>
+            </div>
+          </main>
+
+        </div>
+      </div>
+      <fft-group-popup v-if="popup.type=='group'"></fft-group-popup>
+    </div>
+
+    </main>
+
+    <!-- DIALOG CONTENT -->
+    {% include "inc/dialog.twig" %}
+
+{% endblock %}
+
+{% block scripts %}
+<script src="js/app/parametrage.bundle.js"></script>
+{% endblock %}

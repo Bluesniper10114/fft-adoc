@@ -1,0 +1,86 @@
+.dialog {
+  &__mask {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.50);
+    display: none;
+    outline: 0!important;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 50;
+
+    &--is-visible {
+      display: block;
+    }
+  }
+
+  &__container {
+    background-color: white;
+    position: absolute;
+    top: 130px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 10vh;
+    z-index: 9;
+    margin-left: 8px; // html scroll
+    .dialog-alert & {
+      width: 500px;
+      max-width: 100%;
+      min-height: 0;
+      top: 50%;
+      transform: translate(-50%,-50%);
+    }
+  }
+
+  &__body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    min-height: 300px;
+
+    #fft-main {
+      min-width: 1216px;
+      padding: 0 30px;
+      width: 1216px;
+
+      .fft-form {
+        fieldset{
+            padding:0 0px 32px;
+        }
+      }
+    }
+
+    .dialog-alert & {
+      padding: 40px;
+      font-size: 16px;
+      text-align: center;
+    }
+
+
+  }
+
+  &__back,
+  &__close {
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor:pointer;
+  }
+
+  &__header {
+    margin: 20px;
+  }
+}

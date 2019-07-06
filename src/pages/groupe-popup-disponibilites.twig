@@ -1,0 +1,122 @@
+{% extends "layouts/layout.twig" %}
+
+{% block main %}
+<main class="tpl-default" id="fft-main">
+
+  <!-- équivalent de l'ancien div.content_bottom -->
+  <div class="fft-main-content">
+    <ul id="fft-tabs">
+      <li>
+        <a href="groupe-popup-details.html" >Détails</a>
+      </li>
+      <li class="current">
+        <a href="groupe-popup-disponibilites.html" class="current">Disponibilités/Réservations</a>
+      </li>
+      <li>
+        <a href="groupe-popup-interruptions.html">Interruptions/Remplacements</a>
+      </li>
+      <li>
+        <a href="groupe-popup-eleves.html">Elèves</a>
+      </li>
+    </ul>
+    <form class="fft-form" action="#" method="post">
+      <fieldset>
+        <legend>Disponibilités</legend>
+        <div class="grid fGrid3">
+          <div>
+            <p class="fft-form-line">
+              <label for="licence1">Jours</label>
+              <select name="jours" id="jours">
+                <option>Lundi</option>
+                <option>Mardi</option>
+                <option>Mercredi</option>
+                <option>Jeudi</option>
+                <option>Vendredi</option>
+                <option>Samedi</option>
+                <option>Dimanche</option>
+              </select>
+            </p>
+          </div>
+          <div>
+            <p class="fft-form-line">
+              <label for="creneau">Créneau</label>
+              <select name="creneau" id="creneau">
+                <option>Matin</option>
+                <option>Après-midi</option>
+                <option>Soir</option>
+              </select>
+            </p>
+          </div>
+          <div>
+            <p class="fft-form-line-right">
+              <a class="btn icon-bigplus" href="#">Ajouter</a>
+            </p>
+          </div>
+        </div>
+        <table class="table fft-form-table">
+          <thead>
+            <th>Jour</th>
+            <th>Créneau</th>
+            <th></th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Mardi</td>
+              <td>Matin</td>
+              <td class="text-right">
+                <a href="#">
+                  <span class="icon icon-poubelle icon-disabled"></span></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        </fieldset>
+        <fieldset class="pt-32">
+        <div class="grid fGrid3">
+          <div>
+            <legend>Réservations</legend>
+          </div>
+          <div>
+            <input type="checkbox" value="1" id="reservation_passees"/>
+            <label for="reservation_passees">
+              Afficher les réservations passées</label>
+          </div>
+          <div class="text-right">
+            <a href="enseignement-planning.html" class="btn icon-calendrier">Gérer les réservations</a>
+          </div>
+        </div>
+          <div>
+            <table class="table fft-form-table">
+              <tbody>
+                <tr>
+                  <td>Samedi 19 Mai 2018</td>
+                  <td>17h-18h</td>
+                  <td>Court vert</td>
+                </tr>
+                <tr>
+                  <td>Samedi 19 Mai 2018</td>
+                  <td>17h-18h</td>
+                  <td>Court vert</td>
+                </tr>
+                <tr>
+                  <td>Samedi 19 Mai 2018</td>
+                  <td>17h-18h</td>
+                  <td>Court vert</td>
+                </tr>
+                <tr>
+                  <td>Samedi 19 Mai 2018</td>
+                  <td>17h-18h</td>
+                  <td>Court vert</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </fieldset>
+    </form>
+
+  </div>
+</main>
+
+  <!-- JAVASCRIPT -->
+  {% include 'inc/js.twig' %}
+{% endblock %}

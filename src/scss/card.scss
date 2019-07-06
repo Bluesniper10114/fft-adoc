@@ -1,0 +1,202 @@
+@import 'compass';
+
+.card {
+  &-list {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: wrap;
+    padding: 0 1em;
+    border-bottom: 1px solid #D8D8D8;
+  }
+
+  &-selector {
+    position: absolute;
+    right: 20px;
+    margin-top: 0;
+    width: 19px;
+  }
+
+  &-item {
+    margin-bottom: 1.875em;
+    /* 15px 30px */
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    column-break-inside: avoid;
+    background: #fff;
+    padding: 20px;
+    position: relative;
+    width: 42%;
+    @include border-radius(5px);
+
+    h3 {
+      margin-top: 0;
+      padding-bottom: 10px;
+      font-size: 14px;
+      border-bottom: 1px solid #9B9B9B;
+    }
+
+    button {
+      display: block;
+      width: 25px;
+      height: 25px;
+      position: absolute;
+      bottom: 20px;
+      @extend .icon-down;
+      @extend .icon-active;
+      border: 0;
+      background: 0;
+      outline: none;
+      cursor: pointer;
+
+      &.active {
+        transform: rotate(180deg);
+        transform-origin: 38% 62%;
+      }
+
+      span {
+        position: absolute;
+        left: -999999px;
+        opacity: 0;
+
+      }
+    }
+  }
+
+  &-column {
+    width: 24%;
+
+    .item {
+      width: 87%;
+    }
+
+    &-2 {
+      width: 48%;
+
+    }
+
+  }
+
+  &-description {
+    > ul {
+      > li {
+        list-style-type: none;
+        display: flex;
+        color: #9B9B9B;
+        padding-bottom: 8px;
+
+        &:before {
+          display: block;
+          width: 25px;
+          height: 25px;
+          content: "";
+          margin-right: 20px;
+          margin-top: -4px;
+          margin-bottom: 4px;
+        }
+
+        &:nth-child(1) {
+          &:before {
+            @extend .icon-raquette;
+          }
+        }
+
+        &:nth-child(2) {
+          &:before {
+            @extend .icon-stat;
+          }
+        }
+
+        &:nth-child(3) {
+          &:before {
+            @extend .icon-panier_preinsc;
+          }
+        }
+
+        &:nth-child(4) {
+          &:before {
+            @extend .icon-user;
+          }
+        }
+      }
+    }
+  }
+
+  &-description {
+    margin-bottom: 10px;
+  }
+
+  &-members {
+    display: none;
+
+    > ul {
+      padding: 10px 0 0 !important;
+      min-height: 30px;
+
+      > li {
+        list-style-type: none;
+        color: #9B9B9B;
+        border-top: 1px solid #9B9B9B;
+        padding: 5px;
+        position: relative;
+
+        a,
+        a:active,
+        a:hover {
+          color: #9B9B9B;
+          text-decoration: none;
+          display: block;
+        }
+
+        &.tooltip:after {
+          content: "";
+          display: inline-block;
+          background-image: url("../img/icons.png");
+          background-repeat: no-repeat;
+          width: 24px;
+          height: 24px;
+          background-position-y: -1248px;
+          right: 1px;
+          top: 2px;
+          position: absolute;
+        }
+      }
+    }
+  }
+
+  &-footer {
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #9B9B9B;
+    /* width: 170px; */
+    padding: 10px 0 0;
+
+    > a {
+      padding: 0 5px;
+      height: 22px;
+    }
+
+    &-profil {
+      @extend .icon2;
+      background-position-y: -484px;
+      background-position-x: -3px;
+      width: 17px;
+      height: 27px;
+      background-size: 57px, 75px, auto;
+    }
+
+    &-calendar {
+      @extend .icon-calendrier;
+      @extend .icon-active;
+    }
+
+    &-edit {
+      @extend .icon-editer;
+      @extend .icon-active;
+    }
+
+    &-see {
+      @extend .icon-see;
+      @extend .icon-active;
+    }
+  }
+}

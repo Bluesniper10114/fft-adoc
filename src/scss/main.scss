@@ -1,0 +1,480 @@
+$white: #fff;
+@import "mixins";
+
+
+#fft-main {
+  background-color: #f2f2f2;
+  padding-top: 35px;
+  padding-bottom: 35px;
+  box-sizing: border-box;
+  min-width: 1280px;
+
+  ol, ul, p {
+    margin: 0;
+    padding: 0;
+  }
+
+  .fft-main-content {
+    height: 100%;
+    padding-top: 32px;
+
+    @extend .clearfix;
+    .fft-planning-header {
+      width: 100%;
+      margin-bottom: 15px;
+      display: flex;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      -ms-flex-align: stretch;
+      align-items: stretch;
+      -ms-flex-line-pack: stretch;
+      align-content: stretch;
+      .radio-container {
+        display: inline-block;
+      }
+      .annotation {
+        color: $grey;
+        font-size: 12px;
+        display: inline-block;
+        padding: 0 15px;
+      }
+    }
+    .fft-calendar-radio {
+      display: table-cell;
+      vertical-align: middle;
+      position: relative;
+      .annotation {
+        position: absolute;
+        left: -80px;
+        top: 30%;
+      }
+      .radio-container {
+        font-size: 0;
+      }
+      label {
+        cursor: pointer;
+        display: inline-block;
+        background-color: $white;
+        margin-right: 0;
+        width: 60px;
+        font-size: 14px;
+        height: 25px;
+        padding: 5px 0;
+        text-align: center;
+        /*&:first-of-type {
+          @include border-left-radius(5px);
+        }
+        &:last-of-type {
+          @include border-right-radius(5px);
+        }*/
+      }
+      label:before {
+        content: none !important;
+      }
+      input:checked + label {
+        background-color: $theme-color-light;
+        &:hover {
+          background-color: $theme-color-light;
+        }
+        .icon-calendrier:before {
+          background-position-x: -72px !important;
+        }
+        .icon-list:before {
+          background-position-x: -72px !important;
+        }
+      }
+    }
+  }
+
+  table.table {
+    width: 1280px;
+    border-spacing: 0px 6px;
+    text-align: center;
+    font-size: 14px;
+    overflow: scroll;
+    margin: -6px 0 16px;
+
+    th, td {
+      color: #4E4E4E;
+      text-align: left;
+    }
+
+    .red {
+      color: #D14545;
+    }
+
+    .classement-nd {
+      background-color: #CDCDCD;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: bold;
+      color: #9B9B9B;
+      padding: 3px 6px;
+      text-transform: uppercase;
+    }
+
+    thead, tfoot {
+      th {
+        background-color: #D9DFE4;
+        padding: 8px;
+        font-size: 12px;
+        font-weight: bold;
+        color: #033C69;
+        white-space: nowrap;
+
+        &.sortable {
+          &:after {
+            content: "";
+            display: inline-block;
+            vertical-align: middle;
+            display: inline-block;
+            background-image: url('../img/icons.png');
+            background-repeat: no-repeat;
+            width: 24px;
+            height: 24px;
+            background-position-y: -1536px;
+          }
+        }
+
+        &.sortable.order1 {
+          &:after {
+            background-position-x: -24px !important;
+          }
+        }
+
+        &.sortable.order2 {
+          &:after {
+            background-position-y: -1560px;
+            background-position-x: -24px !important;
+          }
+        }
+
+        a {
+          display: inline-block;
+          vertical-align: middle;
+          color: #033C69;
+          text-decoration: none;
+        }
+      }
+
+      th:first-of-type {
+        border-radius: 4px 0 0 4px;
+      }
+
+      th:last-of-type {
+        border-radius: 0 4px 4px 0;
+      }
+    }
+
+    tbody {
+
+      td {
+        background-color: #fff;
+        padding: 8px;
+      }
+
+      td:first-of-type {
+        border-radius: 4px 0 0 4px;
+        white-space: nowrap;
+      }
+      td {
+        label, a, a > span {
+          display: inline-block;
+          vertical-align: middle;
+          margin-right: 8px;
+          padding: 0;
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+
+        a, a > span, span[class^="icon"] {
+          display: inline-block;
+          vertical-align: middle;
+          width: 24px;
+          min-height: 24px;
+        }
+
+        a > span:before, span[class^="icon"]:before {
+          top: 0;
+          left: 0;
+        }
+
+        label {
+          margin-right: 16px;
+        }
+
+        label:before, a span {
+          margin-right: 0;
+        }
+      }
+
+      td:last-of-type {
+        border-radius: 0 4px 4px 0;
+      }
+
+      tr td {
+        border-top: 1px solid #f2f2f2;
+        border-bottom: 1px solid #f2f2f2;
+
+        &:first-of-type {
+          border-left: 1px solid #f2f2f2;
+        }
+        &:last-of-type {
+          border-right: 1px solid #f2f2f2;
+        }
+      }
+
+      tr:hover td {
+        border-top: 1px solid #06AED3;
+        border-bottom: 1px solid #06AED3;
+
+        &:first-of-type {
+          border-left: 1px solid #06AED3;
+        }
+        &:last-of-type {
+          border-right: 1px solid #06AED3;
+        }
+      }
+    }
+
+    .oldie & tbody td label {
+      width: auto;
+    }
+  }
+
+  #fft-main table.table tbody tr td {
+    border-top: 1px solid #f2f2f2;
+    border-bottom: 1px solid #f2f2f2; }
+  #fft-main table.table tbody tr td:first-of-type {
+    border-left: 1px solid #f2f2f2; }
+  #fft-main table.table tbody tr td:last-of-type {
+    border-right: 1px solid #f2f2f2; }
+
+  .color-bullet {
+    display: inline-block;
+    vertical-align: middle;
+    width: 12px;
+    height: 12px;
+    border-radius: 12px;
+    border: 1px solid #D8D8D8;
+    margin-right: 6px;
+    margin-left: -12px;
+  }
+
+  option.color-bullet {
+    width: auto;
+    height: auto;
+    border-radius: 0px;
+    margin: 0;
+    background-color: transparent !important;
+
+    &:before {
+      content: '';
+      display: inline-block;
+      vertical-align: middle;
+      width: 12px;
+      height: 12px;
+      border-radius: 12px;
+      border: 1px solid #D8D8D8;
+
+    }
+  }
+
+  #fft-breadcrumb {
+    border-bottom: 1px solid #D8D8D8;
+    display: inline-block;
+
+    li {
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 12px;
+      color: #9B9B9B;
+      margin-bottom: 1em;
+
+      &:after {
+        content: ">";
+        font-size: 8px;
+        text-align: center;
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 0.5em 0 1em;
+      }
+
+      &:last-of-type:after {
+        display: none;
+      }
+    }
+  }
+
+  #fft-tabs {
+    border-bottom: 1px solid #D8D8D8;
+    margin: 0px 0 32px;
+    white-space: nowrap;
+
+    li {
+      display: inline-block;
+      padding: 12px 32px;
+
+      a {
+        font-size: 14px;
+        color: #9B9B9B;
+        text-decoration: none;
+      }
+
+      &:hover {
+        a {
+          color: #033C69;
+        }
+      }
+
+      &.current {
+        border-bottom: 4px solid #06AED3;
+
+        a {
+          color: #06AED3;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .fft-notification {
+    width: auto;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+    margin: 32px auto;
+    overflow: hidden;
+
+    > p, > span {
+      color: #9B9B9B;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    > p {
+      padding: 0 16px;
+    }
+
+    > span {
+      width: 48px;
+      height: 48px;
+
+      &:before {
+        content: "";
+        @include icon();
+        @extend .icon-white;
+        margin: 12px;
+
+      }
+    }
+
+    .fft-notification_done {
+      background-color: #45CA7E;
+      &:before {
+        @extend .icon-lic_type_VA2;
+      }
+    }
+    .fft-notification_warn {
+      background-color: #E89550;
+      &:before {
+        @extend .icon-cross;
+      }
+    }
+
+    .fft-notification_info {
+      background-color: #06AED3;
+      &:before {
+        @extend .icon-cross;
+      }
+    }
+
+    .fft-notification_error {
+      background-color: #D14545;
+      &:before {
+        @extend .icon-lic_type_AR;
+      }
+    }
+  }
+
+  .ie7 & #fft-breadcrumb li,
+  .ie7 & #fft-tabs li {
+    display: inline;
+
+  }
+
+  .ie7 & #fft-breadcrumb li {
+    margin-right: 1em;
+
+    &:after {
+      display: inline;
+
+    }
+  }
+
+  .fft-line-separate {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    margin: 0 16px 16px;
+
+    .fft-line-separate-left {
+      padding-left: 1em;
+      text-align: left;
+      flex: 1;
+      .btn, .btn2 {
+        margin-right: 1em;
+        vertical-align: top;
+      }
+    }
+
+    .fft-line-separate-center {
+      text-align: center;
+      flex: 1;
+    }
+
+    .fft-line-separate-right {
+      padding-right: 1em;
+      flex: 1;
+      text-align: right;
+
+      .btn, .btn2 {
+        margin-left: 1em;
+        vertical-align: top;
+      }
+    }
+
+    .oldie & {
+      font-size: 0.0000001em;
+      white-space: nowrap;
+      .fft-line-separate-left, .fft-line-separate-right, .fft-line-separate-center {
+        font-size: 1rem;
+        display: inline-block;
+        vertical-align: top;
+        width: 33%;
+      }
+
+      .fft-line-separate-right {
+        position: relative;
+        left: -16px;
+      }
+
+    }
+
+  }
+
+  .fft-line-separate-between {
+    justify-content: space-between;
+  }
+
+  .fft-main-bottom {
+    .pagination li {
+      margin-top: 0;
+    }
+  }
+}

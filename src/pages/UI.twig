@@ -1,0 +1,239 @@
+{% extends "layouts/layout.twig" %}
+
+{% block main %}
+<main class="tpl-default" id="fft-main">
+
+    <div class="fft-main-content">
+
+        <style type="text/css">
+        .fft-main-content p {
+            margin: 1em 0 !important;
+        }
+    </style>
+
+    <h1>Liste des élements</h1>
+
+    <div class="grid grid3">
+        <div class="grid-item">
+            <h2>Bouton principal</h2>
+            <code>class="btn"</code>
+
+            <p>
+                <a class="btn" href="#">Un lien</a>
+            </p>
+            <p>
+                <a class="btn icon-bigplus" href="#">Un lien + icône</a>
+            </p>
+            <p>
+                <a class="btn icon-xlsx" href="#">Un lien + icône</a>
+            </p>
+            <p>
+                <a class="btn icon-trophy" href="#">Un lien + icône</a>
+            </p>
+            <p>
+                <a class="btn icon-trophy icon-empty" href="#">&nbsp;</a>
+            </p>
+            <p>
+                <a class="btn disabled" href="#">Un lien inactif</a>
+            </p>
+            <p>
+                <a class="btn icon-trophy disabled" href="#">Un lien + icône inactif</a>
+            </p>
+            <p>
+                <button class="btn">Un bouton</button>
+            </p>
+            <p>
+                <button class="btn icon-bigplus">Un bouton + icône</button>
+            </p>
+            <p>
+                <button class="btn icon-xlsx">Un bouton + icône</button>
+            </p>
+            <p>
+                <button class="btn icon-trophy">Un bouton + icône</button>
+            </p>
+
+            <p>
+                <button class="btn disabled">Un bouton inactif</button>
+            </p>
+            <p>
+                <button class="btn icon-xlsx disabled">Un bouton + icône inactif</button>
+            </p>
+
+            <p>
+                <input type="submit" class="btn" value="&lt;input type='submit' /&gt;"/>
+            </p>
+
+            <p>
+                <input type="submit" class="btn" value="&lt;input type='submit' disabled/&gt;" disabled/>
+            </p>
+
+        </div>
+        <div class="grid-item">
+            <h2>Bouton secondaire</h2>
+            <code>class="btn2"</code>
+
+            <p>
+                <a class="btn2" href="#">Un lien</a>
+            </p>
+            <p>
+                <a class="btn2 icon-bigplus" href="#">Un lien + icône</a>
+            </p>
+            <p>
+                <a class="btn2 icon-xlsx" href="#">Un lien + icône</a>
+            </p>
+            <p>
+                <a class="btn2 icon-trophy" href="#">Un lien + icône</a>
+            </p>
+            <p>
+                <a class="btn2 icon-trophy icon-empty" href="#"></a>
+            </p>
+            <p>
+                <a class="btn2 disabled" href="#">Un lien inactif</a>
+            </p>
+            <p>
+                <a class="btn2 icon-trophy disabled" href="#">Un lien + icône inactif</a>
+            </p>
+            <p>
+                <button class="btn2">Un bouton</button>
+            </p>
+            <p>
+                <button class="btn2 icon-bigplus">Un bouton + icône</button>
+            </p>
+            <p>
+                <button class="btn2 icon-xlsx">Un bouton + icône</button>
+            </p>
+            <p>
+                <button class="btn2 icon-trophy">Un bouton + icône</button>
+            </p>
+
+            <p>
+                <button class="btn2 disabled">Un bouton inactif</button>
+            </p>
+            <p>
+                <button class="btn2 icon-xlsx disabled">Un bouton + icône inactif</button>
+            </p>
+            <p>
+                <input type="submit" class="btn2" value="&lt;input type='submit' /&gt;"/>
+            </p>
+
+            <p>
+                <input type="submit" class="btn2" value="&lt;input type='submit' disabled/&gt;" disabled/>
+            </p>
+
+            <p>
+                <input type="button" class="btn2 icon-poubelle" value="Supprimer" name="buttonSuppression">
+            </p>
+            <p>
+                <button type="button" class="btn2 icon-poubelle" value="Supprimer" name="buttonSuppression">Supprimer</button>
+            </p>
+            <p>
+                <input type="submit" class="btn2 icon-poubelle" value="Supprimer" name="buttonSuppression">
+            </p>
+            <p>
+                <button type="submit" class="btn2 icon-poubelle" value="Supprimer" name="buttonSuppression">Supprimer</button>
+            </p>
+        </div>
+        <div class="grid-item">
+            <h2>Lien texte</h2>
+            <code>class="link"</code>
+
+            <p>
+                <a class="link" href="#">Lien texte simple</a>
+            </p>
+
+            <h2>Pagination</h2>
+
+            {% include "inc/pagin.twig" %}
+
+            <h2>Cas spécifique</h2>
+            <code>&lt;a&gt;&lt;span class="btn2 icon-xlsx icon-empty"&gt;</code>
+            <p>
+
+                <a href="#">
+                    <span class="btn2 icon-xlsx icon-empty"></span>
+                </a>
+                <a href="#">
+                    <span class="btn2 icon-xlsx icon-empty"></span>
+                </a>
+            </p>
+            <code>&lt;a class="btn-box"&gt;&lt;span class="btn2 icon-xlsx icon-empty"&gt;</code>
+            <p>
+
+                <a href="#" class="btn-box">
+                    <span class="btn2 icon-xlsx icon-empty"></span>
+                </a>
+                <a href="#" class="btn-box">
+                    <span class="btn2 icon-xlsx icon-empty"></span>
+                </a>
+            </p>
+        </div>
+    </div>
+
+    <div class="grid grid4">
+        <div class="grid-item">
+            <div ><label>Yes or no</label> <ul class="fft-form-select-buttons fft-form-select-valid">
+                <li><input type="radio" value="1" name="affectation" id="affectation_oui" checked="checked">
+                    <label ><span data-v-b0b95442="">Oui</span></label></li>
+                    <li>
+                        <input type="radio" value="0" name="affectation" id="affectation_non">
+                        <label data-v-b0b95442=""><span >Non</span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="grid-item">
+            <p class="fft-form-line"><label>Visibilité</label></p>
+            <ul class="fft-form-select-buttons fft-form-select-visible">
+                <li><input type="radio" value="0" name="groupe-visible" id="groupe-visible-oui" checked /><label><span>Oui</span></label></li>
+                <li><input type="radio" value="1" name="groupe-visible" id="groupe-visible-non" /><label><span>Non</span></label></li>
+            </ul>
+        </div>
+        <div class="grid-item">
+            <p class="fft-form-line">
+                <label>Sexe</label>
+                <ul class="fft-form-select-buttons fft-form-select-sexe">
+                    <li><input type="radio" value="homme" name="sexe" id="homme" checked="checked" />
+                        <label>
+                            <span>Homme</span></label>
+                        </li>
+                        <li><input type="radio" value="femme" name="sexe" id="femme" />
+                            <label>
+                                <span>Femme</span></label>
+                            </li>
+                            <li><input type="radio" value="mixte" name="sexe" id="mixte" />
+                                <label>
+                                    <span>Mixte</span></label>
+                                </li>
+                            </ul>
+                        </p>
+                    </div>
+                    <div class="grid-item">
+                        <div class="small-margin">
+                            <p class="fft-form-line">
+                                <label>Tri</label>
+                            </p>
+                            <ul class="fft-form-select-buttons fft-form-select-tri">
+                                <li>
+                                    <input type="radio" value="1" name="tri-nom" id="tri-nom-crois" checked />
+                                    <label>
+                                        <span>Croissant</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" value="0" name="tri-nom" id="tri-nom-decrois" />
+                                    <label>
+                                        <span>Décroissant</span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </main>
+
+        {% endblock %}

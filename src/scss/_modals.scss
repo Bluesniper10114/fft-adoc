@@ -1,0 +1,135 @@
+#fft-main .modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right:0;
+  bottom: 0;
+  background-color: rgba(0,0,0,.55);
+  z-index: 100000000;
+  display: flex;
+
+  &.cloak {
+    display: none;
+  }
+
+  .modal-content {
+    box-sizing: border-box;
+    position: relative;
+    margin: auto;
+    background-color: #f2f2f2;
+    border-radius: 4px;
+    box-shadow: 6px 6px 10px rgba(0,0,0,.3);
+    padding: 20px;
+    max-width: 98vw;
+    max-height: 98vh;
+    width: 1280px;
+    max-width: 100%;
+    overflow: auto;
+    text-align: center;
+  }
+
+  &.confirm .modal-content {
+    max-width: 50vw;
+
+    p {
+      text-align: center;
+      font-size: 14px;
+      margin: 0 0 20px;
+    }
+    > div > div {
+      display: flex;
+      justify-content: space-evenly;
+    }
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    -webkit-appearance: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: sans-serif;
+  }
+
+  .modal-footer {
+    display: flex;
+    justify-content: right;
+  }
+
+  .modal-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+
+    > div {
+      align-self: flex-end;
+
+
+      &.reqPERM {
+        text-align: center;
+        align-self: center;
+
+        p {
+          color: #4E4E4E;
+          font-size: 12px;
+          margin: 20px auto 15px;
+          width: 80%;
+        }
+
+        button {
+          margin-bottom: 15px;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+
+
+
+
+}
+
+:not(.oldie) #fft-main .fft-form .modal .fft-form-line {
+
+
+}
+@media screen and (max-width: 1280px) {
+
+  .dialog__container {
+    min-width: unset !important;
+    width: 90%;
+
+    #fft-main {
+      width: auto;
+      min-width: unset;
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+
+  #resaContainer > div:nth-child(4) > div > form > fieldset > .grid {
+    flex-direction: column;
+
+    & > div {
+      min-width: 100%;
+      max-width: 100%;
+    }
+
+    & button {
+      white-space: nowrap;
+      margin: 0 auto;
+    }
+  }
+  #resaContainer > div:nth-child(4) > div > form > fieldset > div > div.modal-btn > p {
+    margin-bottom: 1em;
+  }
+  :not(.oldie) #fft-main .fft-form .fieldset, :not(.oldie) #fft-main .fft-form fieldset {
+    padding: 0;
+    margin: 0;
+  }
+}

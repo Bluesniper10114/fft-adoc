@@ -1,0 +1,118 @@
+{% extends "layouts/layout.twig" %}
+
+{% block main %}
+    <main class="tpl-default" id="fft-main">
+
+        <div class="fft-main-top">
+            <ol id="fft-breadcrumb">
+                <li>Adhérents</li>
+                <li><a class="link" href="#">Gestion</a></li>
+                <li><a class="link" href="#">Recherche</a></li>
+            </ol>
+        </div>
+
+        <div class="fft-main-content">
+
+            {% raw %}
+                <div id="resaContainer" >
+
+                    <div id="resaContainer_head">
+                        <input type="date" v-model="$store.state.dateFilter"/>
+
+                        <select v-model="$store.state.surface" placeholder="surface">
+                            <option value="" disabled>Surface ?</option>
+                            <option value="herbe">Herbe</option>
+                            <option value="beton">Quick</option>
+                            <option value="terrebatue">Terre Battue</option>
+                        </select>
+
+                        <input type="checkbox" v-model="$store.state.couvert" id="couvert">
+                        <label for="couvert">Couvert ?</label>
+
+
+                        <pre>{{ $store.state.dateFilter }}</pre>
+                        <p>{{ min }} - {{ max }} ==> {{ delta }}</p>
+                    </div>
+
+
+                    <div id="resaContainer_body">
+                        <div id="resaContainer_body__fields" :style="{height: delta * 100 + 'px'}">
+                            <div id="resaContainer_body__fields__timeslots" role="presentation">
+                                <div v-for="hour in timelines">
+                                    <span>{{ hour }}h00</span>
+                                </div>
+                            </div>
+                            <fft-field v-for="field of fields" :key="field.identifiant" v-bind="field" v-cloak></fft-field>
+                        </div>
+                        <div id="resaContainer_body__timeslots"></div>
+                    </div>
+                    <div id="resaContainer_foot"></div>
+
+
+                </div>
+            {% endraw %}
+
+        </div>
+    </main>
+
+
+    {% raw %}
+        <script type="text/x-template" id="field-template">
+            <div class="field">
+                <h1>{{ code }}</h1>
+
+                <fft-slot v-for="timeslot in timeslots" :key="timeslot.identifiant" v-bind="timeslot"></fft-slot>
+                <fft-mrt v-for="mrt in mrts" :key="'mrt.heureDebut' + 'mrt.identifiant'" v-bind="mrt"></fft-mrt>
+                <fft-booking v-for="booking in bookings" :key="booking.identifiant" v-bind="booking"></fft-booking>
+            </div>
+        </script>
+
+        <script type="text/x-template" id="slot-template">
+            <div class="booking slot" :data-from="begin" :data-end="end" :data-duration="duration" :style="{top: top + 'px'}"></div>
+        </script>
+
+        <script type="text/x-template" id="booking-template">
+            <div class="booking" :data-from="begin" :data-end="end" :data-duration="duration"  :style="{top: top + 'px'}">
+                <div class="booking-dragger-top"></div>
+                <p>{{ debut }} : {{ fin }}</p>
+                <ul>
+                    <li v-for="enseignant in enseignants">
+                        {{ enseignant.prenom }} {{ enseignant.nom }}
+                    </li>
+                </ul>
+                <div class="booking-dragger-bottom"></div>
+            </div>
+        </script>
+
+        <script type="text/x-template" id="mrt-template">
+            <div class="booking mrt" :data-from="begin" :data-end="end" :data-duration="duration"  :style="{top: top + 'px'}">
+                <h2>MRT</h2>lo
+                <p>{{ heureDebut }} : {{ heureFin }}</p>
+            </div>
+        </script>
+
+    {% endraw %}
+
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vuex/3.0.1/vuex.js"></script>
+
+    <script src="js/app/BeforeVue.js"></script>
+    <script src="js/app/Sortable.js"></script>
+    <script src="js/app/vuedraggable.js"></script>
+    <script src="js/app/fft-slot.js"></script>
+    <script src="js/app/fft-field.js"></script>
+    <script src="js/app/fft-booking.js"></script>
+    <script src="js/app/fft-mrt.js"></script>
+
+    <script src="js/app/fft-main.js"></script>
+
+
+
+
+{% endblock %}
+

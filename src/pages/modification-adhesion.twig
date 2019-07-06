@@ -1,0 +1,250 @@
+{% extends "layouts/layout.twig" %}
+
+{% block main %}
+<link rel="stylesheet" type="text/css" href="css/accordion.css">
+<link rel="stylesheet" type="text/css" href="js/adoc-static/accordion.js">
+<script type="text/javascript" src="/js/adoc-static/number-functions.js?version=5.3.0"></script>
+<script type="text/javascript" src="/js/adoc-static/membreAdhesionCreate.js?version=5.3.0"></script>
+
+<main class="tpl-default form-mod" id="fft-main" onclick="">
+  <div class="fft-main-top">
+    <ol id="fft-breadcrumb">
+      <li>Adhérents</li>
+      <li>Gestion</li>
+      <li><a class="link" href="membreListe.do?method=searchAdherents">Recherche</a></li>
+      <li><a class="link" href="membreListe.do?method=list">Résultats</a></li>
+      <li><a class="link" href="membreAdhesionListe.do?method=list">Formules d'accès d'un membre</a></li>
+      <li>Création d'une formule d'accès</li>
+    </ol>
+  </div>
+
+  <div class="fft-main-content" id="fft-main-content-div">
+
+  <ul id="fft-tabs">
+   <li class="current"><a href="#">Ajout d'une formule d'accès à «AKERMANN Aubin» - 8579461 A (2019) - "Niveau 6 - Niveau blancBlanc - "</a></li>
+  </ul>
+
+ <form name="membreAdhesionCreateForm" id="membreAdhesionCreateForm" method="post" action="/adoc/membreAdhesionCreate.do" class="fft-form">
+  <input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="7a4b466b75e10aa0498ae0c16bd327eb">
+  <input type="hidden" name="method" value="create">
+  <input type="hidden" name="idMembre" value="370297" id="membre_id">
+  <input type="hidden" name="sousTypeFormule" value="AB" id="sousTypeFormule">
+  <input type="hidden" name="prixLicenceSelected" value="" id="tarifLicence">
+  <input type="hidden" name="derniereLicenceSelected" value="9836979 T - 2019 - MONTASTRUC TENNIS CLUB" id="derniereLicence">
+  <input type="hidden" name="reductionSelected" value="3.00" id="reduction">
+
+  <fieldset class="adhesion_form">
+    <div class="grid fGrid4">
+      <div>
+        <p class="fft-form-line">
+          <label class="req">Formule</label>
+            <select name="idFormuleSelected" id="choixFormuleTarif"><option value="">--- Veuillez Choisir ---</option>
+              <option value="112055">Inscription en attente de validation (2019)</option>
+              <option value="94025">Adhésion Jeunes 4 - 11 (2019)</option>
+              <option value="26405">Adhésion Adultes (2019)</option>
+              <option value="14100">Baby &amp; Mini-tennis 1H par semaine (2019)</option>
+              <option value="14099">Ecole de tennis Formule de base 1H par semaine (2019)</option>
+              <option value="60699">OPTION1 : Supplément + 1/2H à la formule de base (2019)</option>
+              <option value="80109">OPTION2 : Supplément + 1H à la formule de base (2019)</option>
+              <option value="60700">OPTION3 : Supplément + 1H30 à la formule de base (2019)</option>
+              <option value="16538">OPTION4 : Supplément + 2H à la formule de base (2019)</option>
+              <option value="14097">Tennis Adulte 1H par semaine (2019)</option>
+              <option value="15185">Tennis Adulte Compétition Equipes 1H30 (2019)</option>
+              <option value="26403">3 invitations offertes (2019)</option></select>
+            </p>
+        </div>
+    <div style="">
+      <p class="fft-form-line" data-children-count="1">
+        <label class="req">Nombre de réservations simultanées</label>
+        <input type="text" name="nombreReservationSelected" maxlength="5" value="" id="nbReservation">
+      </p>
+    </div>
+    </div>
+</fieldset>
+<fieldset class="adhesion_form">
+  <div class="grid fGrid4">
+
+    <div>
+    <p class="fft-form-line fft-form-line-checkable-label" id="trChoixTarifPel">
+      <label class="req">Tarif de la formule</label>
+      <ul class="fft-form-select-buttons fft-form-select-valid adhesion">
+        <li>
+          <input type="radio" value="45" name="tarif" id="adherents" checked="checked">
+          <label>Adhérents <span>€45.00</span></label>
+        </li>
+        <li>
+          <input type="radio" value="50" name="tarif" id="grand_public">
+          <label>Grand Public <span>€50.00</span></label>
+        </li>
+      </ul>
+      </p>
+    </div>
+
+    <div>
+      <p class="fft-form-line">
+        <label class="req">Montant facturé €</label>
+        <input type="text" name="montantTarifSelected" maxlength="6" value="" id="montantTarif">
+      </p>
+    </div>
+
+    <div>
+      <p class="fft-form-line">
+        <label class="req">Réduction €</label>
+        <span class="icon-cross icon-active" id="infobullereduction" data-tooltip-position="top" data-tooltip="Black Friday du dd/mm/aaaa au dd/mm/aaaa"></span>
+        <input type="text" id="reductionAffichee" disabled="disabled" class="disabled">
+      </p>
+    </div>
+
+    <div>
+      <p class="fft-form-line fft-form-line-checkable-label" id="trChoixTarifPel">
+        <label class="skin">Déclencher une demande de paiement en ligne</label>
+          <ul class="fft-form-select-buttons fft-form-select-valid">
+            <li>
+              <input type="radio" value="1" name="affectation" id="affectation_oui" checked="checked">
+              <label><span data-v-b0b95442="">Oui</span></label>
+            </li>
+            <li>
+              <input type="radio" value="0" name="affectation" id="affectation_non">
+              <label data-v-b0b95442=""><span>Non</span></label>
+            </li>
+          </ul>
+      </p>
+    </div>
+
+  </div>
+  <div class="grid fGrid4 tickets">
+    <div>
+    <p class="fft-form-line fft-form-line-checkable">
+        <input type="checkbox" name="ticket_passe" value="0" id="ticket_passe" checked="checked"/>
+        <label for="ticket_passe">Reprendre les tickets de l'an passé</label>
+    </p>
+    </div>
+    <div style="">
+      <p class="fft-form-line" data-children-count="1">
+        <label class="req">Nb. tickets restants</label>
+        <input type="text" name="nombreReservationSelected" maxlength="5" value="3" id="nbReservation">
+      </p>
+    </div>
+    <div style="">
+      <p class="fft-form-line" data-children-count="1">
+        <label class="req">Nb. tickets à récupérer de l'an passé</label>
+        <input type="text" name="nombreReservationSelected" maxlength="5" value="3" id="nbReservation" disabled="disabled" class="disabled">
+      </p>
+    </div>
+    <div style="">
+      <p class="fft-form-line" data-children-count="1">
+        <label class="req">Nb. tickets crédités sur le nouveau carnet</label>
+        <input type="text" name="nombreReservationSelected" maxlength="5" value="3" id="nbReservation" disabled="disabled" class="disabled">
+      </p>
+    </div>
+
+  </div>
+</fieldset>
+<fieldset class="adhesion_form">
+  <div class="grid fGrid4">
+    <div>
+        <p class="fft-form-line">
+          <label class="req">Début</label>
+          <input type="text" name="dateDebutSelected" value="" id="dateDebut" class="date" placeholder="YYYY/MM/DD"><a href="#dateDebut" class="date-picker-control" title="Voir Calendrier" id="fd-but-dateDebut" role="button" aria-haspopup="true" tabindex="0"><span>&nbsp;</span><span class="fd-screen-reader">Voir Calendrier</span></a>
+        </p>
+    </div>
+  <div>
+  <p class="fft-form-line">
+    <label class="req">Fin</label>
+    <input type="text" name="dateFinSelected" value="" id="dateFin" class="date" placeholder="YYYY/MM/DD"><a href="#dateFin" class="date-picker-control" title="Voir Calendrier" id="fd-but-dateFin" role="button" aria-haspopup="true" tabindex="0"><span>&nbsp;</span><span class="fd-screen-reader">Voir Calendrier</span></a>
+    </p>
+  </div>
+</div>
+    <div class="grid fGrid4">
+        <div>
+            <p class="fft-form-line fft-form-line-small fft-form-line-checkable" id="recupererLesTickets" style="display: none;">
+                <span data-children-count="1">
+                    <input type="checkbox" name="reprendreTickets" value="true" id="reprendreTicketsTrue"><label for="reprendreTicketsTrue">Reprendre les tickets de l'an passé</label>
+                </span>
+                <span class="hide" data-children-count="1">
+                    <input type="checkbox" name="reprendreTickets" value="false" id="reprendreTicketsFalse" style="display: none;"><label for="reprendreTicketsFalse"></label>
+                </span>
+            </p>
+        </div>
+        <div style="display: none;">
+            <p class="fft-form-line" data-children-count="1">
+                <label class="req">Nb. tickets restants</label>
+                <input type="text" name="nbTicketSelected" maxlength="5" value="" id="nbTicketId">
+            </p>
+        </div>
+        <div>
+            <p class="fft-form-line" id="nbTicketARecuperer" style="display: none;" data-children-count="1">
+                <label class="req">Nb. tickets à récupérer de l'an passé</label>
+                <input type="text" id="nbTicketARecupererValue" disabled="disabled" class="disabled" value="0">
+            </p>
+        </div>
+        <div>
+            <p class="fft-form-line" id="nbTicketTotal" style="display: none;" data-children-count="1">
+                <label class="req p125">Nb. tickets crédités sur le nouveau carnet</label>
+                <input type="text" id="nbTicketTotalValue" disabled="disabled" class="disabled" value="0">
+            </p>
+        </div>
+    </div>
+</fieldset>
+<fieldset class="adhesion_form">
+    <div class="grid fGrid4">
+        <div>
+            <p class="fft-form-line">
+                <label>Dernière licence</label>
+                <span class="label">
+                    <span id="derniereLicenceAffiche">9836979 T - 2019 - MONTASTRUC TENNIS CLUB</span>
+                    <span class="icon-autreClub icon-disabled" title="Licence délivrée par un autre club" id="licencieAilleurs" style="display: none;"></span>
+                </span>
+            </p>
+        </div>
+        <div>
+            <p class="fft-form-line">
+                <label>Millésime licence associé</label>
+                <input  name="idMillesimeSelected" value="2019" id="millesimeLicence" disabled="disabled" class="disabled">
+            </p>
+        </div>
+        <div>
+            <p class="fft-form-line fft-form-line-range">
+                <label>Type licence Formule / Constaté</label>
+                <input type="text" id="libelleTypeLicence" disabled="disabled" class="disabled">
+                <span class="spanRangeFont">/</span>
+                <input type="text" id="libelleTypeLicenceReel" disabled="disabled" class="disabled">
+            </p>
+        </div>
+        <div>
+            <p class="fft-form-line fft-form-line-range">
+                <label>Prix licence Formule / Constaté €</label>
+                <input type="text" id="tarifLicenceAffiche" disabled="disabled" class="disabled">
+                <span class="spanRangeFont">/</span>
+                <input type="text" id="tarifLicenceReelAffiche" disabled="disabled" class="disabled">
+            </p>
+        </div>
+    </div>
+</fieldset>
+
+<div class="fft-line-separate">
+    <div class="fft-line-separate-left">
+        <input type="button" value="Fermer" class="btn2" onclick="document.location.href='membreAdhesionListe.do?method=list'">
+    </div>
+    <div class="fft-line-separate-center">
+    </div>
+    <div class="fft-line-separate-right">
+        <button name="buttonRechercher" class="btn icon-tick" onclick="verifFormAttribution(form, 'saveCreate');">Enregistrer</button>
+    </div>
+</div>
+
+</form>
+
+<script type="text/javascript">
+    dataFormuleTarif =
+    {"listeValeurs":[{"idTarif":"252156","idFormule":"112055","typeFormule":"AB","dateDebut":"03/09/2018","dateFin":"01/09/2019","nbReservation":"1","nbTicketId":"","prixParDefautAffiche":"15.0","prixParDefautPelAffiche":"15.0","millesimeLicence":"2019","millesimeLicenceAffiche":"2019","montantTarif":"15.0","montantTarifPaiementEnLigne":"14.0","paiementEnLigne":"true","codeTypeLicence":"CLU","libelleTypeLicence":"Club","cibleCode":"A","cibleLibelle":"Adhérents","cibleLibelleAvecTarifNormal":"Adhérents (15.0)","cibleLibelleAvecTarifPel":"Adhérents (14.0)"},{"idTarif":"289414","idFormule":"112055","typeFormule":"AB","dateDebut":"03/09/2018","dateFin":"01/09/2019","nbReservation":"1","nbTicketId":"","prixParDefautAffiche":"20.0","prixParDefautPelAffiche":"20.0","millesimeLicence":"2019","millesimeLicenceAffiche":"2019","montantTarif":"20.0","montantTarifPaiementEnLigne":"14.0","paiementEnLigne":"false","codeTypeLicence":"CLU","libelleTypeLicence":"Club","cibleCode":"P","cibleLibelle":"Grand Public","cibleLibelleAvecTarifNormal":"Grand Public (20.0)","cibleLibelleAvecTarifPel":"Grand Public (14.0)"},{"idTarif":"250754","idFormule":"94025","typeFormule":"AB","dateDebut":"03/09/2018","dateFin":"01/09/2019","nbReservation":"1","nbTicketId":"","prixParDefautAffiche":"65.0","prixParDefautPelAffiche":"65.0","millesimeLicence":"2019","millesimeLicenceAffiche":"2019","montantTarif":"65.0","montantTarifPaiementEnLigne":"60.0","paiementEnLigne":"true","codeTypeLicence":"CLU","libelleTypeLicence":"Club","cibleCode":"A","cibleLibelle":"Adhérents","cibleLibelleAvecTarifNormal":"Adhérents (65.0)","cibleLibelleAvecTarifPel":"Adhérents (60.0)"},{"idTarif":"250487","idFormule":"26405","typeFormule":"AB","dateDebut":"03/09/2018","dateFin":"01/09/2019","nbReservation":"1","nbTicketId":"","prixParDefautAffiche":"140.0","prixParDefautPelAffiche":"140.0","millesimeLicence":"2019","millesimeLicenceAffiche":"2019","montantTarif":"140.0","montantTarifPaiementEnLigne":"135.0","paiementEnLigne":"true","codeTypeLicence":"CLU","libelleTypeLicence":"Club","cibleCode":"A","cibleLibelle":"Adhérents","cibleLibelleAvecTarifNormal":"Adhérents (140.0)","cibleLibelleAvecTarifPel":"Adhérents (135.0)"},{"idTarif":"250751","idFormule":"14100","typeFormule":"CO","dateDebut":"03/09/2018","dateFin":"01/09/2019","nbReservation":"","nbTicketId":"","prixParDefautAffiche":"100.0","prixParDefautPelAffiche":"100.0","millesimeLicence":"2019","millesimeLicenceAffiche":"2019","montantTarif":"100.0","montantTarifPaiementEnLigne":"95.0","paiementEnLigne":"true","codeTypeLicence":"CLU","libelleTypeLicence":"Club","cibleCode":"A","cibleLibelle":"Adhérents","cibleLibelleAvecTarifNormal":"Adhérents (100.0)","cibleLibelleAvecTarifPel":"Adhérents (95.0)"},{"idTarif":"250762","idFormule":"14099","typeFormule":"CO","dateDebut":"03/09/2018","dateFin":"01/09/2019","nbReservation":"","nbTicketId":"","prixParDefautAffiche":"150.0","prixParDefautPelAffiche":"150.0","millesimeLicence":"2019","millesimeLicenceAffiche":"2019","montantTarif":"150.0","montantTarifPaiementEnLigne":"145.0","paiementEnLigne":"true","codeTypeLicence":"CLU","libelleTypeLicence":"Club","cibleCode":"A","cibleLibelle":"Adhérents","cibleLibelleAvecTarifNormal":"Adhérents (150.0)","cibleLibelleAvecTarifPel":"Adhérents (145.0)"},{"idTarif":"250765","idFormule":"60699","typeFormule":"CO","dateDebut":"03/09/2018","dateFin":"01/09/2019","nbReservation":"","nbTicketId":"","prixParDefautAffiche":"55.0","prixParDefautPelAffiche":"55.0","millesimeLicence":"2019","millesimeLicenceAffiche":"2019","montantTarif":"55.0","montantTarifPaiementEnLigne":"55.0","paiementEnLigne":"true","codeTypeLicence":"CLU","libelleTypeLicence":"Club","cibleCode":"A","cibleLibelle":"Adhérents","cibleLibelleAvecTarifNormal":"Adhérents (55.0)","cibleLibelleAvecTarifPel":"Adhérents (55.0)"},{"idTarif":"250763","idFormule":"80109","typeFormule":"CO","dateDebut":"03/09/2018","dateFin":"01/09/2019","nbReservation":"","nbTicketId":"","prixParDefautAffiche":"110.0","prixParDefautPelAffiche":"110.0","millesimeLicence":"2019","millesimeLicenceAffiche":"2019","montantTarif":"110.0","montantTarifPaiementEnLigne":"110.0","paiementEnLigne":"true","codeTypeLicence":"CLU","libelleTypeLicence":"Club","cibleCode":"A","cibleLibelle":"Adhérents","cibleLibelleAvecTarifNormal":"Adhérents (110.0)","cibleLibelleAvecTarifPel":"Adhérents (110.0)"},{"idTarif":"250516","idFormule":"60700","typeFormule":"CO","dateDebut":"03/09/2018","dateFin":"01/09/2019","nbReservation":"","nbTicketId":"","prixParDefautAffiche":"125.0","prixParDefautPelAffiche":"125.0","millesimeLicence":"2019","millesimeLicenceAffiche":"2019","montantTarif":"125.0","montantTarifPaiementEnLigne":"125.0","paiementEnLigne":"true","codeTypeLicence":"CLU","libelleTypeLicence":"Club","cibleCode":"A","cibleLibelle":"Adhérents","cibleLibelleAvecTarifNormal":"Adhérents (125.0)","cibleLibelleAvecTarifPel":"Adhérents (125.0)"},{"idTarif":"250515","idFormule":"16538","typeFormule":"CO","dateDebut":"03/09/2018","dateFin":"01/09/2019","nbReservation":"","nbTicketId":"","prixParDefautAffiche":"140.0","prixParDefautPelAffiche":"140.0","millesimeLicence":"2019","millesimeLicenceAffiche":"2019","montantTarif":"140.0","montantTarifPaiementEnLigne":"140.0","paiementEnLigne":"true","codeTypeLicence":"CLU","libelleTypeLicence":"Club","cibleCode":"A","cibleLibelle":"Adhérents","cibleLibelleAvecTarifNormal":"Adhérents (140.0)","cibleLibelleAvecTarifPel":"Adhérents (140.0)"},{"idTarif":"250514","idFormule":"14097","typeFormule":"CO","dateDebut":"03/09/2018","dateFin":"01/09/2019","nbReservation":"","nbTicketId":"","prixParDefautAffiche":"250.0","prixParDefautPelAffiche":"250.0","millesimeLicence":"2019","millesimeLicenceAffiche":"2019","montantTarif":"250.0","montantTarifPaiementEnLigne":"245.0","paiementEnLigne":"true","codeTypeLicence":"CLU","libelleTypeLicence":"Club","cibleCode":"A","cibleLibelle":"Adhérents","cibleLibelleAvecTarifNormal":"Adhérents (250.0)","cibleLibelleAvecTarifPel":"Adhérents (245.0)"},{"idTarif":"250513","idFormule":"15185","typeFormule":"CO","dateDebut":"03/09/2018","dateFin":"01/09/2019","nbReservation":"","nbTicketId":"","prixParDefautAffiche":"275.0","prixParDefautPelAffiche":"275.0","millesimeLicence":"2019","millesimeLicenceAffiche":"2019","montantTarif":"275.0","montantTarifPaiementEnLigne":"270.0","paiementEnLigne":"true","codeTypeLicence":"CLU","libelleTypeLicence":"Club","cibleCode":"A","cibleLibelle":"Adhérents","cibleLibelleAvecTarifNormal":"Adhérents (275.0)","cibleLibelleAvecTarifPel":"Adhérents (270.0)"},{"idTarif":"250761","idFormule":"26403","typeFormule":"CA","dateDebut":"01/06/2018","dateFin":"01/09/2019","nbReservation":"1","nbTicketId":"3","prixParDefautAffiche":"0.0","prixParDefautPelAffiche":"0.0","millesimeLicence":"2019","millesimeLicenceAffiche":"2019","montantTarif":"0.0","montantTarifPaiementEnLigne":"0.0","paiementEnLigne":"false","codeTypeLicence":"CLU","libelleTypeLicence":"Club","cibleCode":"A","cibleLibelle":"Adhérents","cibleLibelleAvecTarifNormal":"Adhérents (0.0)","cibleLibelleAvecTarifPel":"Adhérents (0.0)"}]};
+    dataAdhesion =
+        {"listeValeurs":[{"idFormule":26405,"nbTicketsRestants":""},{"idFormule":14097,"nbTicketsRestants":""},{"idFormule":26403,"nbTicketsRestants":2},{"idFormule":108306,"nbTicketsRestants":""},{"idFormule":108312,"nbTicketsRestants":""},{"idFormule":113185,"nbTicketsRestants":""}]};
+</script>
+    </div>
+</main>
+
+<!-- Fin de la page -->
+{% endblock %}
+{% block scripts %}
+{% endblock %}

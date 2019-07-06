@@ -1,0 +1,60 @@
+{% extends "layouts/layout.twig" %}
+
+{% block main %}
+
+    <main class="tpl-default" id="fft-main">
+        <!-- équivalent de l'ancien div.content_top -->
+        <div class="fft-main-top">
+            <ol id="fft-breadcrumb">
+                <li>Adhérents</li>
+                <li><a class="link" href="#">Gestion</a></li>
+                <li><a class="link" href="#">Recherche</a></li>
+            </ol>
+        </div>
+
+        <!-- équivalent de l'ancien div.content_bottom -->
+        <div class="fft-main-content page-formules" id="vueAppContainer">
+            <script type="text/javascript" src="js/adoc-static/metaoffre/MetaOffreService.js?version=5.3.0"></script>
+            <script language="javascript" charset="UTF-8" src="js/adoc-static/metaoffre/formuleRattachementListe.js?version=5.3.0"></script>
+            {#<script language="javascript" src="js/adoc-static/helptip.js?version=5.3.0"></script>#}
+
+            <ul id="fft-tabs">
+                <li><a href="formuleAccesListe.do?method=list">Liste des formules d'acc&egrave;s au club</a></li>
+                <li class="current"><a href="#">Visibilit&eacute; sur TEN'UP</a></li>
+                <li><a href="formuleReductionListe.do?method=list">R&eacute;ductions</a></li>
+            </ul>
+
+            <div class="fft-main-top">
+                <div class="fft-notification installation-notification">
+                    <span class="fft-notification_info"></span>
+                    <p>
+                        Cet écran vous permet de proposer les formules de votre club sur TEN’UP, la vitrine digitale des clubs de la FFT. Pour cela, glissez vos formules (colonne de gauche) vers les offres correspondantes (colonne de droite). Une description de chaque offre est présente afin de vous aider dans cette démarche. Nous vous invitons à contrôler le paramétrage de vos tarifs (cible, visibilité, dates…) pour définir leur visibilité sur TEN'UP.
+                        <a class="savoir" href="#">En savoir +</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="formules-content mt-32">
+                <div class="favoris-option">
+                    <ul class="fft-form-select-buttons fft-form-select-valid">
+                        <li>
+                            <input type="radio" value="1" name="affectation" v-model="favorisOnly" id="affectation_oui" checked="checked">
+                            <label><span>Oui</span></label></li>
+                        <li>
+                            <input type="radio" value="0" name="affectation" v-model="favorisOnly" id="affectation_non">
+                            <label><span>Non</span></label>
+                        </li>
+                    </ul>
+                    <p class="ml-16">N'afficher que les favoris</p>
+                </div>
+                <fft-formules :favoris-only="favorisOnly" :categories='[{"mId":1,"mCodeCouleur":"2D91DC","mLibelle":"Jouer","valide":false},{"mId":2,"mCodeCouleur":"28C3AF","mLibelle":"S\u0027initier","valide":false},{"mId":3,"mCodeCouleur":"FA5055","mLibelle":"Progresser","valide":false},{"mId":4,"mCodeCouleur":"FFAFF0","mLibelle":"Vie de club","valide":false}]'></fft-formules>
+            </div>
+
+        </div>
+    </main>
+
+{% endblock %}
+{% block scripts %}
+    <script src="js/formules.js"></script>
+    <script src="js/app/formules.bundle.js"></script>
+{% endblock %}

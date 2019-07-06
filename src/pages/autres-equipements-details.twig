@@ -1,0 +1,160 @@
+{% extends "layouts/layout.twig" %}
+
+{% block main %}
+<main class="tpl-default" id="fft-main">
+    <!-- équivalent de l'ancien div.content_top -->
+    <div class="fft-main-top">
+        <ol id="fft-breadcrumb">
+            <li>Adhérents</li>
+            <li><a class="link" href="#">Gestion</a></li>
+            <li><a class="link" href="#">Recherche</a></li>
+        </ol>
+    </div>
+    <!-- équivalent de l'ancien div.content_bottom -->
+    <div class="fft-main-content" id="vueAppContainer">
+        <ul id="fft-tabs">
+            <li class="current"><a href="recherche-adherents-form.html">Recherche</a></li>
+            <li><a href="recherche-adherent.html">Résultats</a></li>
+        </ul>
+
+        <form name="courtForm" method="post" action="/adoc/courtCRUD.do" class="fft-form">
+            <input type="hidden" name="method" value="saveCreate">
+            <input type="hidden" name="autreEquipement" value="true">
+            <input type="hidden" name="updateTime" value="">
+            <input type="hidden" name="identifiant" value="">
+            <fieldset class="autres-equipements-details">
+                <div class="grid fGrid3">
+                    <div>
+                        <div>
+                            <p class="fft-form-line">
+                                <label class="req">Numéro</label>
+                                <input type="text" name="numero" maxlength="2" size="32" value="" class="text"/>
+                            </p>
+                        </div>
+                        <div>
+                            <p class="fft-form-line">
+                                <label class="req">Nom</label>
+                                <input type="text" name="nom" maxlength="20" size="32" value="" class="text">
+                            </p>
+                        </div>
+                        <div>
+                            <p class="fft-form-line">
+                                <label class="req">Type</label>
+                                <select name="idTypeCouverture" id="idTypeCouverture" class=""><option value="">--- Aucun ---</option>
+                                    <option value="DUR  ">Bâtiment en dur</option>
+                                    <option value="TOILE">Bâtiment textile</option>
+                                    <option value="BULLE">Structure gonflable</option>
+                                </select>
+                            </p>
+                        </div>
+                        <div>
+                            <p class="fft-form-line">
+                                <label>Période d'affichage</label>
+                                <select name="idPeriodeAffichage" id="idPeriodeAffichage"><option value="0">Non affichable</option>
+                                    <option value="1">Une semaine</option>
+                                    <option value="2">Deux semaines</option>
+                                    <option value="3">Trois semaines</option>
+                                    <option value="4">Quatre semaines</option>
+                                    <option value="5">Cinq semaines</option></select>
+                            </p>
+                        </div>
+                        <div class="grid fGrid2 mt-22" style="justify-content: space-between;">
+                            <p class="fft-form-line">
+                                <label style="white-space: nowrap;">Visibilité <i class="icon-warning" style="margin-top: -5px;margin-left: 10px;position: absolute;"></i></label>
+                            </p>
+                            <ul class="fft-form-select-buttons fft-form-select-visible mt-10">
+                                <li><input type="radio" value="0" name="groupe-visible" id="groupe-visible-oui" checked=""><label class="option"><span>Oui</span></label></li>
+                                <li><input type="radio" value="1" name="groupe-visible" id="groupe-visible-non"><label class="option"><span>Non</span></label></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <p class="fft-form-line">
+                                <label class="req">Installation de rattachement</label>
+                                <select name="numeroInstallation"><option value="9337">Club</option>
+                                    <option value="81908119">Avec bar</option>
+                                    <option value="81908120">Bar et resto</option>
+                                    <option value="81908121">chouse, bar, resto</option>
+                                </select>
+                            </p>
+                        </div>
+                        <div>
+                            <p class="fft-form-line">
+                                <label>Date de construction</label>
+                                <input type="text" name="dateConstruction" maxlength="10" class="datepicker" size="10" size="12" value="" id="dateConstruction" />
+                            </p>
+                        </div>
+                        <div>
+                            <p class="fft-form-line">
+                                <label class="req">Couvert</label>
+                                <select name="couvert" id="couvert" class=""><option value="false">Non</option>
+                                    <option value="true">Oui</option>
+                                </select>
+                            </p>
+                        </div>
+                        <div>
+                            <p class="fft-form-line">
+                                <label>Ordre d’affichage</label>
+                                <input type="text" name="numero" maxlength="2" size="32" value="" class="text"/>
+                            </p>
+                        </div>
+                        <div>
+                            <div class="grid fGrid2 mt-22" style="justify-content: space-between;">
+                                <p class="fft-form-line">
+                                    <label style="white-space: nowrap;">Affichage sur la fiche club <i class="icon-warning" style="margin-top: -5px;margin-left: 10px;position: absolute;"></i></label>
+                                </p>
+                                <ul class="fft-form-select-buttons fft-form-select-valid mt-10">
+                                    <li>
+                                        <input type="radio" value="1" name="access" id="access_yes">
+                                        <label class="option"><span>Oui</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" value="0" name="access" id="access_no">
+                                        <label class="option"><span >Non</span></label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="photo-select" v-if="cropImgSrc == ''">
+                        <p class="fft-form-line">
+                            <label>Photo</label>
+                        </p>
+                        <button type="button" class="btn2 icon-bigplus mb-16" data-toggle="modal" data-target="#imagecrop">Ajouter une photo</button>
+                        <p>Taille minimum : 1400 px de large / 1000px de hauteur</p>
+                        <p>Poids maximum 5 Mo</p>
+                        <p>Format d'image : Jpg / Jpeg / Png</p>
+                    </div>
+                    <div class="grid fGrid2 photo-preview" v-if="cropImgSrc != ''">
+                        <p class="fft-form-line" style="display: block !important;">
+                            <label>Photo</label>
+                            <img :src="cropImgSrc" width="160"/>
+                        </p>
+                        <p class="fft-form-line pl-15" style="align-items: baseline;">
+                            <button type="button" class="btn2 icon-poubelle" onclick="document.location.href='installationListe.do?method=list'">Supprimer</button>
+                        </p>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="fft-line-separate m-0">
+                <div class="fft-line-separate-left pl-0">
+                    <input type="button" value="Fermer" class="btn2" onclick="document.location.href='courtListe.do?method=list'">
+                </div>
+                <div class="fft-line-separate-right pr-0">
+                    <input type="submit" name="buttonEnregistrer" value="Enregistrer" class="btn" onclick="return submitDefault(form);">
+                </div>
+            </div>
+        </form>
+        <input type="hidden" id="selectedImage" name="selectedImage" :value='$store.state.cropImgSrc'/>
+
+        <fft-installation-imagecrop></fft-installation-imagecrop>
+    </div>
+</main>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="/js/app/parametrage.bundle.js"></script>
+{% endblock %}

@@ -1,0 +1,70 @@
+@mixin button {
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 1;
+  padding: 9px 16px;
+  //min-width: 120px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  -webkit-appearance: none;
+  display: inline-block;
+  text-align: center;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  &.icon-empty {
+    padding-left: 16px !important;
+
+    &:after {
+      content: '\007C';
+      font-size: 1ex;
+      visibility: hidden;
+    }
+  }
+}
+
+@mixin flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  & > * {
+    flex: 0;
+
+    //background-color: red;
+  }
+
+  .oldie & {
+    font-size: 0.0000001em;
+    white-space: nowrap;
+    overflow: hidden;
+
+    & > * {
+      display: inline-block;
+      vertical-align: top;
+      font-size: 1rem;
+    }
+  }
+  .ie7 & {
+    & > * {
+      display: inline;
+      zoom: 1;
+    }
+  }
+}
+
+@mixin icon {
+  content: "";
+  display: inline-block;
+  background-image: url('../img/icons.png');
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px;
+
+  @media screen and(min-resolution: 2dppx) {
+    background-image: url('../img/icons@2x.png');
+    background-size: 168px 2424px;
+  }
+}
+

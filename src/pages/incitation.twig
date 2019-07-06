@@ -1,0 +1,65 @@
+{% extends "layouts/layout.twig" %}
+
+{% block main %}
+    <main class="tpl-default" id="fft-main">
+        <!-- équivalent de l'ancien div.content_top -->
+        <div class="fft-main-top">
+
+        </div>
+
+        <!-- équivalent de l'ancien div.content_bottom -->
+        <div class="fft-main-content">
+            <button data-toggle="modal" data-target="#incitation-modal">Open modal</button>
+        </div>
+        <div id="incitation-modal" class="fft-modal">
+            <div class="dialog__mask" id="dialog">
+                <div class="container-fluid dialog__container">
+                    <a class="dialog__close">
+                        <i class="icon-cancel">
+                            <span class="hidden">Close</span></i>
+                    </a>
+                    <div class="dialog__body" id="fft-main">
+                        <div class="fft-main-content incitation-modal">
+                            <h2 class="mt-0 mb-32 section-title">Informations à compléter</h2>
+                            <h4 class="mt-0 mb-32 section-text">Dans but d’informer au mieux le grand public et les licenciés sur
+                                vos installations et sur les services que vous proposez via la vitrine digitale présente
+                                sur l’application et le site internet, nous vous invitons à mettre à jour les
+                                informations concernant votre club en cliquant sur les liens ci-dessous.</h4>
+                            <div class="incitation-list">
+                                <div class="incitation-item">
+                                    <div class="incit-left">
+                                        <p>Nom de l’installation 1</p>
+                                    </div>
+                                    <span class="incit-count">3</span>
+                                </div>
+                                <div class="incitation-item">
+                                    <div class="incit-left">
+                                        <p>Nom de l’installation 2</p>
+                                    </div>
+                                    <span class="incit-count">3</span>
+                                </div>
+                                <div class="incitation-item">
+                                    <div class="incit-left">
+                                        <p>Information et services</p>
+                                    </div>
+                                    <span class="incit-count">5</span>
+                                </div>
+                            </div>
+                            <div class="fft-line-separate">
+                                <div class="fft-line-separate-left pl-0">
+                                    <input type="checkbox" class="check-1" id="chk1-1"/>
+                                    <label for="chk1-1" title="selectionner tout">Ne plus afficher ce message</label>
+                                </div>
+                                <div class="fft-line-separate-right pr-0">
+                                    <button name="buttonSupprimer" class="btn2">
+                                        Fermer
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

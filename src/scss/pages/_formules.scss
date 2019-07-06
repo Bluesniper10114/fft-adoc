@@ -1,0 +1,225 @@
+.page-formules {
+    .fft-notification {
+        .fft-notification_info {
+            padding: 22px 0 !important;
+        }
+        p {
+            line-height: 20px;
+            .savoir {
+                color: #06AED3;
+                text-decoration: none;
+            }
+        }
+    }
+    .formules-content {
+        max-width: 1216px;
+        min-width: 600px;
+        width: 100%;
+        margin: 0 auto;
+        .favoris-option {
+            display: flex;
+            align-items: center;
+            ul {
+                height: 32px !important;
+                li label {
+                    padding: 4px 0 !important;
+                }
+            }
+            p {
+                color: #9B9B9B;
+                font-size: 12px;
+                line-height: 14px;
+            }
+        }
+        .content {
+            display: flex;
+            flex-direction: row;
+            .content-left, .content-right {
+                width: calc(50% - 8px);
+            }
+            .content-left {
+                table {
+                    width: 600px !important;
+                    border-spacing: 0px 4px;
+                    thead th a {
+                        text-transform: uppercase;
+                    }
+                    tbody tr {
+                        .tarif {
+                            color: #06AED3 !important;
+                        }
+                    }
+                }
+            }
+            .content-right {
+                #fft-tabs {
+                    border-bottom: none !important;
+                    margin: 0 0 5px !important;
+                    overflow: scroll;
+                    display: table;
+                    table-layout: fixed;
+                    li {
+                        cursor: pointer;
+                        border-radius: 4px;
+                        background-color: #CDCDCD;
+                        margin-right: 5px;
+                        display: table-cell;
+                    }
+                    .current {
+                        border-bottom: none !important;
+                        background-color: #2D91DC;
+                        a {
+                            color: #ffffff !important;
+                        }
+                    }
+                }
+                .tab-out-content {
+                    position: absolute;
+                    width: 615px;
+                    height: calc(100vh - 80px);
+                    overflow: auto;
+                    .fft-tab-content {
+                        width: 600px;
+                        display: none;
+                        .item {
+                            padding: 16px;
+                            background-color: #ffffff;
+                            border-radius: 4px;
+                            margin-bottom: 8px;
+                            .danger {
+                                color: #D14545 !important;
+                            }
+                            .warning {
+                                color: #E89550 !important;
+                            }
+                            .header {
+                                position: relative;
+                                display: flex;
+                                align-items: center;
+                                padding-bottom: 16px;
+                                h4, h5 {
+                                    margin: 0;
+                                }
+                                h4 {
+                                    color: #2D91DC;
+                                    font-size: 14px;
+                                    line-height: 16px;
+                                    margin-right: 16px;
+                                }
+                                h5 {
+                                    color: #9B9B9B;
+                                    font-size: 14px;
+                                    font-weight: 300;
+                                    line-height: 16px;
+                                }
+                                .icon-active {
+                                    position: absolute;
+                                    right: 0;
+                                }
+                            }
+                            .body {
+                                padding-bottom: 16px;
+                                border-bottom: 1px solid #E7E7E7;
+                                p {
+                                    color: #9B9B9B;
+                                    font-size: 14px;
+                                    line-height: 16px;
+                                }
+                            }
+                            .footer {
+                                position: relative;
+                                padding-top: 16px;
+                                .sortable-ghost {
+                                    display: none;
+                                }
+                                .drag-section {
+                                    width: calc(100% - 24px);
+                                    padding: 12px;
+                                    background-color: #F2F2F2;
+                                    border-radius: 4px;
+                                    font-size: 14px;
+                                    color: #9B9B9B;
+                                    line-height: 16px;
+                                }
+                                .action {
+                                    display: flex;
+                                    align-items: center;
+                                    cursor: pointer;
+                                    .info {
+                                        color: #06AED3;
+                                        font-size: 14px;
+                                        font-weight: 300;
+                                        line-height: 16px;
+                                        margin: 0 16px 0 0;
+                                    }
+                                    .icon-active {
+                                        position: absolute;
+                                        right: 0;
+                                    }
+                                }
+                                .action.active {
+                                    .icon-active {
+                                        transform: rotate(180deg);
+                                    }
+                                }
+                                //.action.active, .action:hover {
+                                //    background-color: #D9DFE4;
+                                //}
+                                .action-content {
+                                    margin-top: 16px;
+                                    display: none;
+                                    .action-item {
+                                        position: relative;
+                                        width: calc(100% - 24px);
+                                        padding: 12px;
+                                        margin-bottom: 4px;
+                                        background-color: #F2F2F2;
+                                        border-radius: 4px;
+                                        font-size: 14px;
+                                        color: #4E4E4E;
+                                        line-height: 16px;
+                                        .action-tool {
+                                            position: absolute;
+                                            top: 8px;
+                                            right: 0;
+                                            display: flex;
+                                            //align-items: center;
+                                            h5 {
+                                                margin: 4px;
+                                                font-size: 14px;
+                                                font-weight: 300;
+                                                line-height: 16px;
+                                            }
+                                            .icon-poubelle:before {
+                                                cursor: pointer;
+                                            }
+                                            [data-tooltip]:after, [data-tooltip-small]:after {
+                                                left: -200% !important;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .fft-tab-content.active {
+                        display: block;
+                    }
+                }
+                .tab-out-content::-webkit-scrollbar-track {
+                    border-radius: 10px;
+                    background-color: #FFFFFF;
+                }
+                .tab-out-content::-webkit-scrollbar {
+                    width: 8px;
+                    border-radius: 10px;
+                    background-color: #FFFFFF;
+                }
+                .tab-out-content::-webkit-scrollbar-thumb {
+                    border-radius: 10px;
+                    background-color: rgba(6, 174, 211, 0.5);
+                }
+            }
+        }
+    }
+}

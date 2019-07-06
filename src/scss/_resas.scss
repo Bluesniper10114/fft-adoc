@@ -1,0 +1,1265 @@
+@import 'compass';
+@import 'vars';
+
+$hourHeight: 52px;
+
+.resas {
+
+  &--mini {
+    >div{
+      &:first-child {
+        margin-left:30px !important;
+        width: 604px !important;
+        min-width: 604px !important;
+        max-width: 604px !important;
+      }
+      margin-right:10px !important;
+    }
+  }
+
+
+  .card-list {
+  }
+  .resas_cList {
+    max-height: 740px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
+  .resas_head {}
+  .resas_tHead{
+
+    display: flex;
+    justify-content: space-between;
+    border-radius: 4px;
+    margin-bottom:0px;
+    background-color: #D9DFE4;
+    height: 42px;
+    padding: 0 10px;
+    &--students {
+      >div:nth-child(1){
+        width:2%;
+      }
+      >div:nth-child(2){
+        width:18%;
+      }
+      >div:nth-child(3){
+        width:15%;
+      }
+      >div:nth-child(4){
+        width:6%;
+      }
+      >div:nth-child(5){
+        width:6%;
+      }
+      >div:nth-child(6){
+        width:25%;
+      }
+      >div:nth-child(7){
+        width:4%;
+      }
+      >div:nth-child(8){
+        width:6%;
+      }
+    }
+
+    div {
+      padding: 12px;
+      cursor: pointer;
+      &.active {
+        border-bottom: 4px solid #06aed3;
+        cursor: auto;
+        a{
+          color:#06aed3;
+        }
+      }
+      font {
+        color:#033c69;
+        font-size:12px;
+        font-weight: bold;
+        text-decoration: none;
+        text-transform: uppercase;
+		cursor:pointer;
+        >span{
+          position: absolute;
+          margin-top: -5px;
+        }
+      }
+    }
+  }
+
+  .resas_sList {
+    ul {
+      display: flex;
+      flex-flow: wrap;
+      >div {
+        width: 100%;
+      }
+      li {
+        width:100%;
+        background:#fff;
+        list-style-type: none;
+        margin-top:5px;
+        border-radius:5px;
+        >div:first-child {
+          width:100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 5px;
+          >div{
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          >div:nth-child(1){
+            width:5%;
+          }
+          >div:nth-child(2){
+            width:16%;
+          }
+          >div:nth-child(3){
+            width:15%;
+          }
+          >div:nth-child(4){
+            width:6%;
+          }
+          >div:nth-child(5){
+            width:6%;
+          }
+          >div:nth-child(6){
+            width:25%;
+          }
+          >div:nth-child(7){
+            width:4%;
+          }
+          >div:nth-child(8){
+            width:7%;
+          }
+
+          span.icon{
+            top: -5px;
+          }
+        }
+
+      }
+    }
+
+    &_infos {
+      display: flex !important;
+      max-height: 0;
+      overflow: hidden;
+      -webkit-transition: all linear 150ms;
+      transition: all linear 150ms;
+      &_btn {
+        &.active{
+          transform: rotate(180deg) translateX(8px)
+        }
+      }
+      &.active{
+      max-height: 100px;
+      }
+      >div {
+        border-top:1px solid #cdcdcd;
+        width:100%;
+        margin: 5px 20px !important;
+        padding: 5px 0;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        position: relative;
+        >span {
+          margin:0 15px;
+
+        }
+
+        >a{
+          color:#4e4e4e;
+          text-decoration: none;
+        }
+
+        >div{
+          float: right;
+          position: absolute;
+          right: 0;
+          top: 5px;
+        }
+      }
+
+    }
+  }
+  .resas_body {
+    position: relative;
+    .cal-slot {
+      height: $hourHeight / 4;
+      margin-bottom: 1px;
+      box-sizing:border-box;
+      border: 1px solid transparent;
+      &:first-child {
+        margin-top: -2px;
+      }
+    }
+    .cal-slot.vis, .sortable-ghost {
+      position: relative;
+      box-sizing:border-box;
+      margin-bottom: 1px;
+      margin-top: 0;
+      background-color: $white;
+      color: $grey-dark;
+      padding: 0 10px;
+      vertical-align: middle;
+      /*line-height: $hourHeight + 2;*/
+      @include border-radius(5px);
+      overflow-y: hidden;
+      text-overflow: ellipsis;
+      z-index: 1;
+      span.icon- {
+        position: absolute;
+        right: 2px;
+        top: 0;
+        height: 24px;
+        font-size: 6px;
+      }
+
+      &.focused {
+        z-index: 10;
+      }
+    }
+    .sortable-ghost+.cal-slot:not(.vis) {
+      display: none;
+    }
+    $duration_tag: "";
+    @for $i from 1 through 96 {
+      .dur-#{$i} {
+        height: $i * ($hourHeight / 4) - 1 !important;
+      }
+    }
+    
+    @for $i from 1 through 96 {
+    	.sortable-ghost.dur-#{$i} + div {
+      		display: none;
+      	}
+    }
+    
+    @for $i from 2 through 96 {
+    	.sortable-ghost.dur-#{$i} + div + div {
+      		display: none;
+      	}
+    }
+    
+    @for $i from 3 through 96 {
+    	.sortable-ghost.dur-#{$i} + div + div + div {
+      		display: none;
+      	}
+    }
+    
+    @for $i from 4 through 96 {
+    	.sortable-ghost.dur-#{$i} + div + div + div + div {
+      		display: none;
+      	}
+    }
+    
+    @for $i from 5 through 96 {
+    	.sortable-ghost.dur-#{$i} + div + div + div + div + div {
+      		display: none;
+      	}
+    }
+    
+    @for $i from 6 through 96 {
+    	.sortable-ghost.dur-#{$i} + div + div + div + div + div + div {
+      		display: none;
+      	}
+    }
+    
+    @for $i from 7 through 96 {
+    	.sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div {
+      		display: none;
+      	}
+    }
+    
+    @for $i from 8 through 96 {
+    	.sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div {
+      		display: none;
+      	}
+    }
+    
+    @for $i from 9 through 96 {
+    	.sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div {
+      		display: none;
+      	}
+    }
+    
+    @for $i from 10 through 96 {
+    	.sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div {
+      		display: none;
+      	}
+    }
+    
+    @for $i from 11 through 96 {
+    	.sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div {
+      		display: none;
+      	}
+    }
+    
+    @for $i from 12 through 96 {
+    	.sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div {
+      		display: none;
+      	}
+    }
+    
+    @for $i from 13 through 96 {
+    	.sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div {
+      		display: none;
+      	}
+    }
+    
+    @for $i from 14 through 96 {
+    	.sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+      		display: none;
+      	}
+    }
+    
+    @for $i from 15 through 96 {
+    	.sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+      		display: none;
+      	}
+    }
+    
+    @for $i from 16 through 96 {
+    	.sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+      		display: none;
+      	}
+    }
+    
+    @for $i from 17 through 96 {
+    	.sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+      		display: none;
+      	}
+    }
+    
+    @for $i from 18 through 96 {
+    	.sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+      		display: none;
+      	}
+    }
+    
+    @for $i from 19 through 96 {
+    	.sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+      		display: none;
+      	}
+    }
+
+    @for $i from 20 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 21 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 22 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 23 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 24 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 25 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 26 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 27 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 28 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 29 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 30 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 31 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 32 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 33 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 34 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 35 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 36 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 37 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 38 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 39 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    @for $i from 40 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 41 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 42 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 43 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 44 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 45 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 46 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 47 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 48 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 49 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+
+    @for $i from 50 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 51 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 52 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 53 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 54 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 55 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 56 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 57 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 58 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 59 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+
+    @for $i from 60 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 61 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 62 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 63 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 64 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 65 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 66 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 67 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 68 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 69 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    @for $i from 70 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 71 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 72 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 73 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 74 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 75 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 76 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 77 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 78 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 79 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 80 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 81 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 82 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 83 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 84 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 85 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 86 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 87 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 88 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 89 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+
+    @for $i from 90 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 91 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 92 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 93 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 94 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 95 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+    
+    @for $i from 96 through 96 {
+        .sortable-ghost.dur-#{$i} + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div + div {
+            display: none;
+        }
+    }
+  }
+
+  .resas_body__fields {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-width: 100%;
+    margin-left: 30px;
+    opacity: 1;
+    transition: 100000ms;
+
+    &__title {
+      h2 {
+        color:#033c69;
+        text-transform: uppercase;
+        font-size:14px;
+        padding-bottom:5px;
+        text-align:center;
+        border-bottom:1px solid #033c69;
+      }
+    }
+    &[v-cloak] {
+      opacity: 0;
+    }
+
+    &--mini {
+      padding: 0;
+      transition: 0ms;
+      min-width: 50%;
+      margin: 0;
+
+    }
+
+    &--groups {
+      position: relative;
+      min-width: 50%;
+      margin-bottom:20px;
+      padding: 0;
+      background: #f2f2f2;
+
+    }
+  }
+
+  .resas_body__sSearch {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 39px;
+
+    >div:last-child{
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    label {
+      float:left;
+      font-size: 12px;
+      color: #9B9B9B;
+      margin-right:10px;
+    }
+  }
+
+  .resas_body__timeslots {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 65px;
+    z-index: 0;
+  }
+
+  .resas_body {}
+
+  .resas_planning_backdrop {
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background-color:rgba(0, 0, 0, 0.2);
+    z-index: 5;
+    cursor: pointer;
+  }
+  .resaContainer__hour {}
+  @for $pos from 0 through 96 {
+    .resaContainer__hour:nth-of-type(#{$pos}) {
+      top: #{($hourHeight / 4) * $pos};
+    }
+  }
+
+  .field {
+    position: relative;
+    min-width: 200px;
+    min-height: 500px;
+    //background-color: rgba(0, 180, 180, .1);
+    margin-right: 2px;
+
+    h1 {
+      white-space: nowrap;
+      text-align: center;
+      border-radius: 4px;
+      font-size: 0.75em;
+      font-weight: 600;
+      color: $grey;
+    }
+    
+    h1.bottom {
+    	position: relative;
+    }
+    
+    .field-list {
+    	border-right: 1px solid #cdcdcd;
+      margin-top: 20px;
+	}
+	
+    &:nth-of-type(odd) {
+      //background-color: rgba(200, 0, 200, .1);
+    }
+    .card-item{
+      width:200px;
+      height:100px;
+      overflow: hidden;
+      background: #06AED3;
+      opacity: 0.8;
+      *{
+        opacity:0;
+      }
+
+    }
+
+    .cal-slot, .card-item{
+      display: flex;
+      align-items: center;
+      font-size: 0.9em;
+      justify-content: center;
+
+      span {
+        &:before{
+          transform: scale(0.7);
+        }
+      }
+    }
+  }
+  @for $pos from 1 through 96 {
+    .field[data-index="#{$pos - 1}"] ) {
+  //left: #{260px * ($pos - 1)};
+}
+}
+
+.timeslot {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-top: 1px dotted #aaa;
+  z-index: 5;
+  transform: translateY(0px);
+  box-sizing: border-box;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, .1);
+  }
+
+  &:before {}
+
+  &[data-time$=".00"] {
+    border-top-style: solid;
+  }
+
+  &[data-inc='0.25'] {
+    height: ($hourHeight / 4) / 4;
+  }
+
+  &[data-inc='0.5'] {
+    height: ($hourHeight / 4) / 2;
+  }
+
+  &[data-inc='0.75'] {
+    height: ($hourHeight / 4) / 4 * 3;
+  }
+
+  &[data-inc='1'] {
+    height: ($hourHeight / 4);
+  }
+}
+@for $pos from 1 through 96 {
+  .timeslot:nth-of-type(#{$pos}) {
+    top: #{($hourHeight / 4) * ($pos - 8)};
+  }
+}
+
+.booking {
+  position: absolute;
+  left: 1px;
+  right: 1px;
+  background-color: rgba(0, 0, 0, .3);
+  border-radius: 2px;
+  z-index: 100;
+
+  .booking-dragger-bottom,
+  .booking-dragger-top {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 20px;
+    transition: background-color 150ms;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .booking-dragger-top {
+    top: 0;
+  }
+
+  .booking-dragger-bottom {
+    bottom: 0;
+  }
+
+  &.mrt {
+    z-index: 50;
+    background-color: #bbb;
+  }
+}
+@for $pos from 0 through 96 {
+  .booking[data-from="#{$pos / 4}"] {
+    top: #{((($hourHeight / 4 ) / 4) * ($pos))};
+  }
+}
+@for $pos from 1 through 40 {
+  .booking[data-duration="#{$pos / 4}"] {
+    height: #{((($hourHeight / 4) / 4) * $pos)};
+  }
+}
+
+.slot {
+  z-index: 0;
+  background-color: rgba(0, 0, 0, 0);
+  transition: 150ms;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-top: 1px dotted rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+
+  &[data-duration="1"] {
+    border-top: none;
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, .3);
+  }
+}
+
+.resas_body__fields__timeslots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+
+  & > div {
+    height: $hourHeight / 4;
+    box-sizing: border-box;
+    border-top: 1px solid $grey-light;
+
+    & > span {
+      transform: translateX(-30px) translateY(-.7em);
+      display: block;
+      width: 30px;
+      text-align: center;
+      font-size: 0.75em;
+      font-weight: 600;
+      color: $grey;
+    }
+  }
+}
+}
+
+#enseignementElevePlanningForm .resas .resas_sList {
+	max-height: 300px!important;
+	overflow-x:hidden;
+	overflow-y: scroll!important;
+}
+#enseignementElevePlanningForm .resas .resas_cList {
+	max-height: none;
+	overflow-y: hidden;
+}
+.disablefieldset{
+	opacity:0.6
+}
+
+.mrtop{
+    margin-top:9px!important;
+  }
+  .resOk{
+    z-index:999!important;
+  }
+  .card-item{
+    position:relative;
+  }
+  
+  .dragCardReceiveEleve{
+    width:100%;
+    max-width:100%;
+    max-height:0%;
+    height:100%;
+    position:absolute;
+    top:0px;
+    left:0px;
+    transition:height 0.1s ease;
+    background:rgba(6,174,211,0.5)!important;
+    border-radius: 5px;
+    color:#fff!important;
+    list-style: none;
+    text-align:center!important;
+    display:flex;
+    align-content: center;
+    justify-content: center;
+    overflow:hidden;
+	li{
+		display:none;
+	}
+	&:after{
+	  content:'+';
+    color:#fff;
+    font-size:40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+    height:100%;
+  }
+ }
+ .insideResa .dragCardReceiveEleve{
+	width:200px;
+  }
+  .remover{
+    width:100%;
+    background-color: $accent-red;
+    border-radius: 5px;
+	  color:#fff!important;
+    list-style: none;
+    text-align:center!important;
+    display:flex;
+    align-content: center;
+    justify-content: center;
+  	position:relative;
+  	left:0;
+  	margin-top:4px;
+  	height:70px;
+  	overflow:hidden;
+    opacity:0.5;
+    -webkit-transition: opacity 0.5s;
+    transition: opacity 0.5s;
+	.resa{
+		display:none
+	}
+	&:after{
+    content:'';
+		background:url('dustbin.png');
+    background-size:30px auto;
+    background-position:center center;
+    background-repeat:no-repeat;
+		width:100%;
+		height:100%;
+  }
+  }
+  .selectedGroup{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  }
+  .notSelectedGroup{
+    opacity:0.3;
+  }
+  .planning{
+    position:relative;
+    .load{
+      width:100%;
+      position:absolute;
+      top:0;
+      left:0;
+      height:100%;
+      background:rgba(44,44,44,0.2);
+      z-index: 9999;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      -webkit-box-align: center;
+
+      align-items: center;
+      .loader{
+        display:block;
+        background:url('loading.png');
+        background-size:30px auto;
+        background-position:center center;
+        background-repeat:no-repeat;
+        width:30px;
+        height:30px;
+        margin: 0 auto;
+        -webkit-animation: rotating 1s linear infinite;
+        -moz-animation: rotating 1s linear infinite;
+        -ms-animation: rotating 1s linear infinite;
+        -o-animation: rotating 1s linear infinite;
+        animation: rotating 1s linear infinite;
+      }
+    }
+  }
+  @keyframes rotating
+  {
+  from
+    {
+    transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    }
+  to
+    {
+    transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    }
+  }
+@-webkit-keyframes rotating
+  {
+  from
+    {
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    }
+  to
+    {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    }
+  }
+.card-item.draggingElement{
+    max-height:50px;
+    max-width:200px;
+    opacity:0.4;
+  .card-footer, .card-description{
+    display:none;
+    overflow:hidden;
+  }
+  h3{
+    border-bottom:none;
+  }
+}
+
+  

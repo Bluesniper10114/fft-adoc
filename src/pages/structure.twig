@@ -1,0 +1,25 @@
+{% extends "layouts/layout.twig" %}
+
+{% block main %}
+    <main class="tpl-default" id="fft-main">
+        <!-- équivalent de l'ancien div.content_top -->
+        <div class="fft-main-top">
+            <ol id="fft-breadcrumb">
+                <li>Adhérents</li>
+                <li><a class="link" href="#">Gestion</a></li>
+                <li><a class="link" href="#">Recherche</a></li>
+            </ol>
+
+        </div>
+
+        <!-- équivalent de l'ancien div.content_bottom -->
+        <div class="fft-main-content">
+            <ul id="fft-tabs">
+                <li class="current"><a href="structure.html">Recherche</a></li>
+                <li><a href="recherche-adherent.html">Résultats</a></li>
+            </ul>
+
+        </div>
+    </main>
+
+{% endblock %}

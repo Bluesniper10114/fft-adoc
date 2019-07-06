@@ -1,0 +1,304 @@
+{% extends "layouts/layout.twig" %} {% block main %}
+<main class="tpl-default" id="fft-main">
+  <!-- équivalent de l'ancien div.content_top -->
+  <div class="fft-main-top">
+    <ol id="fft-breadcrumb">
+      <li>Enseignement</li>
+      <li>
+        <a class="link" href="#">Accueil</a>
+      </li>
+    </ol>
+  </div>
+  <!-- équivalent de l'ancien div.content_bottom -->
+  <div class="fft-main-content">
+    <ul id="fft-tabs">
+      <li class="current">
+        <a href="enseignement-accueil.html">Groupe</a>
+      </li>
+      <li>
+        <a href="enseignement-planning.html">Planning</a>
+      </li>
+      <li>
+        <a href="enseignement-eleves.html">Elèves</a>
+      </li>
+    </ul>
+    <form class="fft-form" id="ens-groups-search">
+      <fieldset>
+        <div class="grid fGrid5">
+          <div class="small-margin">
+            <p class="fft-form-line">
+              <label for="list_of_the_days">Jours</label>
+              <select name="list-of-the-days" id="list_of_the_days">
+                <option>Lundi</option>
+                <option>Mardi</option>
+                <option>Mercredi</option>
+                <option>Jeudi</option>
+                <option>Vendredi</option>
+                <option>Samedi</option>
+                <option>Dimanche</option>
+              </select>
+            </p>
+          </div>
+          <div class="small-margin">
+            <p class="fft-form-line">
+              <label for="name">Libellé</label>
+              <input type="text" name="libele" id="libele" />
+            </p>
+          </div>
+          <div class="small-margin">
+            <p class="fft-form-line">
+              <label for="name">Année d'adhésion</label>
+              <select name="annee-adhesion" id="annee_adhesion">
+                {% for i in 2018..1950 %}
+                <option>{{ i }}</option>
+                {% endfor %}
+              </select>
+            </p>
+          </div>
+          <div class="small-margin">
+            <p class="fft-form-line">
+              <label for="select">Enseignant</label>
+              <select name="enseignant" id="enseignant">
+                <option>Mr truc</option>
+                <option>Mme machin</option>
+                <option>Mr truc</option>
+                <option>Mme machin</option>
+              </select>
+            </p>
+
+          </div>
+          <div class="small-margin">
+            <div class="fft-form-line">
+              <input type="submit" value="Rechercher" class="btn" />
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+    </form>
+    <div>
+      <form class="fft-form" action="#" id="filter-list-group">
+        <div class="fft-line-separate">
+          <div class="fft-line-separate-left fft-form-corner">
+            <a class="btn icon-bigplus dialog" href="/enseignement-creation-groupe.html">Créer groupe</a>
+            <input type="checkbox" id="selection" />
+            <label for="selection">
+              Tout selectionner
+            </label>
+          </div>
+          <div class="fft-line-separate-left">
+            <div class="grid fGrid4">
+              <div class="small-margin">
+                <p class="fft-form-line">
+                  <label>Tri</label>
+                </p>
+                <ul class="fft-form-select-buttons fft-form-select-tri">
+                  <li>
+                    <input type="radio" value="1" name="tri-nom" id="tri-nom-crois" checked/>
+                    <label>
+                      <span>Croissant</span>
+                    </label>
+                  </li>
+                  <li>
+                    <input type="radio" value="0" name="tri-nom" id="tri-nom-decrois" />
+                    <label>
+                      <span>Décroissant</span>
+                    </label>
+                  </li>
+                </ul>
+              </div>
+              <div class="small-margin pt-25">
+                <p class="fft-form-line">
+                  <input type="checkbox" value="complets" id="groupes_complets" name="groupes-complets">
+                  <label for="groupes_complets">Complets</label>
+                </p>
+              </div>
+              <div class="small-margin pt-25">
+                <p class="fft-form-line">
+                  <input type="checkbox" value="planifies" id="groupes_planifies" name="groupes-planifies">
+                  <label for="groupes_planifies">Planifies</label>
+                </p>
+              </div>
+              <div class="small-margin pt-25">
+                <p class="fft-form-line">
+                  <input type="checkbox" value="visibles" id="groupes_visibles" name="groupes-visibles">
+                  <label for="groupes_visibles">Visibles</label>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="card-list padded">
+      {% set k = 0 %} {% for i in 0..3 %}
+      <div class="card-column">
+        {% for j in 0..4 %} {% set k = k + 1 %}
+        <div class="card-item item" group-id="{{k}}">
+          <h3>Groupe 10-12 Terrain vert</h3>
+          <div class="card-description">
+            <ul>
+              <li>Mauray Fabien</li>
+              <li class="icon-stat">Niveau 5/10-12 ans</li>
+              <li>1h</li>
+              <li>5</li>
+            </ul>
+          </div>
+          <button class="card-item-button">
+            <span>Voir les participants</span>
+          </button>
+          <div class="card-members">
+            <ul class="eleve-list" group="eleve-list">
+              {% for i in 0..4 %}
+              <li eleve-id="{{i}}">
+                <a href="">Schott Fabien</a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div class="card-footer">
+            <a href="#">
+              <div class="card-footer-profil"></div>
+            </a>
+            <a href="#">
+              <div class="card-footer-calendar"></div>
+            </a>
+            <a href="#">
+              <div class="card-footer-edit"></div>
+            </a>
+            <a href="#">
+              <div class="card-footer-see"></div>
+            </a>
+            <div class="card-selector">
+              <input type="checkbox" value="1" id="selectCard_{{k}}" name="selectCard[]" />
+              <label for="selectCard_{{k}}">
+                <span class="hidden">Sélectionner</span>
+              </label>
+            </div>
+          </div>
+
+        </div>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+    <div class="mt-20">
+      <form class="fft-form" action="#">
+        <div class="fft-line-separate fft-line-separate-between pr-16 pl-16">
+          <div>
+            <button type="button" class="btn2 icon-poubelle" value="Supprimer" name="buttonSuppression">Supprimer</button>
+          </div>
+          <div>
+            <button class="btn2 icon-bigplus mr-10">Export Excel</button>
+            <button class="btn2 icon-bigplus mr-10">Reconduire</button>
+            <button class="btn2 icon-bigplus mr-10">Affecté enseignant</button>
+            <button class="btn2 icon-bigplus mr-10">changer de jour</button>
+            <button class="btn2 icon-bigplus">Ajouter interruption</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="fft-main-content">
+      <form class="fft-form" action="#">
+        <fieldset>
+          <legend>Affecter un enseignant
+            <span class="legend-desc">Texte explicatif sur l'action</span>
+          </legend>
+          <div class="pl-16">
+            <div class="grid fGrid3">
+              <div class="small-margin">
+                <p class="fft-form-line">
+                  <label>Groupes</label>
+                </p>
+                {# loop sur les groupes #} {% for i in 0..10 %}
+                <a href="#" class="link--select">Groupe des 10-12 ans Terrain vert</a>{# nom du groupe #} {% endfor %} {# @end loop sur les groupes #}
+              </div>
+              <div class="small-margin">
+                <p class="fft-form-line">
+                  <label>Enseignant actuel</label>
+                </p>
+                {# @end loop sur les groupes #} {% for i in 0..10 %}
+                <a href="#" class="link--arrow">Cogo Emma</a> {# enseignant du groupe #} {% endfor %} {# @end loop sur les groupes #}
+              </div>
+              <div class="small-margin">
+                <p class="fft-form-line">
+                  <label>Enseignant</label>
+                </p>
+                <ul class="fft-form-multiple-selection">
+                  <li>
+                    <input type="checkbox" name="ens" />
+                    <label>Maurey Fabien</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="ens" />
+                    <label>Maurey Fabien</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="ens" />
+                    <label>Maurey Fabien</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="ens" />
+                    <label>Maurey Fabien</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="ens" />
+                    <label>Maurey Fabien</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="ens" />
+                    <label>Maurey Fabien</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="ens" />
+                    <label>Maurey Fabien</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="ens" />
+                    <label>Maurey Fabien</label>
+                  </li>
+                </ul>
+                <a class="btn icon-tick fft-form-multiple-selection-button" href="#">Affecter</a>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <div class="fft-main-content">
+      <form class="fft-form" action="#">
+        <fieldset>
+          <legend>Interruptions</legend>
+          <div class="grid fGrid5">
+            <div class="small-margin">
+              <p class="fft-form-line">
+                <label for="date_interuption">Période du</label>
+                <input type="text" name="date-interuption" maxlength="10" size="10" value="" id="date_interuption" class="datepicker">
+              </p>
+            </div>
+            <div class="small-margin">
+              <p class="fft-form-line">
+                <label for="date_interuption">au</label>
+                <input type="text" name="date-interuption" maxlength="10" size="10" value="" id="date_interuption" class="datepicker">
+              </p>
+            </div>
+            <div class="small-margin">
+              <p class="fft-form-line">
+                <a class="btn icon-bigplus" href="#">Ajouter</a>
+              </p>
+            </div>
+        </fieldset>
+      </form>
+      </div>
+    </div>
+</main>
+
+
+<!-- DIALOG CONTENT -->
+{% include "inc/dialog.twig" %} {% endblock %}
+
+{% block scripts %}
+{{ parent () }}
+<script type="text/javascript" src="/js/enseignement-accueil.js"></script>
+
+{% endblock %}

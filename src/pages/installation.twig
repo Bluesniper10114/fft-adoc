@@ -1,0 +1,449 @@
+{% extends "layouts/layout.twig" %}
+
+{% block main %}
+    <main class="tpl-default" id="fft-main">
+        <!-- équivalent de l'ancien div.content_top -->
+        <div class="fft-main-top">
+            <ol id="fft-breadcrumb">
+                <li>Adhérents</li>
+                <li><a class="link" href="#">Gestion</a></li>
+                <li><a class="link" href="#">Recherche</a></li>
+            </ol>
+
+        </div>
+
+        <!-- équivalent de l'ancien div.content_bottom -->
+        <div class="fft-main-content" id="vueAppContainer">
+            <ul id="fft-tabs">
+                <li class="current"><a href="installation.html">Création d'une installation</a></li>
+            </ul>
+
+            <div class="fft-main-top">
+                <div class="fft-notification installation-notification">
+                    <span class="fft-notification_info"></span>
+                    <p>Dans le but d’informer au mieux le grand public ainsi que les licenciés sur vos installations et sur les services que vous proposez, nous vous invitons à mettre à jour les informations suivantes : Vestiaires, Douche</p>
+                </div>
+            </div>
+
+            <form class="fft-form">
+
+                <fieldset class="section-parametrage page-installations" style="border-bottom: transparent !important;">
+                    <h3 class="section-title">Informations générales</h3>
+                    <div class="grid fGrid3">
+                        <!-- 1ST ROW FIRST BLOCK -->
+                        <div class="clearfix">
+                            <p class="fft-form-line">
+                                <label class="req">Nom de l'installation</label>
+                                <input type="text" name="nom" maxlength="20" size="32" value="" class="text">
+                            </p>
+
+                            <p class="fft-form-line">
+                                <label>Mail</label>
+                                <input type="text" name="adresse1" maxlength="20" size="32" value="" onchange="uploadCoord();" id="input_adresse1" class="text">
+                            </p>
+                            <p class="fft-form-line">
+                                <label>Rés. Bat. Esc...</label>
+                                <input type="text" name="adresse2" maxlength="20" size="32" value="" onchange="uploadCoord();" id="input_adresse2" class="text">
+                            </p>
+                            <p class="fft-form-line">
+                                <label class="req">Code Postal</label>
+                                <input type="text" name="codePostal" maxlength="5" size="5" value="" onchange="uploadCoord();" id="input_code_postal" class="code_postal">
+                            </p>
+                            <p class="fft-form-line">
+                                <label class="req">Convention</label>
+                                <select name="codeConvention" id="codeConvention" style="visibility: visible;">
+                                    <option value="">--- Veuillez Choisir ---</option>
+                                    <option value="NON">Aucune convention</option>
+                                    <option value="PRV">Bail Privé</option>
+                                    <option value="MUN">Convention municipale</option>
+                                    <option value="LCP">Location à titre précaire</option>
+                                    <option value="PRP">Propriétaire</option>
+                                </select>
+                            </p>
+                        </div>
+
+                        <!--  FIRST ROW 2ND BLOCK -->
+                        <div class="clearfix">
+                            <p class="fft-form-line">
+                                <label>Téléphone</label>
+                                <input type="text" name="telephone" maxlength="25" size="25" value="" class="text">
+                            </p>
+                            <div class="fft-form-line">
+                                <label>Coordonnées GPS</label>
+                                <div class="coor-gps">
+                                    <input type="text" name="latitude" maxlength="12" size="5" value="" onchange="uploadCoord();" id="input_latitude" class="text mr-10">
+                                    <input type="text" name="longitude" maxlength="12" size="5" value="" onchange="uploadCoord();" id="input_longitude" class="text mr-10">
+                                    <a class="btn2 icon-poi icon-empty mr-10" href="#"></a>
+                                    <a class="btn2 icon-more icon-empty" href="#"></a>
+                                </div>
+                                {#<div class="grid fGrid2">#}
+                                {# <p class="fft-form-line fft-form-line-auto display-inline-flex">#}
+                                {#<span class="display-inline-flex">#}
+                                {#<a target="_blank" href="http://maps.google.com/maps?q=,, ,FRANCE" id="mapLink" class="icon-poi btn2 icon-active icon-empty"></a>#}
+                                {#<a onclick="showHelpTip(event, 'coordonneesGpsInfo', '<ul class=' + String.fromCharCode(34) + 'unorderedList' + String.fromCharCode(34) + ' style=' + String.fromCharCode(34) + 'text-align: left;font-size: 13px;' + String.fromCharCode(34) + ' ><li> Si l\'installation n\'est pas encore g?localis?<ol class=' + String.fromCharCode(34) + 'orderedList' + String.fromCharCode(34) + '><li>Il faut cliquer sur le lien \'Voir sur la carte\' ci-dessous</li><li>Si l\'adresse a ??indiqu?, un marqueur devrait apparaitre ?l\'emplacement correspondant. Si ce n\'est pas le cas, rechercher l\'adresse de l\'installation.</li><li>A l\'emplacement de l\'installation, afficher le menu contextuel en cliquant droit avec la souris et choisir ' + String.fromCharCode(34) + 'Plus d\'infos sur cet endroit' + String.fromCharCode(34) + '.</li><li>Vous allez voir apparaitre un encart avec l\'adresse et, en dessous,  les coordonn?s. Le 1er chiffre correspond au champ ' + String.fromCharCode(34) + 'Latitude' + String.fromCharCode(34) + ' et le 2nd au champ ' + String.fromCharCode(34) + 'Longitude' + String.fromCharCode(34) + '.</li><li>Reporter ces valeurs dans les champs correspondants et enregistrer.</li></ol></li><li>Si l\'installation est dÃ©jÃ&nbsp; gÃ©localisÃ©e, vous pouvez vÃ©rifier son emplacement en cliquant sur le lien \'Voir sur la carte\' ci-dessous.</li></ul>', true); return false;" class="helptip"><span class="icon-more icon-active helptip pointer"></span></a>#}
+                                {#</span>#}
+                                {#</p>#}
+                                {#<div id="coordonneesGpsInfo"> </div> #}
+                                {#</div>#}
+                            </div>
+                            <p class="fft-form-line">
+                                <label>N° et voie</label>
+                                <input type="text" name="email" maxlength="64" size="32" value="" class="text">
+                            </p>
+                            <p class="fft-form-line">
+                                <label class="req">Ville</label>
+                                <input type="text" name="ville" maxlength="20" size="32" value="" onchange="uploadCoord();" id="input_ville" class="text">
+                            </p>
+                            <div class="grid fGrid2" style="justify-content: space-between;">
+                                <p class="fft-form-line col-sm-6 pr-4" style="margin-top: 38px;">
+                                    <label>Date de début</label>
+                                    {#<input type="text" name="date-period-begin" maxlength="10" size="10" value="" class="datepicker" data-toggle="datepicker">#}
+                                    <input type="text" name="date-period-begin" maxlength="10" class="datepicker" size="10" value="">
+                                </p>
+
+                                <p class="fft-form-line col-sm-6 pl-12">
+                                    <label>Durée (en années)</label>
+                                    <input type="text" name="date-duration" maxlength="10" size="10" value="" class="">
+                                </p>
+                            </div>
+
+                        </div>
+                        <!-- // FIRST BLOCK 2ND ROW -->
+
+
+                        <!-- FIRST ROW 3RD BLOCK -->
+                        <div class="clearfix">
+                            <div class="grid fGrid2 photo-preview" v-if="cropImgSrc">
+                                <p class="fft-form-line">
+                                    <label>Photo</label>
+                                    <img :src="cropImgSrc" width="160"/>
+                                </p>
+                                <p class="fft-form-line pl-15" style="align-items: baseline;">
+                                    <button type="button" class="btn2 icon-poubelle" @click="clearImage()">Supprimer</button>
+                                </p>
+                            </div>
+                            <div class="photo-select" v-if="!cropImgSrc">
+                                <p class="fft-form-line">
+                                    <label>Photo</label>
+                                </p>
+                                <button type="button" class="btn2 icon-bigplus mb-16"
+                                @click='openImageModal()'
+                                >Ajouter une photo</button>
+                                <p>Taille minimum : 1312px de large / 600px de hauteur</p>
+                                <p>Poids maximum 5 Mo</p>
+                                <p>Format d'image : Jpg / Jpeg / Png</p>
+                            </div>
+                            <p class="fft-form-line mt-100">
+                                <label>Particularités</label>
+                                <input type="text" name="particularite" maxlength="50" size="32" value="" class="text">
+                            </p>
+                            <div class="grid fGrid2 mt-30" style="justify-content: space-between;">
+                                <p class="fft-form-line">
+                                    <label style="white-space: nowrap;">Mur d'entrainement</label>
+                                </p>
+                                <ul class="fft-form-select-buttons fft-form-select-valid" style="margin-top: 10px">
+                                    <li>
+                                        <input type="radio" value="1" name="mur-visible" id="groupe-visible-oui" checked="checked">
+                                        <label><span>Oui</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" value="0" name="mur-visible" id="groupe-visible-non">
+                                        <label ><span >Non</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="section-parametrage page-installations">
+                    <!-- FOURTH BLOCK -->
+                    <h3 class="section-title">Espace de vie</h3>
+                    <div class="esp-club-line sup-club clubhouse-visible"></div>
+                    <div class="grid fGrid3" style="justify-content: space-between;">
+                        <div class="clearfix">
+                            <div class="grid fGrid2"  style="justify-content: space-between;">
+                                <p class="fft-form-line">
+                                    <label style="white-space: nowrap;">Club House</label>
+                                </p>
+                                <ul class="fft-form-select-buttons fft-form-select-valid" style="margin-top: 10px">
+                                    <li>
+                                        <input type="radio" value="1" name="club-house-visible" id="club_yes"
+
+                                        @click="checkboxYesChanged($event, 'clubhouse')"
+                                        >
+                                        <label><span>Oui</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" value="0" name="club-house-visible"
+                                        id="club_no" @click.prevent="checkboxNoChanged($event, 'clubhouse')">
+                                        <label><span >Non</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="grid fGrid2 sup-club clubhouse-visible" style="justify-content: space-between;">
+                                <p class="fft-form-line">
+                                    <label style="white-space: nowrap; padding-left: 15px !important;">Superficie Club House</label>
+                                </p>
+                                <div style="text-align:right; padding: 10px 0 0 28px;">
+                                    <input type="text" name="superficie-club-house" size="6" value="30 m2" class="text" style="width: 98px">
+                                </div>
+                            </div>
+                            <div class="grid fGrid2"  style="justify-content: space-between;">
+                                <p class="fft-form-line">
+                                    <label style="white-space: nowrap;">Bar</label>
+                                </p>
+                                <ul class="fft-form-select-buttons fft-form-select-valid" style="margin-top: 10px">
+                                    <li>
+                                        <input type="radio" value="1" name="bar-visible" id="bar_yes" checked="checked"
+                                        @click="checkboxYesChanged($event, 'bar')"
+                                        >
+                                        <label><span>Oui</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" value="0" name="bar-visible" id="bar_no"
+                                        @click.prevent="checkboxNoChanged($event, 'bar')"
+                                        >
+                                        <label ><span >Non</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="grid fGrid2"  style="justify-content: space-between;">
+                                <p class="fft-form-line">
+                                    <label style="white-space: nowrap;">Restaurant</label>
+                                </p>
+                                <ul class="fft-form-select-buttons fft-form-select-valid" style="margin-top: 10px">
+                                    <li>
+                                        <input type="radio" value="1" name="restaurant-visible" id="restaurant_yes"
+                                        @click="checkboxYesChanged($event, 'restaurant')"
+                                        checked>
+                                        <label><span>Oui</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" value="0" name="restaurant-visible" id="restaurant_no"
+                                        @click.prevent="checkboxNoChanged($event, 'restaurant')"
+                                        >
+                                        <label><span >Non</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            <div class="grid fGrid2"  style="justify-content: space-between;">
+                                <p class="fft-form-line">
+                                    <label style="white-space: nowrap;">TV</label>
+                                </p>
+                                <ul class="fft-form-select-buttons fft-form-select-valid" style="margin-top: 10px">
+                                    <li>
+                                        <input type="radio" value="1" name="tv-visible" id="groupe-visible-oui" checked="checked">
+                                        <label><span>Oui</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" value="0" name="tv-visible" id="groupe-visible-non">
+                                        <label ><span >Non</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="grid fGrid2"  style="justify-content: space-between;">
+                                <p class="fft-form-line">
+                                    <label style="white-space: nowrap;">WiFi</label>
+                                </p>
+                                <ul class="fft-form-select-buttons fft-form-select-valid" style="margin-top: 10px">
+                                    <li>
+                                        <input type="radio" value="1" name="wifi-visible" id="groupe-visible-oui" checked="checked">
+                                        <label><span>Oui</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" value="0" name="wifi-visible" id="groupe-visible-non">
+                                        <label ><span >Non</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="grid fGrid2"  style="justify-content: space-between;">
+                                <p class="fft-form-line">
+                                    <label style="white-space: nowrap;">Vestiaire</label>
+                                </p>
+                                <ul class="fft-form-select-buttons fft-form-select-valid" style="margin-top: 10px">
+                                    <li>
+                                        <input type="radio" value="1" name="vestiaire-visible" id="groupe-visible-oui" checked="checked">
+                                        <label><span>Oui</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" value="0" name="vestiaire-visible" id="groupe-visible-non">
+                                        <label ><span >Non</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="grid fGrid2"  style="justify-content: space-between;">
+                                <p class="fft-form-line">
+                                    <label style="white-space: nowrap;">Douches</label>
+                                </p>
+                                <ul class="fft-form-select-buttons fft-form-select-valid" style="margin-top: 10px">
+                                    <li>
+                                        <input type="radio" value="1" name="douches-visible" id="groupe-visible-oui" checked="checked">
+                                        <label><span>Oui</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" value="0" name="douches-visible" id="groupe-visible-non">
+                                        <label><span >Non</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                        </div>
+                    </div>
+                    <fft-installation-schedule  v-if="canShowSchedule" v-model="scheduleJson"  @change="serializeSchedule"></fft-installation-schedule>
+                </fieldset>
+
+                <fieldset class="section-parametrage page-installations">
+                    <h3 class="section-title">Accessibilité</h3>
+                    <div class="grid fGrid3 access">
+                        <div class="clearfix">
+                            <div class="grid fGrid2"  style="justify-content: space-between;">
+                                <p class="fft-form-line">
+                                    <label style="white-space: nowrap;">Parking</label>
+                                </p>
+                                <ul class="fft-form-select-buttons fft-form-select-valid" style="margin-top: 10px">
+                                    <li>
+                                        <input type="radio" value="1" name="parking1-visible" id="groupe-visible-oui" checked="checked">
+                                        <label><span>Oui</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" value="0" name="parking1-visible" id="groupe-visible-non">
+                                        <label ><span >Non</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            <div class="access-line access-visible">
+                                <div class="first-line"></div>
+                                <div class="second-line"></div>
+                                <div class="second-line"></div>
+                                <div class="second-line"></div>
+                            </div>
+                            <div class="grid fGrid2" style="justify-content: space-between;">
+                                <p class="fft-form-line">
+                                    <label style="white-space: nowrap;">Accès PMR <i class="icon-cross" style="margin-top: -8px;margin-left: 10px;position: absolute;"></i></label>
+                                </p>
+                                <ul class="fft-form-select-buttons fft-form-select-valid" style="margin-top: 10px">
+                                    <li>
+                                        <input type="radio" value="1" name="access" id="access_yes">
+                                        <label><span>Oui</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" value="0" name="access" id="access_no">
+                                        <label><span >Non</span></label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="grid fGrid2 access-visible" style="justify-content: space-between;">
+                                <p class="fft-form-line">
+                                    <label style="white-space: nowrap; padding-left: 15px !important;">Douches</label>
+                                </p>
+                                <ul class="fft-form-select-buttons fft-form-select-valid" style="margin-top: 10px">
+                                    <li>
+                                        <input type="radio" value="1" name="douches1-visible" id="groupe-visible-oui" checked="checked">
+                                        <label><span>Oui</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" value="0" name="douches1-visible" id="groupe-visible-non">
+                                        <label ><span >Non</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="grid fGrid2 access-visible" style="justify-content: space-between;">
+                                <p class="fft-form-line">
+                                    <label style="white-space: nowrap; padding-left: 15px !important;">Sanitaire</label>
+                                </p>
+                                <ul class="fft-form-select-buttons fft-form-select-valid" style="margin-top: 10px">
+                                    <li>
+                                        <input type="radio" value="1" name="sanitaire-visible" id="groupe-visible-oui" checked="checked">
+                                        <label><span>Oui</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" value="0" name="sanitaire-visible" id="groupe-visible-non">
+                                        <label ><span >Non</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="grid fGrid2 access-visible" style="justify-content: space-between;">
+                                <p class="fft-form-line">
+                                    <label style="white-space: nowrap; padding-left: 15px !important;">Terrains</label>
+                                </p>
+                                <ul class="fft-form-select-buttons fft-form-select-valid" style="margin-top: 10px">
+                                    <li>
+                                        <input type="radio" value="1" name="terrains-visible" id="groupe-visible-oui" checked="checked">
+                                        <label><span>Oui</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" value="0" name="terrains-visible" id="groupe-visible-non">
+                                        <label ><span >Non</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="grid fGrid2 access-visible" style="justify-content: space-between;">
+                                <p class="fft-form-line">
+                                    <label style="white-space: nowrap; padding-left: 15px !important;">Parking</label>
+                                </p>
+                                <ul class="fft-form-select-buttons fft-form-select-valid" style="margin-top: 10px">
+                                    <li>
+                                        <input type="radio" value="1" name="parking-visible" id="groupe-visible-oui" checked="checked">
+                                        <label><span>Oui</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" value="0" name="parking-visible" id="groupe-visible-non">
+                                        <label ><span >Non</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <input type="hidden" id="scheduleString" name="horaires" value='{}'/>
+
+                <input type="hidden" id="selectedImage" name="selectedImage" :value='$store.state.cropImgSrc'
+                />
+
+                <div class="fft-line-separate">
+                    <div class="fft-line-separate-left">
+                        <input type="button" value="Annuler" class="btn2" onclick="document.location.href='installationListe.do?method=list'">
+                    </div>
+                    <div class="fft-line-separate-right">
+                        <button name="buttonSupprimer" class="btn icon-tick icon-white" onclick="return submitDefault(form);">Enregistrer</button>
+                    </div>
+                </div>
+            </form>
+
+            <fft-installation-imagecrop :open.sync="openImagePicker"
+            destination="#selectedImage"
+            ></fft-installation-imagecrop>
+        </div>
+    </main>
+        <link rel="stylesheet" type="text/css" href="img/_addons.css">
+    {#{% include "inc/installation-modify-dialog.twig" %}#}
+
+{% endblock %}
+{% block scripts %}
+<script src="js/app/parametrage.bundle.js"></script>
+<script src="js/installation.js"></script>
+<script src="js/dialogs.js"></script>
+<script src="js/modals.js"></script>
+{% endblock %}

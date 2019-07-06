@@ -1,0 +1,27 @@
+<!doctype html>
+<!--[if lt IE 8]> <html class="oldie ie7" lang="fr"> <![endif]-->
+<!--[if IE 8]> <html class="oldie ie8" lang="fr"> <![endif]-->
+<!--[if IE 9]> <html class="oldie" lang="fr"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js" lang="fr"> <!--<![endif]-->
+    <head>
+        <title>{{ page.title or site.title }}</title>
+        <meta name="description" content="{{ page.desc or site? }}">
+
+        {% include '../inc/metas.twig' %}
+
+    </head>
+    <body>
+
+    <!-- HEADER + MENU + PROFIL -->
+    {% include '../inc/header-no-action.twig' %}
+
+
+    {% block main %}{% endblock %}
+
+    <!-- FOOTER -->
+    {% include '../inc/footer.twig' %}
+
+    {% include '../inc/js.twig' %}
+
+    </body>
+</html>

@@ -1,0 +1,40 @@
+.centeredColumn {}
+
+.between {
+  font-size: 12px;
+  color: #9B9B9B;
+  margin: 0 10px;
+}
+
+.is-hidden {
+    display:none;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.state {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #45CA7E;
+  display: block;
+  float: left;
+  margin: 2px 5px;
+  &-inactive {
+    background-color: #D14545;
+  }
+
+  &-standby {
+    background-color: #e89550;
+  }
+}
+
+.left {
+  float:left;
+}
+
+.pointer {
+  cursor: pointer;
+}

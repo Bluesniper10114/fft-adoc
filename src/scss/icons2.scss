@@ -1,0 +1,21 @@
+.icon2 {
+  display: inline-block;
+  width: 75px;
+  height: 75px;
+  background-image: url(../img/icons_accueil.png);
+  background-repeat: no-repeat;
+  background-position-x: 0px;
+  background-position-y: 0px;
+}
+
+/* GENERATED CLASSES */
+
+$iconsList: adh-rech msg-ajout gpe-enseignement rem-cheque prinsc-attente paym-survey adh-ajout annee-lic equipes suivi-budget lice-ech adh-soldneg res-tabl annee-adh paym-saisie paym-suivi lic-att lic-deli for-liste pdt-saisie maj-galaxie imp-pers;
+@for $i from 1 through length($iconsList) {
+  $icon: nth($iconsList, $i);
+
+  .tpl-home .#{$icon} {
+    background-position-y: - (($i - 1) * 75px);
+  }
+
+}

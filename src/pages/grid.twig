@@ -1,0 +1,82 @@
+{% extends "layouts/layout.twig" %}
+
+{% block main %}
+    <main class="tpl-default" id="fft-main">
+
+        <div class="fft-main-top">
+            <ol id="fft-breadcrumb">
+                <li>Adhérents</li>
+                <li><a class="link" href="#">Gestion</a></li>
+                <li><a class="link" href="#">Recherche</a></li>
+            </ol>
+        </div>
+
+        <div class="fft-main-content">
+
+            <style type="text/css">
+                .grid div {
+                    background: rgba(255,0,0,.4);
+                    padding: 32px;
+                    text-align: center;
+                }
+                .grid div:nth-of-type(odd) {
+                    background: rgba(255,0,0,.2);
+                }
+            </style>
+
+            <h1>Les grilles</h1>
+
+            <p>Pas de background associé par défault. Element de structure.</p>
+
+            <h2>Grille par 1</h2>
+
+            <div class="grid grid1">
+                <div>1 / 1</div>
+            </div>
+
+            <h2>Grille par 2</h2>
+            <div class="grid grid2">
+                <div>1 / 2</div>
+                <div>2 / 2</div>
+            </div>
+            <h2>Grille par 3</h2>
+            <div class="grid grid3">
+                <div>1 / 3</div>
+                <div>2 / 3</div>
+                <div>3 / 3 <br>et<br>quelques<br>lignes</div>
+            </div>
+            <h2>Grille par 3 avec 2 éléments</h2>
+            <div class="grid grid3">
+                <div>1 / 2</div>
+                <div>2 / 2</div>
+            </div>
+            <h2>Grille par 3 avec 5 éléments</h2>
+            <div class="grid grid3">
+                <div>1 / 5</div>
+                <div>2 / 5</div>
+                <div>3 / 5<br>et<br>quelques<br>lignes</div>
+                <div>4 / 5</div>
+                <div>5 / 5</div>
+            </div>
+            <h2>Grille par 4</h2>
+            <div class="grid grid4">
+                <div>1 / 4</div>
+                <div>2 / 4</div>
+                <div>3 / 4</div>
+                <div>4 / 4<br>et<br>quelques<br>lignes</div>
+            </div>
+
+            <h2>Grille par 5</h2>
+            <div class="grid grid5">
+                <div>1 / 5</div>
+                <div>2 / 5</div>
+                <div>3 / 5</div>
+                <div>4 / 5</div>
+                <div>5 / 5</div>
+            </div>
+
+
+        </div>
+    </main>
+
+{% endblock %}

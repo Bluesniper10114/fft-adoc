@@ -1,0 +1,606 @@
+{% extends "layouts/layout.twig" %}
+
+{% block main %}
+    <main class="tpl-default" id="fft-main">
+        <!-- équivalent de l'ancien div.content_top -->
+        <div class="fft-main-top">
+            <ol id="fft-breadcrumb">
+                <li>Adhérents</li>
+                <li><a class="link" href="#">Gestion</a></li>
+                <li><a class="link" href="#">Recherche</a></li>
+            </ol>
+
+        </div>
+
+        <!-- équivalent de l'ancien div.content_bottom -->
+        <div class="fft-main-content">
+            <ul id="fft-tabs">
+                <li class="current"><a href="recherche-adherents-form.html">Recherche</a></li>
+                <li><a href="recherche-adherent.html">Résultats</a></li>
+            </ul>
+
+            <form class="fft-form">
+                <fieldset>
+                    <legend>Civilité</legend>
+                    <div class="grid fGrid3">
+                        <div>
+                            <p class="fft-form-line">
+                                <label for="name">Nom</label>
+                                <input type="text" name="name" id="name"/>
+                            </p>
+
+                            <p class="fft-form-line">
+                                <label for="name">Prénom</label>
+                                <input type="text" name="name" id="name"/>
+                            </p>
+
+                            <p class="fft-form-line">
+                                <label for="select">Sexe</label>
+                                <select id="select">
+                                    <option>Femme</option>
+                                    <option>Homme</option>
+                                </select>
+                            </p>
+                        </div>
+
+                        <div>
+                            <p class="fft-form-line">
+                                <label for="cp">Code postal</label>
+                                <input type="text" name="cp" id="cp"/>
+                            </p>
+
+                            <p class="fft-form-line">
+                                <label for="cp">Ville</label>
+                                <input type="text" name="cp" id="cp"/>
+                            </p>
+
+                            <p class="fft-form-line">
+                                <label for="cp">Regroupement familial</label>
+                                <input type="text" name="cp" id="cp"/>
+                            </p>
+                        </div>
+
+
+                        <div>
+                            <ul class="fft-form-line fft-form-line-list">
+                                <li>
+                                    <input type="checkbox" name="checkbox1" value="0" id="checkbox1"/>
+                                    <label for="checkbox1">Adhérents avec email</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" name="checkbox2" value="0" id="checkbox2"/>
+                                    <label for="checkbox2">Chef de famille uniquement</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                </fieldset>
+                <fieldset>
+                    <legend>Licence</legend>
+                    <div class="grid fGrid3">
+                        <div>
+                            <p class="fft-form-line">
+                                <label for="licence1">Numéro de licence</label>
+                                <input type="text" name="name" id="licence1"/>
+                            </p>
+                            <p class="fft-form-line">
+                                <label for="categorieSportive">Catégorie de licence</label>
+                                <select name="idCategorie" id="categorieSportive">
+                                    <option value="">--- Indifférent ---</option>
+                                    <option value="1">Jeunes</option>
+                                    <option value="2">Adultes</option>
+                                </select>
+                            </p>
+                        </div>
+                        <div>
+                            <p class="fft-form-line">
+                                <label for="categorieSportive">Volonté d'être licencié dans un autre club</label>
+                                <select name="idCategorie" id="categorieSportive">
+                                    <option value="">--- Indifférent ---</option>
+                                    <option value="1">Oui</option>
+                                    <option value="2">Non</option>
+                                </select>
+                            </p>
+                            <p class="fft-form-line fft-form-line-fixed">
+                                <select name="typeLicence" onchange="updateLieuLicence(this.value);" id="typeLicence">
+                                    <option value="">Licencié ou pas</option>
+                                    <option value="L">Licencié en</option>
+                                    <option value="D">Dernière licence en</option>
+                                    <option value="N">Non licencié depuis</option>
+                                </select>
+                                <select name="idMillesimeDernierLicence" onchange="updateMillesime(this.value);"
+                                        id="millesime">
+                                    <option value="">nc</option>
+                                    <option value="1990">{1990}</option>
+                                    <option value="1991">{1991}</option>
+                                    <option value="1992">{1992}</option>
+                                    <option value="1993">{1993}</option>
+                                    <option value="1994">{1994}</option>
+                                    <option value="1995">{1995}</option>
+                                    <option value="1996">{1996}</option>
+                                    <option value="1997">{1997}</option>
+                                    <option value="1998">{1998}</option>
+                                    <option value="1999">{1999}</option>
+                                    <option value="2000">{2000}</option>
+                                    <option value="2001">{2001}</option>
+                                    <option value="2002">{2002}</option>
+                                    <option value="2003">{2003}</option>
+                                    <option value="2004">{2004}</option>
+                                    <option value="2005">{2005}</option>
+                                    <option value="2006">{2006}</option>
+                                    <option value="2007">{2007}</option>
+                                    <option value="2008">{2008}</option>
+                                    <option value="2009">{2009}</option>
+                                    <option value="2010">{2010}</option>
+                                    <option value="2011">{2011}</option>
+                                    <option value="2012">{2012}</option>
+                                    <option value="2013">{2013}</option>
+                                    <option value="2014">{2014}</option>
+                                    <option value="2015">{2015}</option>
+                                    <option value="2016">{2016}</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2019">2019</option>
+                                </select>
+                            </p>
+                            </p>
+                        </div>
+                        <div>
+                            <p class="fft-form-line fft-form-line-range">
+                                <label for="age">Age de</label>
+                                <input type="text" name="age" id="age"/>
+                                <span>à</span>
+                                <input type="text" name="age"/>
+                            </p>
+                            <p class="fft-form-line fft-form-line-checkable">
+                                <span>
+                                    <input type="radio" name="radio" value="0" id="radio1"/>
+                                    <label for="radio1">Compétition</label>
+                                </span>
+                                <span>
+                                    <input type="radio" name="radio" value="0" id="radio2"/>
+                                    <label for="radio2">Loisirs</label>
+                                </span>
+                                <span>
+                                    <input type="radio" name="radio" value="0" id="radio3"/>
+                                    <label for="radio3">Loisirs et compétitions</label>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+
+
+                </fieldset>
+
+                <fieldset>
+                    <legend>Classement</legend>
+                    <div class="grid fGrid3">
+                        <div>
+                            <p class="fft-form-line fft-form-line-range">
+                                <label for="niveau">Classement de</label>
+                                <select name="idClassementMin">
+                                    <option value="">Indifférent</option>
+                                    <option value="10060">NC</option>
+                                    <option value="10065">40</option>
+                                    <option value="10070">30/5</option>
+                                    <option value="10080">30/4</option>
+                                    <option value="10090">30/3</option>
+                                    <option value="10100">30/2</option>
+                                    <option value="10110">30/1</option>
+                                    <option value="10120">30</option>
+                                    <option value="10130">15/5</option>
+                                    <option value="10140">15/4</option>
+                                    <option value="10150">15/3</option>
+                                    <option value="10160">15/2</option>
+                                    <option value="10170">15/1</option>
+                                    <option value="10180">15</option>
+                                    <option value="10190">5/6</option>
+                                    <option value="10200">4/6</option>
+                                    <option value="10210">3/6</option>
+                                    <option value="10220">2/6</option>
+                                    <option value="10230">1/6</option>
+                                    <option value="10240">0</option>
+                                    <option value="10250">-2/6</option>
+                                    <option value="10260">-4/6</option>
+                                    <option value="10270">-15</option>
+                                    <option value="10247">T100</option>
+                                    <option value="10248">N100</option>
+                                    <option value="10249">N99</option>
+                                    <option value="10288">N98</option>
+                                    <option value="10251">N97</option>
+                                    <option value="10252">N96</option>
+                                    <option value="10253">N95</option>
+                                    <option value="10254">N94</option>
+                                    <option value="10255">N93</option>
+                                    <option value="10256">N92</option>
+                                    <option value="10257">N91</option>
+                                    <option value="10258">N90</option>
+                                    <option value="10259">N89</option>
+                                    <option value="100260">N88</option>
+                                    <option value="10261">N87</option>
+                                    <option value="10262">N86</option>
+                                    <option value="10263">N85</option>
+                                    <option value="10264">N84</option>
+                                    <option value="10265">N83</option>
+                                    <option value="10266">N82</option>
+                                    <option value="10267">N81</option>
+                                    <option value="10268">N80</option>
+                                    <option value="10269">N79</option>
+                                    <option value="100270">N78</option>
+                                    <option value="10271">N77</option>
+                                    <option value="10272">N76</option>
+                                    <option value="10273">N75</option>
+                                    <option value="10274">N74</option>
+                                    <option value="10275">N73</option>
+                                    <option value="10276">N72</option>
+                                    <option value="10277">N71</option>
+                                    <option value="10278">N70</option>
+                                    <option value="10279">N69</option>
+                                    <option value="100280">N68</option>
+                                    <option value="10281">N67</option>
+                                    <option value="10282">N66</option>
+                                    <option value="10283">N65</option>
+                                    <option value="10284">N64</option>
+                                    <option value="100285">N63</option>
+                                </select>
+                                <span>à</span>
+                                <select name="idClassementMax">
+                                    <option value="">Indifférent</option>
+                                    <option value="10060">NC</option>
+                                    <option value="10065">40</option>
+                                    <option value="10070">30/5</option>
+                                    <option value="10080">30/4</option>
+                                    <option value="10090">30/3</option>
+                                    <option value="10100">30/2</option>
+                                    <option value="10110">30/1</option>
+                                    <option value="10120">30</option>
+                                    <option value="10130">15/5</option>
+                                    <option value="10140">15/4</option>
+                                    <option value="10150">15/3</option>
+                                    <option value="10160">15/2</option>
+                                    <option value="10170">15/1</option>
+                                    <option value="10180">15</option>
+                                    <option value="10190">5/6</option>
+                                    <option value="10200">4/6</option>
+                                    <option value="10210">3/6</option>
+                                    <option value="10220">2/6</option>
+                                    <option value="10230">1/6</option>
+                                    <option value="10240">0</option>
+                                    <option value="10250">-2/6</option>
+                                    <option value="10260">-4/6</option>
+                                    <option value="10270">-15</option>
+                                    <option value="10247">T100</option>
+                                    <option value="10248">N100</option>
+                                    <option value="10249">N99</option>
+                                    <option value="10288">N98</option>
+                                    <option value="10251">N97</option>
+                                    <option value="10252">N96</option>
+                                    <option value="10253">N95</option>
+                                    <option value="10254">N94</option>
+                                    <option value="10255">N93</option>
+                                    <option value="10256">N92</option>
+                                    <option value="10257">N91</option>
+                                    <option value="10258">N90</option>
+                                    <option value="10259">N89</option>
+                                    <option value="100260">N88</option>
+                                    <option value="10261">N87</option>
+                                    <option value="10262">N86</option>
+                                    <option value="10263">N85</option>
+                                    <option value="10264">N84</option>
+                                    <option value="10265">N83</option>
+                                    <option value="10266">N82</option>
+                                    <option value="10267">N81</option>
+                                    <option value="10268">N80</option>
+                                    <option value="10269">N79</option>
+                                    <option value="100270">N78</option>
+                                    <option value="10271">N77</option>
+                                    <option value="10272">N76</option>
+                                    <option value="10273">N75</option>
+                                    <option value="10274">N74</option>
+                                    <option value="10275">N73</option>
+                                    <option value="10276">N72</option>
+                                    <option value="10277">N71</option>
+                                    <option value="10278">N70</option>
+                                    <option value="10279">N69</option>
+                                    <option value="100280">N68</option>
+                                    <option value="10281">N67</option>
+                                    <option value="10282">N66</option>
+                                    <option value="10283">N65</option>
+                                    <option value="10284">N64</option>
+                                    <option value="100285">N63</option>
+                                </select>
+                            </p>
+                        </div>
+                        <div>
+                            <p class="fft-form-line">
+                                <label for="agereel">Montéé au classement intermédiaire de</label>
+                                <select name="idClassementMin">
+                                    <option>Oui</option>
+                                    <option>Non</option>
+                                </select>
+                            </p>
+                        </div>
+
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Niveau</legend>
+                    <div class="grid fGrid3">
+                        <div>
+                            <p class="fft-form-line fft-form-line-range">
+                                <label for="niveau">Niveau de</label>
+                                <select name="idClassementMin">
+                                    <option value="">Indifférent</option>
+                                    <option value="10060">NC</option>
+                                    <option value="10065">40</option>
+                                    <option value="10070">30/5</option>
+                                    <option value="10080">30/4</option>
+                                    <option value="10090">30/3</option>
+                                    <option value="10100">30/2</option>
+                                    <option value="10110">30/1</option>
+                                    <option value="10120">30</option>
+                                    <option value="10130">15/5</option>
+                                    <option value="10140">15/4</option>
+                                    <option value="10150">15/3</option>
+                                    <option value="10160">15/2</option>
+                                    <option value="10170">15/1</option>
+                                    <option value="10180">15</option>
+                                    <option value="10190">5/6</option>
+                                    <option value="10200">4/6</option>
+                                    <option value="10210">3/6</option>
+                                    <option value="10220">2/6</option>
+                                    <option value="10230">1/6</option>
+                                    <option value="10240">0</option>
+                                    <option value="10250">-2/6</option>
+                                    <option value="10260">-4/6</option>
+                                    <option value="10270">-15</option>
+                                    <option value="10247">T100</option>
+                                    <option value="10248">N100</option>
+                                    <option value="10249">N99</option>
+                                    <option value="10288">N98</option>
+                                    <option value="10251">N97</option>
+                                    <option value="10252">N96</option>
+                                    <option value="10253">N95</option>
+                                    <option value="10254">N94</option>
+                                    <option value="10255">N93</option>
+                                    <option value="10256">N92</option>
+                                    <option value="10257">N91</option>
+                                    <option value="10258">N90</option>
+                                    <option value="10259">N89</option>
+                                    <option value="100260">N88</option>
+                                    <option value="10261">N87</option>
+                                    <option value="10262">N86</option>
+                                    <option value="10263">N85</option>
+                                    <option value="10264">N84</option>
+                                    <option value="10265">N83</option>
+                                    <option value="10266">N82</option>
+                                    <option value="10267">N81</option>
+                                    <option value="10268">N80</option>
+                                    <option value="10269">N79</option>
+                                    <option value="100270">N78</option>
+                                    <option value="10271">N77</option>
+                                    <option value="10272">N76</option>
+                                    <option value="10273">N75</option>
+                                    <option value="10274">N74</option>
+                                    <option value="10275">N73</option>
+                                    <option value="10276">N72</option>
+                                    <option value="10277">N71</option>
+                                    <option value="10278">N70</option>
+                                    <option value="10279">N69</option>
+                                    <option value="100280">N68</option>
+                                    <option value="10281">N67</option>
+                                    <option value="10282">N66</option>
+                                    <option value="10283">N65</option>
+                                    <option value="10284">N64</option>
+                                    <option value="100285">N63</option>
+                                </select>
+                                <span>à</span>
+                                <select name="idClassementMax">
+                                    <option value="">Indifférent</option>
+                                    <option value="10060">NC</option>
+                                    <option value="10065">40</option>
+                                    <option value="10070">30/5</option>
+                                    <option value="10080">30/4</option>
+                                    <option value="10090">30/3</option>
+                                    <option value="10100">30/2</option>
+                                    <option value="10110">30/1</option>
+                                    <option value="10120">30</option>
+                                    <option value="10130">15/5</option>
+                                    <option value="10140">15/4</option>
+                                    <option value="10150">15/3</option>
+                                    <option value="10160">15/2</option>
+                                    <option value="10170">15/1</option>
+                                    <option value="10180">15</option>
+                                    <option value="10190">5/6</option>
+                                    <option value="10200">4/6</option>
+                                    <option value="10210">3/6</option>
+                                    <option value="10220">2/6</option>
+                                    <option value="10230">1/6</option>
+                                    <option value="10240">0</option>
+                                    <option value="10250">-2/6</option>
+                                    <option value="10260">-4/6</option>
+                                    <option value="10270">-15</option>
+                                    <option value="10247">T100</option>
+                                    <option value="10248">N100</option>
+                                    <option value="10249">N99</option>
+                                    <option value="10288">N98</option>
+                                    <option value="10251">N97</option>
+                                    <option value="10252">N96</option>
+                                    <option value="10253">N95</option>
+                                    <option value="10254">N94</option>
+                                    <option value="10255">N93</option>
+                                    <option value="10256">N92</option>
+                                    <option value="10257">N91</option>
+                                    <option value="10258">N90</option>
+                                    <option value="10259">N89</option>
+                                    <option value="100260">N88</option>
+                                    <option value="10261">N87</option>
+                                    <option value="10262">N86</option>
+                                    <option value="10263">N85</option>
+                                    <option value="10264">N84</option>
+                                    <option value="10265">N83</option>
+                                    <option value="10266">N82</option>
+                                    <option value="10267">N81</option>
+                                    <option value="10268">N80</option>
+                                    <option value="10269">N79</option>
+                                    <option value="100270">N78</option>
+                                    <option value="10271">N77</option>
+                                    <option value="10272">N76</option>
+                                    <option value="10273">N75</option>
+                                    <option value="10274">N74</option>
+                                    <option value="10275">N73</option>
+                                    <option value="10276">N72</option>
+                                    <option value="10277">N71</option>
+                                    <option value="10278">N70</option>
+                                    <option value="10279">N69</option>
+                                    <option value="100280">N68</option>
+                                    <option value="10281">N67</option>
+                                    <option value="10282">N66</option>
+                                    <option value="10283">N65</option>
+                                    <option value="10284">N64</option>
+                                    <option value="100285">N63</option>
+                                </select>
+                            </p>
+                        </div>
+                        <div>
+                            <p class="fft-form-line fft-form-line-range">
+                                <label for="agereel">Age réel de</label>
+                                <input type="text" name="name" id="agereel"/>
+                                <span>à</span>
+                                <input type="text" name="name" id="name"/>
+                            </p>
+                        </div>
+                        <div>
+                            <p class="fft-form-line">
+                                <label for="date1">A la date du</label>
+                                <input type="text" name="date1" id="date1" class="date"/>
+                            </p>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Adhésion</legend>
+                    <div class="grid fGrid3">
+                        <div>
+                            <p class="fft-form-line">
+                                <label for="ann-adh">Année adhésion</label>
+                                <select name="ann-adh" id="ann-adh">
+                                    <option value="">Indifférent</option>
+                                    <option value="10060">NC</option>
+                                    <option value="10065">40</option>
+                                    <option value="10070">30/5</option>
+                                    <option value="10080">30/4</option>
+                                    <option value="10090">30/3</option>
+                                    <option value="10100">30/2</option>
+                                    <option value="10110">30/1</option>
+                                    <option value="10120">30</option>
+                                    <option value="10130">15/5</option>
+                                    <option value="10140">15/4</option>
+                                    <option value="10150">15/3</option>
+                                    <option value="10160">15/2</option>
+                                    <option value="10170">15/1</option>
+                                    <option value="10180">15</option>
+                                    <option value="10190">5/6</option>
+                                    <option value="10200">4/6</option>
+                                    <option value="10210">3/6</option>
+                                    <option value="10220">2/6</option>
+                                    <option value="10230">1/6</option>
+                                    <option value="10240">0</option>
+                                    <option value="10250">-2/6</option>
+                                    <option value="10260">-4/6</option>
+                                    <option value="10270">-15</option>
+                                    <option value="10247">T100</option>
+                                    <option value="10248">N100</option>
+                                    <option value="10249">N99</option>
+                                    <option value="10288">N98</option>
+                                    <option value="10251">N97</option>
+                                    <option value="10252">N96</option>
+                                    <option value="10253">N95</option>
+                                    <option value="10254">N94</option>
+                                    <option value="10255">N93</option>
+                                    <option value="10256">N92</option>
+                                    <option value="10257">N91</option>
+                                    <option value="10258">N90</option>
+                                    <option value="10259">N89</option>
+                                    <option value="100260">N88</option>
+                                    <option value="10261">N87</option>
+                                    <option value="10262">N86</option>
+                                    <option value="10263">N85</option>
+                                    <option value="10264">N84</option>
+                                    <option value="10265">N83</option>
+                                    <option value="10266">N82</option>
+                                    <option value="10267">N81</option>
+                                    <option value="10268">N80</option>
+                                    <option value="10269">N79</option>
+                                    <option value="100270">N78</option>
+                                    <option value="10271">N77</option>
+                                    <option value="10272">N76</option>
+                                    <option value="10273">N75</option>
+                                    <option value="10274">N74</option>
+                                    <option value="10275">N73</option>
+                                    <option value="10276">N72</option>
+                                    <option value="10277">N71</option>
+                                    <option value="10278">N70</option>
+                                    <option value="10279">N69</option>
+                                    <option value="100280">N68</option>
+                                    <option value="10281">N67</option>
+                                    <option value="10282">N66</option>
+                                    <option value="10283">N65</option>
+                                    <option value="10284">N64</option>
+                                    <option value="100285">N63</option>
+                                </select>
+                            </p>
+
+                            <p class="fft-form-line">
+                                <label for="date_certificat">Validité du certificat médical < à</label>
+                                <input type="text" name="dateCertificat" maxlength="10" size="10" value="" id="date_certificat" class="date">
+                            </p>
+
+                            <p class="fft-form-line fft-form-line-checkable">
+                                <input type="checkbox" name="date-non-renseignee" value="0" id="date-non-renseignee"/>
+                                <label for="date-non-renseignee">Date de validité non renseignée</label>
+                            </p>
+                        </div>
+                        <div>
+                            <p class="fft-form-line">
+                                <label for="licence1">Numéro de licence</label>
+                                <input type="text" name="name" id="licence1"/>
+                            </p>
+
+                            <p class="fft-form-line fft-form-line-range">
+                                <label for="solde">Solde compris entre</label>
+                                <input type="text" name="solde" id="solde"/>
+                                <span>et</span>
+                                <input type="text" name="solde" id=""/>
+                            </p>
+
+                            <p class="fft-form-line fft-form-line-checkable">
+                                <input type="checkbox" name="paiement-attente" value="0" id="paiement-attente"/>
+                                <label for="paiement-attente">Paiement en attente</label>
+                            </p>
+                        </div>
+                        <div>
+                            <p class="fft-form-line">
+                                <label for="qualite">Qualité</label>
+                                <select id="qualite" multiple>
+                                    <option value="0">Dirigeant</option>
+                                    <option value="0">Enseignent</option>
+                                    <option value="0">Permanent</option>
+                                    <option value="0">Autres</option>
+                                </select>
+                            </p>
+                        </div>
+                    </div>
+                </fieldset>
+
+
+            </form>
+
+        </div>
+    </main>
+
+{% endblock %}

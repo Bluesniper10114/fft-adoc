@@ -1,0 +1,125 @@
+.fft-incitation-a-enrichier {
+     height: 72px;
+     width: 100%;
+       border-radius: 4px;
+      background-color: #FFFFFF;
+      box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
+      padding: 16px 64px;
+      li {
+        list-style-type: none;
+        color: #9B9B9B;
+        font-size: 14px;
+        line-height: 20px;
+      }
+}
+
+
+.informations-et-services-form {
+    fieldset {
+        border-bottom: transparent !important;
+        hr {
+            margin: 32px 0 16px;
+        }
+        .fft-form-line {
+            label {
+                padding: 16px 0 !important;
+            }
+        }
+        .field-title {
+            font-size: 13px;
+            color: #9B9B9B;
+        }
+        .blue-bar-section {
+            margin-top: 16px;
+            > label {
+                font-size: 12px;
+                font-weight: bold;
+                color: #9b9b9b !important;
+            }
+            div.blue-bar-section-content {
+                border-top: 1px solid #033c69;
+                margin-top: 7px;
+                table.fft-form-table {
+                    margin-top: 0 !important;
+                    width: 100% !important;
+                    thead {
+                        th {
+                            text-align: center !important;
+                            background-color: transparent !important;
+                            color: #9b9b9b !important;
+                        }
+                    }
+                    tbody {
+                        tr {
+                            td:first-child {
+                                text-align: left !important;
+                                width: 250px;
+                            }
+                            td {
+                                text-align: center !important;
+                                padding: 12px !important;
+                            }
+                        }
+                    }
+                }
+                table.item-table {
+                    width: 100%;
+                    padding: 16px 0;
+                    tbody {
+                        tr {
+                            span, p {
+                                color: #4E4E4E;
+                                font-size: 12px;
+                            }
+                            span.icon-cross {
+                                display: inline-block;
+                                vertical-align: middle;
+                                width: 24px;
+                                min-height: 24px;
+                            }
+                            small {
+                                color: #9B9B9B;
+                                font-size: 11px;
+                                line-height: 15px;
+                            }
+                            td {
+                                padding-bottom: 10px;
+                            }
+                            td:last-child {
+                                float: right;
+                            }
+                            .preshop-text {
+                                padding-left: 20px;
+                            }
+                            .line {
+                                border-top: transparent;
+                                width: 12px;
+                                height: 40px;
+                                position: absolute;
+                                margin-top: -25px;
+                                border-left: 1px solid #9b9b9b;
+                                border-bottom: 1px solid #9b9b9b;
+                            }
+                        }
+                    }
+                }
+                table.program-table {
+                    tbody {
+                        tr {
+                            p {
+                                color: #4E4E4E;
+                                font-size: 14px;
+                            }
+                            td {
+                                padding-bottom: 14px;
+                            }
+                            td:last-child {
+                                float: left !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

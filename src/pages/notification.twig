@@ -1,0 +1,38 @@
+{% extends "layouts/layout.twig" %}
+
+{% block main %}
+    <main class="tpl-default" id="fft-main">
+        <!-- équivalent de l'ancien div.content_top -->
+        <div class="fft-main-top">
+            <ol id="fft-breadcrumb">
+                <li>Adhérents</li>
+                <li><a class="link" href="#">Gestion</a></li>
+                <li><a class="link" href="#">Recherche</a></li>
+            </ol>
+
+
+            <!-- notifications -->
+            <div class="fft-notification">
+                <span class="fft-notification_done"></span>
+                <p>Votre modification a bien été enregistrée.</p>
+            </div>
+
+            <div class="fft-notification">
+                <span class="fft-notification_warn"></span>
+                <p>Il existe des licences en attente de validation de paiement.</p>
+            </div>
+
+            <div class="fft-notification">
+                <span class="fft-notification_error"></span>
+                <p>Vous n’avez pas les droits pour effectuer cette modification.</p>
+            </div>
+            <!-- /notifications -->
+
+        </div>
+
+        <!-- équivalent de l'ancien div.content_bottom -->
+        <div class="fft-main-content">
+
+        </div>
+    </main>
+{% endblock %}

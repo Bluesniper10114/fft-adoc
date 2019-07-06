@@ -1,0 +1,104 @@
+.form-mod{
+  .adhesion_form {
+    padding: 0 0 32px !important;
+    label{
+      &.ref{
+        padding: 16px 0px 0px !important;
+        color:#4E4E4E;
+      }
+      &.skin{
+        padding: 16px 0px 0px !important;
+      }
+    }
+  }
+  .chosen-container .chosen-results li.highlighted {
+      background-color: #06AED3 !important;
+      color: #fff;
+  }
+  .adhesion{
+    display: block !important;
+    list-style: none;
+    width: 100% !important;
+    height: auto !important;
+    margin-right: 0 !important;
+    border: 1px solid #CDCDCD;
+    li {
+      flex: 1;
+      display: block;
+      width: 100%;
+      position: relative;
+      text-align: center;
+      overflow: hidden;
+
+      &:first-child {
+        border-radius: 0 !important;
+      }
+
+      &:last-child {
+        border-radius: 0 !important;
+      }
+
+      span{
+        display: inline-block !important;
+        float: right;
+        padding-right: 25px;
+      }
+      input[type="radio"]:checked+label {
+          color: white;
+          }
+        }
+
+    [type="radio"] + label,
+    .radio + label {
+      padding: 9px 15px;
+      white-space: nowrap;
+      font-size: 14px;
+      margin-right: 1.5em;
+      position: static;
+      margin-top: 0;
+      text-align: left;
+      padding-left: 10px;
+      &:before{
+        content: none;
+        display: none !important;
+        vertical-align: middle;
+        background: #fff;
+        width: 18px;
+        height: 18px;
+        box-sizing: border-box;
+        border-radius: 0px !important;
+        border: 1px solid #9B9B9B;
+        transition: border 150ms 0ms;
+        margin-right: .3em;
+        background-image: none !important;
+      }
+
+      &:hover {
+        &:before {
+          border: 3px solid #06AED3;
+        }
+      }
+      &:checked {
+        color: white !important;
+      }
+      &:checked {
+        +label {
+          background: #06AED3;
+          color: white !important;
+
+          &:before {
+            background-image: none !important;
+            background-color: transparent;
+          }
+        }
+      }
+    }
+
+  }
+  .tickets{
+    .padding-top{
+      padding-top: 39px!important;
+    }
+  }
+
+}

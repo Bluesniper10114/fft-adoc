@@ -1,0 +1,66 @@
+{% extends "layouts/layout.twig" %}
+
+{% block main %}
+    <style type="text/css">
+        .fft-main-content li {
+            list-style: none;
+        }
+        .fft-main-content li * {
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0 1em;
+        }
+
+        #fft-main table.table thead th,
+        #fft-main table.table tbody td{
+            text-align: center;
+        }
+        #fft-main table tbody td:nth-of-type(5n){
+            background: #033C69;
+        }
+    </style>
+    <main class="tpl-default" id="fft-main">
+        <div class="fft-main-content">
+
+            {% set List = 'xlsx doc jpg pdf copier loupe details flag etoile_blanc etoile mail trophy folder homme femme mixte regroupement autreClub echange raquette jiff ageReel participationAgeReel comment cadenas_on cadenas_off calendrier calendrier_permanente calendrier_ponctuel flag_ue poi company maison mobile_phone attestation1 attestation0 attestation_upload prequalif multiclub tmc lien_club_met editer download brule ajax-loader poubelle lic_type_VA lic_type_VA2 more lic_type_RE lic_type_AR cross warning panier_preinsc act_consulter euro act_rembourser power bigplus down pagin_first pagin_last left right arrow_down arrow_up moyenES moyenCH moyenCB moyenVI moyenCV moyenPR moyenAU echeance_1sur2 echeance_1sur3 echeance_1sur4 echeance_2sur2 echeance_2sur3 echeance_2sur4 echeance_3sur3 echeance_3sur4 echeance_4sur4 pel_2_fois pel_3_fois pel_4_fois pel_n_fois tick cancel plus minus moyenPL user see see-off stat list'|split(" ") %}
+            <h1>Liste des icônes</h1>
+            <table class="table">
+                <thead>
+                <th>nom</th>
+                <th>icon-disabled (default)</th>
+                <th>icon-active</th>
+                <th>icon-hover</th>
+                <th>icon-white</th>
+                <th>icon-green</th>
+                <th>icon-red</th>
+                <th>icon-black</th>
+                <th>html</th>
+                </thead>
+                <tbody>
+                {% for icon in List %}
+                    <tr>
+                        <td><strong>{{ icon }}</strong></td>
+
+
+                        <td><span class="icon-{{ icon }} icon-disabled"></span></td>
+                        <td><span class="icon-{{ icon }} icon-active"></span></td>
+                        <td><span class="icon-{{ icon }} icon-hover"></span></td>
+                        <td style="background-color: #033C69;"><span class="icon-{{ icon }} icon-white"></span></td>
+                        <td><span class="icon-{{ icon }} icon-green"></span></td>
+                        <td><span class="icon-{{ icon }} icon-red"></span></td>
+                        <td><span class="icon-{{ icon }} icon-black"></span></td>
+                        <td><code>&lt;span class="icon-{{ icon }} icon-"&gt;&lt;/span&gt;</code></td>
+
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+
+            </ul>
+
+
+        </div>
+    </main>
+
+{% endblock %}

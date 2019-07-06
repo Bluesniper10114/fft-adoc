@@ -1,0 +1,41 @@
+/* FICHIER GENERE : NE PAS LE MODIFIER */
+@import "utils/utils";
+@import "icons1";
+@import "icons2";
+@import "utils/ease";
+@import "utils/boilerplate";
+@import "vars";
+@import "datepicker";
+@import "utils/spacer";
+@import "structure";
+@import "header";
+@import "main";
+@import "modals";
+@import "footer";
+@import "form";
+@import "elements";
+@import "resas";
+@import "card";
+@import "dialog";
+@import "groups";
+@import "plugins/_datepicker";
+@import "plugins/_datepicker";
+@import "plugins/chosen";
+
+
+@import "pages/_informations_et_services";
+@import "pages/_parametrage";
+@import "pages/force-profile.scss";
+@import "pages/installations";
+@import "pages/_incitation";
+@import "pages/_autres_equipements";
+@import "pages/_autres_equipements_detail";
+@import "pages/_popin";
+@import "pages/_formules";
+@import "pages/modification_adhesion";
+@import "pages/choix_formules";
+@import "pages/attribution";
+@import "../../node_modules/flexboxgrid-sass/flexboxgrid";
+
+//plugins
+@import "plugins/nouislider";

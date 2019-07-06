@@ -1,0 +1,252 @@
+{% extends "layouts/layout.twig" %}
+
+{% block main %}
+<main class="tpl-default" id="fft-main">
+    <!-- Ã©quivalent de l'ancien div.content_top -->
+    <div class="fft-main-top">
+        <ol id="fft-breadcrumb">
+            <li>AdhÃ©rents</li>
+            <li><a class="link" href="#">Gestion</a></li>
+            <li><a class="link" href="#">Recherche</a></li>
+        </ol>
+    </div>
+
+    <!-- Ã©quivalent de l'ancien div.content_bottom -->
+    <div class="fft-main-content">
+        <form name="profilClubForm" method="post" action="/adoc/profilClub.do" class="fft-form">
+           <input type="hidden" name="method" value="update">
+           <input type="hidden" name="afficherProfilClubDansLeHeader" value="false">
+
+           <div class="profile-top">
+               <div class="progress-container">
+                   <div class="block">
+                       <div class='block-row'>
+                           <span class='row-title'>Profil du club</span>
+                           <span class='percent'>60%</span>
+                       </div>
+                       <div class="progress-bar">
+                           <div class="progress-bar-current" style="width:53%"></div>
+                       </div>
+                   </div>
+               </div>
+
+               <div class="select-row">
+                   <input type="checkbox" checked="checked" onchange="" id="chk_1">
+                   <label for="chk_1" class="check"></label>
+                   <span>Afficher ce pourcentage en entÃªte du site</span>
+               </div>
+
+               <div class="additional-info">
+                   <div class="title-row">
+                       Ce pourcentage est calculé en fonction des fonctionnalités que vous utilisez et des informations renseignées pour votre club.
+                       L’état d'utilisation est seulement indicatif et a pour unique objectif de vous accompagner dans votre utilisation d'ADOC.
+                       Avec des informations à jour vous permettez aux licenciés mais aussi au grand public d'être mieux informés sur votre club et les services que vous proposez.
+                       Les fonctionnalités disponibles sur ADOC sont conçues pour faciliter la gestion de votre club et apporter des services supplémentaires à vos adhérents.
+                   </div>
+               </div>
+           </div>
+
+           <table class="tip-table">
+                <thead>
+                    <th class="block-name">Informations Ã  renseigner</th>
+                    <th style="width: 124px">ComplÃ©tÃ©</th>
+                    <th style="width: 124px">Voir la page</th>
+                </thead>
+
+               <tbody><tr>
+                <td>
+                    <b>Autorisation de prÃ©lÃ¨vement par la ligue</b>
+                    <br>
+                    <small>L'IBAN de votre club est Ã  jour et le prÃ©lÃ¨vement par la ligue est autorisÃ©</small>
+                </td>
+                <td>
+                    <span class="icon-tick icon-green"></span>
+                </td>
+                <td>
+                    <span class="icon-lien_club_met icon-active"></span>
+                </td>
+            </tr>
+            <tr class="spacer"></tr>
+            <tr>
+                <td>
+                    <b>AnneÌe dâadheÌsion en cours creÌeÌe</b>
+                    <br>
+                    <small>Une annÃ©e d'adhÃ©sion est paramÃ©trÃ©e sur l'annÃ©e en cours</small>
+                </td>
+                <td>
+                    <span class="icon-cancel icon-disabled"></span>
+                </td>
+                <td>
+                    <span class="icon-lien_club_met icon-active"></span>
+                </td>
+            </tr>
+            <tr class="spacer"></tr>
+            <tr>
+                <td>
+                    <b>Informations et services du club Ã  jour</b>
+                    <br>
+                    <small>Toutes les donnÃ©es de l'onglet informations et services du club sont renseignÃ©es</small>
+                </td>
+                <td>
+                    <span class="icon-tick icon-icon-tick icon-green"></span>
+                </td>
+                <td>
+                    <span class="icon-lien_club_met icon-active"></span>
+                </td>
+            </tr>
+            <tr class="spacer"></tr>
+            <tr>
+                <td>
+                    <b>Informations des installations Ã  jour</b>
+                    <br>
+                    <small>Au moins une installation est renseignÃ©e et les informations qui s'y rattachent sont Ã  jour</small>
+                </td>
+                <td>
+                    <span class="icon-tick icon-green"></span>
+                </td>
+                <td>
+                    <span class="icon-lien_club_met icon-active"></span>
+                </td>
+            </tr>
+            <tr class="spacer"></tr>
+            <tr>
+                <td>
+                    <b>Au moins un court validÃ© par la ligue</b>
+                    <br>
+                    <small>Au moins un court est renseignÃ© avec validation de votre ligue</small>
+                </td>
+                <td>
+                    <span class="icon-tick icon-green"></span>
+                </td>
+                <td>
+                    <span class="icon-lien_club_met icon-active"></span>
+                </td>
+            </tr>
+
+        </tbody></table>
+
+        <table class="tip-table">
+            <thead>
+                <th class="block-name">FonctionnalitÃ©s</th>
+                <th style="width: 124px"></th>
+                <th style="width: 124px"></th>
+            </thead>
+           <tbody><tr>
+            <td>
+                <b>Autorisation de prÃ©lÃ¨vement par la ligue</b>
+                <br>
+                <small>L'IBAN de votre club est Ã  jour et le prÃ©lÃ¨vement par la ligue est autorisÃ©</small>
+            </td>
+            <td>
+                    <span class="icon-tick icon-green"></span>
+            </td>
+            <td>
+                <span class="icon-lien_club_met icon-active"></span>
+            </td>
+        </tr>
+            <tr class="spacer"></tr>
+        <tr>
+            <td>
+                <b>Gestion des adhÃ©sions </b>
+                <br>
+                <small>Au moins une formule avec un tarif sur l'annÃ©e d'adhÃ©sion en cours est attribuÃ©e Ã  un adhÃ©rent</small>
+            </td>
+            <td>
+                    <span class="icon-cancel icon-disabled"></span>
+            </td>
+            <td>
+                <span class="icon-lien_club_met icon-active"></span>
+            </td>
+        </tr>
+            <tr class="spacer"></tr>
+        <tr>
+            <td>
+                <b>Mise en vente des formules au grand public</b>
+                <br>
+                <small>Au moins une formule avec un tarif sur l'annÃ©e d'adhÃ©sion en cours est liÃ©e Ã  une offre "Marque" et mise en vente au grand public</small>
+            </td>
+            <td>
+                    <span class="icon-cancel icon-disabled"></span>
+            </td>
+            <td>
+                <span class="icon-lien_club_met icon-active"></span>
+            </td>
+        </tr>
+            <tr class="spacer"></tr>
+        <tr>
+            <td>
+                <b>Gestion de la rÃ©servation en ligne</b>
+                <br>
+                <small>La fonctionnalitÃ© de "RÃ©servation en ligne" est activÃ©e</small>
+            </td>
+            <td>
+                    <span class="icon-tick icon-green"></span>
+            </td>
+            <td>
+                <span class="icon-lien_club_met icon-active"></span>
+            </td>
+        </tr>
+            <tr class="spacer"></tr>
+        <tr>
+            <td>
+                <b>CrÃ©neaux ouverts Ã  la rÃ©servation</b>
+                <br>
+                <small>Au moins un court a des crÃ©neaux ouverts Ã  la rÃ©servation renseignÃ©s</small>
+            </td>
+            <td>
+                    <span class="icon-cancel icon-disabled"></span>
+            </td>
+            <td>
+                <span class="icon-lien_club_met icon-active"></span>
+            </td>
+        </tr>
+            <tr class="spacer"></tr>
+        <tr>
+            <td>
+                <b>Gestion financiÃ¨re</b>
+                <br>
+                <small>La fonctionnalitÃ© "Paiements et consommation" est activÃ©e</small>
+            </td>
+            <td>
+                    <span class="icon-cancel icon-disabled"></span>
+            </td>
+            <td>
+                <span class="icon-lien_club_met icon-active"></span>
+            </td>
+        </tr>
+            <tr class="spacer"></tr>
+        <tr>
+            <td>
+                <b>Paiement en ligne</b>
+                <br>
+                <small>La fonctionnalitÃ© "Paiement en ligne" est activÃ©e et correctement paramÃ©trÃ©e</small>
+            </td>
+            <td>
+                    <span class="icon-cancel icon-disabled"></span>
+            </td>
+            <td>
+                <span class="icon-lien_club_met icon-active"></span>
+            </td>
+        </tr>
+            <tr class="spacer"></tr>
+        <tr>
+            <td>
+                <b>Ma RÃ©servation Tennis</b>
+                <br>
+                <small>La fonctionnalitÃ© "Ma RÃ©servation Tennis" est activÃ©e</small>
+            </td>
+            <td>
+                    <span class="icon-cancel icon-disabled"></span>
+            </td>
+            <td>
+                <span class="icon-lien_club_met icon-active"></span>
+            </td>
+        </tr>
+
+    </tbody></table>
+</form>
+
+</div>
+</main>
+
+{% endblock %}

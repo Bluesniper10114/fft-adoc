@@ -1,0 +1,103 @@
+{% extends "layouts/layout.twig" %}
+
+{% block main %}
+<main class="tpl-default" id="fft-main">
+
+  <!-- équivalent de l'ancien div.content_bottom -->
+  <div class="fft-main-content">
+    <ul id="fft-tabs">
+      <li>
+        <a href="groupe-popup-details.html">Détails</a>
+      </li>
+      <li>
+        <a href="groupe-popup-disponibilites.html">Disponibilités/Réservations</a>
+      </li>
+      <li>
+        <a href="groupe-popup-interruptions.html">Interruptions/Remplacements</a>
+
+      </li>
+      <li class="current">
+        <a href="#" class="dialog">Elèves</a>
+      </li>
+    </ul>
+    <form class="fft-form" action="#" method="post">
+      <table class="table fft-form-table" action="#">
+        <thead>
+          <th></th>
+          <th></th>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Sexe</th>
+          <th>Age</th>
+          <th>Niv/CIST</th>
+          <th>Tél domicile</th>
+          <th>Tél portable</th>
+          <th>Solde</th>
+          <th></th>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="checkbox" value="1" name="select-eleve" id="select_eleve1" /><label for="select_eleve1"></label></td><!-- incrementer l'id -->
+            <td><span class="icon icon-editer icon-active"></span></td>
+            <td>De olviera casco</td>
+            <td>Elizangela</td>
+            <td><span class="icon icon-femme"></span></td>
+            <td>10</td>
+            <td><span class="state state-inactive"></span>10-Niveau rouge</td>
+            <td>01 45 64  35 67</td>
+            <td>06 45 64  35 67</td>
+            <td>0,00€</td>
+            <td><span class="icon icon-mail icon-active"></span></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" value="1" name="select-eleve" id="select_eleve2" /><label for="select_eleve2"></label></td>
+            <td><span class="icon icon-editer icon-active"></span></td>
+            <td>De olviera casco</td>
+            <td>Elizangela</td>
+            <td><span class="icon icon-femme"></span></td>
+            <td>10</td>
+            <td><span class="state state-inactive"></span>10-Niveau rouge</td>
+            <td>01 45 64  35 67</td>
+            <td>06 45 64  35 67</td>
+            <td>0,00€</td>
+            <td><span class="icon icon-mail icon-active"></span></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" value="1" name="select-eleve" id="select_eleve3" /><label for="select_eleve3"></label></td>
+            <td><span class="icon icon-editer icon-active"></span></td>
+            <td>De olviera casco</td>
+            <td>Elizangela</td>
+            <td><span class="icon icon-femme"></span></td>
+            <td>10</td>
+            <td><span class="state state-inactive"></span>10-Niveau rouge</td>
+            <td>01 45 64  35 67</td>
+            <td>06 45 64  35 67</td>
+            <td>0,00€</td>
+            <td><span class="icon icon-mail icon-active"></span></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" value="1" name="select-eleve" id="select_eleve4" /><label for="select_eleve4"></label></td>
+            <td><span class="icon icon-editer icon-active"></span></td>
+            <td>De olviera casco</td>
+            <td>Elizangela</td>
+            <td><span class="icon icon-femme"></span></td>
+            <td>10</td>
+            <td><span class="state state-inactive"></span>10-Niveau rouge</td>
+            <td>01 45 64  35 67</td>
+            <td>06 45 64  35 67</td>
+            <td>0,00€</td>
+            <td><span class="icon icon-mail icon-active"></span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="fft-form-line-right">
+        <a class="btn icon-poubelle" href="#">Supprimer</a>
+      </p>
+    </form>
+  </div>
+</main>
+
+
+  <!-- JAVASCRIPT -->
+  {% include 'inc/js.twig' %}
+{% endblock %}

@@ -1,0 +1,133 @@
+{% extends "layouts/layout.twig" %}
+
+{% block main %}
+<main class="tpl-default" id="fft-main">
+
+  <!-- équivalent de l'ancien div.content_bottom -->
+  <div class="fft-main-content">
+    <ul id="fft-tabs">
+      <li>
+        <a href="groupe-popup-details.html">Détails</a>
+      </li>
+      <li>
+        <a href="groupe-popup-disponibilites.html">Disponibilités/Réservations</a>
+      </li>
+      <li class="current">
+        <a href="groupe-popup-interruptions.html">Interruptions/Remplacements</a>
+      </li>
+      <li>
+        <a href="groupe-popup-eleves.html">Elèves</a>
+      </li>
+    </ul>
+    <form class="fft-form" action="#" method="post">
+      <fieldset>
+        <legend>Interruptions</legend>
+        <div class="grid fGrid2">
+          <div>
+            <p class="fft-form-line">
+              <label for="date_certificat">Période du</label>
+              <input type="text" name="dateInterruptionFrom" maxlength="10" size="10" value="" id="date_interruption_from" class="date">
+              <span class="between">au</span>
+              <input type="text" name="dateInterruptionTo" maxlength="10" size="10" value="" id="date_interruption_to" class="date">
+            </p>
+          </div>
+          <div>
+            <p class="fft-form-line">
+              <a href="#" class="btn icon-bigplus">Ajouter</a>
+            </p>
+          </div>
+        </div>
+        <div>
+          <table class="table fft-form-table">
+            <thead>
+              <th>nom</th>
+              <th>icon-disabled (default)</th>
+              <th></th>
+            </thead>
+            <tbody>
+              <td>20/05/2018</td>
+              <td>24/05/2018</td>
+              <td class="text-right">
+                <a href="#">
+                  <span class="icon icon-poubelle icon-disabled"></span></a>
+              </td>
+            </tbody>
+          </table>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Remplacements</legend>
+        <div class="grid fGrid3">
+          <div>
+            <p class="fft-form-line">
+              <label>Enseignant actuels</label>
+            </p>
+            <ul class="fft-form-multiple-selection">
+            {% for i in 1..10 %}
+              <li>
+                <input type="checkbox" name="enseignant"/>
+                <label>Maurey Fabien</label>
+              </li>
+            {% endfor %}
+            </ul>
+
+          </div>
+          <div>
+            <p class="fft-form-line">
+              <label>Remplacer par</label>
+            </p>
+            <ul class="fft-form-multiple-selection">
+            {% for i in 1..10 %}
+              <li>
+              <span>
+                  <input type="radio" name="radio" value="0" id="radio{{i}}">
+                  <label for="radio{{i}}">Maurey Fabien</label>
+              </span>
+              </li>
+            {% endfor %}
+            </ul>
+          </div>
+          <div>
+            <div class="grid fGrid2">
+              <div class="small-margin">
+                <p class="fft-form-line">
+                    <label for="date_remplacement">Période du</label>
+                    <input type="text" name="date-remplacement" maxlength="10" size="10" value="" id="date_remplacement" class="datepicker">
+                </p>
+              </div>
+              <div class="small-margin">
+                <p class="fft-form-line">
+                    <label for="date_remplacement">au</label>
+                    <input type="text" name="date-remplacement" maxlength="10" size="10" value="" id="date_remplacement" class="datepicker">
+                </p>
+              </div>
+            </div>
+            <p class="fft-form-line-bottom-right">
+              <a href="#" class="btn icon-tick">Remplacer enseignant</a>
+            </p>
+          </div>
+          <div>
+            <table class="table fft-form-table">
+              <thead>
+                <th>nom</th>
+                <th>icon-disabled (default)</th>
+                <th></th>
+              </thead>
+              <tbody>
+                <td>20/05/2018</td>
+                <td>24/05/2018</td>
+                <td class="text-right">
+                  <a href="#">
+                    <span class="icon icon-poubelle icon-disabled"></span></a>
+                </td>
+              </tbody>
+            </table>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </main>
+
+  <!-- JAVASCRIPT -->
+  {% include 'inc/js.twig' %}
+{% endblock %}

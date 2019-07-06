@@ -1,0 +1,100 @@
+@import "mixins";
+
+
+/* GENERATE CLASSES */
+
+$iconsList: xlsx doc jpg pdf copier loupe details flag etoile_blanc etoile mail trophy folder homme femme mixte regroupement autreClub echange raquette jiff ageReel participationAgeReel comment cadenas_on cadenas_off calendrier calendrier_permanente calendrier_ponctuel flag_ue poi company maison mobile_phone attestation1 attestation0 attestation_upload prequalif multiclub tmc lien_club_met editer download brule ajax-loader poubelle lic_type_VA lic_type_VA2 more lic_type_RE lic_type_AR cross warning panier_preinsc act_consulter euro act_rembourser power bigplus down pagin_first pagin_last left right arrow_down arrow_up moyenES moyenCH moyenCB moyenVI moyenCV moyenPR moyenAU echeance_1sur2 echeance_1sur3 echeance_1sur4 echeance_2sur2 echeance_2sur3 echeance_2sur4 echeance_3sur3 echeance_3sur4 echeance_4sur4 pel_2_fois pel_3_fois pel_4_fois pel_n_fois tick cancel plus minus moyenPL user see see-off stat list tri-warning retour-adherent pel-remboursement delegation vente;
+@for $i from 1 through length($iconsList) {
+  $icon: nth($iconsList, $i);
+
+  .icon-#{$icon}:before {
+    @include icon();
+    @if $icon == "calendrier" {
+        background-position-x: -24.5px !important;
+    }
+    background-position-y: - (($i - 1) * 24px);
+
+    @if $icon == "tick" {
+        background-position-y: -2064px !important;
+    }
+
+    @if $icon == "cancel" {
+        background-position-y: -2088px !important;
+    }
+  }
+
+  a > span.icon-#{$icon},
+  a.icon-#{$icon},
+  button.icon-#{$icon} {
+    position: relative;
+    padding-left: 40px;
+    text-align: left;
+    background-image: none;
+    text-decoration: none;
+
+    &:before {
+      content: "";
+      @include icon();
+      background-position-y: - (($i - 1) * 24px);
+
+      position: absolute;
+      left: 5px;
+      top: 3px;
+    }
+
+    &:focus,
+    &:hover {
+      text-decoration: none;
+    }
+
+  }
+
+}
+
+/* STATE */
+
+.icon-disabled:before, .btn2.disabled:before, .btn2[disabled]:before, .btn2.disabled:hover:before, .btn2.disabled:focus:before, .btn2[disabled]:hover:before, .btn2[disabled]:focus:before {
+  background-position-x: 0px !important; }
+
+.icon-active:before, .btn2:before {
+  background-position-x: -24px !important; }
+
+.icon-hover:before, #fft-header .fft-header-content #fft-profile-nav > ul > li.home:hover a:before, #fft-header .fft-header-content #fft-profile-nav > ul > li:hover .icon-home:before, #fft-header .fft-header-content #fft-profile-nav > ul > li:focus-within .icon-home:before, .btn2:hover:before, .btn2:focus:before {
+  background-position-x: -48px !important; }
+
+.icon-white:before, .date-picker .prev-but:hover:before,
+.date-picker .next-but:hover:before, #fft-header .fft-header-content #fft-profile-nav > ul > li.current .icon-home:before, #fft-main .fft-notification > span:before, .btn:before, .pagination li:hover:before {
+  background-position-x: -72px !important; }
+
+.icon-green:before {
+  background-position-x: -96px !important; }
+
+.icon-red:before {
+  background-position-x: -120px !important; }
+
+.icon-black:before {
+  background-position-x: -144px !important; }
+
+/* USER */
+@mixin icon-sorted1 {
+  @include icon();
+  background-position-y: -1536px;
+}
+
+@mixin icon-sorted2 {
+  @include icon();
+  background-position-y: -1560px;
+}
+
+@mixin icon-female {
+  @include icon();
+  background-position-y: -336px;
+}
+
+@mixin icon-home {
+  @extend .icon-autreClub;
+}
+
+.icon-avatar:before {
+  @extend .icon-editer;
+}

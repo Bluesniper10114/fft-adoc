@@ -1,0 +1,338 @@
+{% extends "layouts/layout.twig" %}
+
+{% block main %}
+    <main class="tpl-default" id="fft-main">
+        <div class="fft-main-top">
+            <ol id="fft-breadcrumb">
+                <li>Adhérents</li>
+                <li><a class="link" href="#">Gestion</a></li>
+                <li><a class="link" href="#">Recherche</a></li>
+            </ol>
+
+
+
+        </div>
+
+
+        <div class="fft-main-content">
+
+            <ul id="fft-tabs">
+                <li><a href="/recherche-adherents-form.html">Recherche</a></li>
+                <li class="current"><a href="/recherche-adherent.html">Résultats (661)</a></li>
+            </ul>
+
+            <div class="fft-line-separate">
+                <div class="fft-line-separate-left">
+                    <a href="membreCreation.do?method=read" class="btn2 icon-bigplus">Ajouter</a>
+                    <button type="submit" class="btn2 icon-poubelle" disabled onclick="return dispatch(form, 'delete');" name="buttonSuppression">Supprimer</button>
+                </div>
+                <div class="fft-line-separate-center">&nbsp;</div>
+                <div class="fft-line-separate-right">
+                    <button class="btn2" onclick="saisieNiveaux(form);">Saisie des niveaux</button>
+                </div>
+            </div>
+
+            <div class="fft-line-separate">
+
+                <div class="fft-line-separate-left">&nbsp;</div>
+                <div class="fft-line-separate-center">
+                    {% include "inc/pagin.twig" %}
+                </div>
+                <div class="fft-line-separate-right">
+                    <a href="javascript: dispatch(document.membreListeForm, 'exportAdherent');" title="Export Excel" class="btn2 icon-xlsx icon-empty">&nbsp;</a>
+                </div>
+            </div>
+
+            <table class="table" id="unAdherent0">
+                <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" id="chkAll"/>
+                        <label for="chkAll" title="selectionner tout"></label>
+                    </th>
+                    <th class="sortable">
+                        <a href="/adoc-tma/membreListe.do?idNiveauMin=&amp;idClassementMax=&amp;chefDeFamille=off&amp;recherchePartenaire=&amp;ageMax=&amp;lieuLicence=CA&amp;paiementEnAttente=off&amp;idAnneeAdhesion=&amp;nom=&amp;codeSexe=&amp;mode=R&amp;idClassementMin=&amp;buttonRechercher=Rechercher&amp;d-2672472-p=1&amp;saisieNiveauxM11=0&amp;dateCertificat=&amp;d-2672472-o=2&amp;d-2672472-n=1&amp;loisirOuCompetition=&amp;d-2672472-s=nom&amp;idCategorie=&amp;prenom=&amp;idFamille=&amp;ville=&amp;method=list&amp;soldeMax=&amp;licenceAutreClub=&amp;codePostal=&amp;idEcheance=&amp;regroupementFamilial=&amp;typeLicence=&amp;dateApplicationNiveau=&amp;ageMin=15&amp;idNiveauMax=&amp;avecEmail=off&amp;dateCertifNull=off&amp;idMillesimeDernierLicence=&amp;soldeMin=&amp;numeroDernierLicence=&amp;nouveauxAdherents=off&amp;fidelite=">Nom</a>
+                    </th>
+                    <th class="sortable sorted order1">
+                        <a href="/adoc-tma/membreListe.do?idNiveauMin=&amp;idClassementMax=&amp;chefDeFamille=off&amp;recherchePartenaire=&amp;ageMax=&amp;lieuLicence=CA&amp;paiementEnAttente=off&amp;idAnneeAdhesion=&amp;nom=&amp;codeSexe=&amp;mode=R&amp;idClassementMin=&amp;buttonRechercher=Rechercher&amp;d-2672472-p=1&amp;saisieNiveauxM11=0&amp;dateCertificat=&amp;d-2672472-o=2&amp;d-2672472-n=1&amp;loisirOuCompetition=&amp;d-2672472-s=prenom&amp;idCategorie=&amp;prenom=&amp;idFamille=&amp;ville=&amp;method=list&amp;soldeMax=&amp;licenceAutreClub=&amp;codePostal=&amp;idEcheance=&amp;regroupementFamilial=&amp;typeLicence=&amp;dateApplicationNiveau=&amp;ageMin=15&amp;idNiveauMax=&amp;avecEmail=off&amp;dateCertifNull=off&amp;idMillesimeDernierLicence=&amp;soldeMin=&amp;numeroDernierLicence=&amp;nouveauxAdherents=off&amp;fidelite=">Prénom</a>
+                    </th>
+                    <th class="sortable sorted order2">
+                        <a href="/adoc-tma/membreListe.do?idNiveauMin=&amp;idClassementMax=&amp;chefDeFamille=off&amp;recherchePartenaire=&amp;ageMax=&amp;lieuLicence=CA&amp;paiementEnAttente=off&amp;idAnneeAdhesion=&amp;nom=&amp;codeSexe=&amp;mode=R&amp;idClassementMin=&amp;buttonRechercher=Rechercher&amp;d-2672472-p=1&amp;saisieNiveauxM11=0&amp;dateCertificat=&amp;d-2672472-o=2&amp;d-2672472-n=1&amp;loisirOuCompetition=&amp;d-2672472-s=sexe&amp;idCategorie=&amp;prenom=&amp;idFamille=&amp;ville=&amp;method=list&amp;soldeMax=&amp;licenceAutreClub=&amp;codePostal=&amp;idEcheance=&amp;regroupementFamilial=&amp;typeLicence=&amp;dateApplicationNiveau=&amp;ageMin=15&amp;idNiveauMax=&amp;avecEmail=off&amp;dateCertifNull=off&amp;idMillesimeDernierLicence=&amp;soldeMin=&amp;numeroDernierLicence=&amp;nouveauxAdherents=off&amp;fidelite=">Sexe</a>
+                    </th>
+                    <th class="sortable">
+                        <a href="/adoc-tma/membreListe.do?idNiveauMin=&amp;idClassementMax=&amp;chefDeFamille=off&amp;recherchePartenaire=&amp;ageMax=&amp;lieuLicence=CA&amp;paiementEnAttente=off&amp;idAnneeAdhesion=&amp;nom=&amp;codeSexe=&amp;mode=R&amp;idClassementMin=&amp;buttonRechercher=Rechercher&amp;d-2672472-p=1&amp;saisieNiveauxM11=0&amp;dateCertificat=&amp;d-2672472-o=2&amp;d-2672472-n=1&amp;loisirOuCompetition=&amp;d-2672472-s=dateNaissance&amp;idCategorie=&amp;prenom=&amp;idFamille=&amp;ville=&amp;method=list&amp;soldeMax=&amp;licenceAutreClub=&amp;codePostal=&amp;idEcheance=&amp;regroupementFamilial=&amp;typeLicence=&amp;dateApplicationNiveau=&amp;ageMin=15&amp;idNiveauMax=&amp;avecEmail=off&amp;dateCertifNull=off&amp;idMillesimeDernierLicence=&amp;soldeMin=&amp;numeroDernierLicence=&amp;nouveauxAdherents=off&amp;fidelite=">Né(e)
+                            en</a></th>
+                    <th class="sortable">
+                        <a href="/adoc-tma/membreListe.do?idNiveauMin=&amp;idClassementMax=&amp;chefDeFamille=off&amp;recherchePartenaire=&amp;ageMax=&amp;lieuLicence=CA&amp;paiementEnAttente=off&amp;idAnneeAdhesion=&amp;nom=&amp;codeSexe=&amp;mode=R&amp;idClassementMin=&amp;buttonRechercher=Rechercher&amp;d-2672472-p=1&amp;saisieNiveauxM11=0&amp;dateCertificat=&amp;d-2672472-o=2&amp;d-2672472-n=1&amp;loisirOuCompetition=&amp;d-2672472-s=millesimeDernierLicence&amp;idCategorie=&amp;prenom=&amp;idFamille=&amp;ville=&amp;method=list&amp;soldeMax=&amp;licenceAutreClub=&amp;codePostal=&amp;idEcheance=&amp;regroupementFamilial=&amp;typeLicence=&amp;dateApplicationNiveau=&amp;ageMin=15&amp;idNiveauMax=&amp;avecEmail=off&amp;dateCertifNull=off&amp;idMillesimeDernierLicence=&amp;soldeMin=&amp;numeroDernierLicence=&amp;nouveauxAdherents=off&amp;fidelite=">Dernière<br>Licence</a>
+                    </th>
+                    <th class="sortable">
+                        <a href="/adoc-tma/membreListe.do?idNiveauMin=&amp;idClassementMax=&amp;chefDeFamille=off&amp;recherchePartenaire=&amp;ageMax=&amp;lieuLicence=CA&amp;paiementEnAttente=off&amp;idAnneeAdhesion=&amp;nom=&amp;codeSexe=&amp;mode=R&amp;idClassementMin=&amp;buttonRechercher=Rechercher&amp;d-2672472-p=1&amp;saisieNiveauxM11=0&amp;dateCertificat=&amp;d-2672472-o=2&amp;d-2672472-n=1&amp;loisirOuCompetition=&amp;d-2672472-s=codeTypeLicence&amp;idCategorie=&amp;prenom=&amp;idFamille=&amp;ville=&amp;method=list&amp;soldeMax=&amp;licenceAutreClub=&amp;codePostal=&amp;idEcheance=&amp;regroupementFamilial=&amp;typeLicence=&amp;dateApplicationNiveau=&amp;ageMin=15&amp;idNiveauMax=&amp;avecEmail=off&amp;dateCertifNull=off&amp;idMillesimeDernierLicence=&amp;soldeMin=&amp;numeroDernierLicence=&amp;nouveauxAdherents=off&amp;fidelite=">Type</a>
+                    </th>
+                    <th class="sortable">
+                        <a href="/adoc-tma/membreListe.do?idNiveauMin=&amp;idClassementMax=&amp;chefDeFamille=off&amp;recherchePartenaire=&amp;ageMax=&amp;lieuLicence=CA&amp;paiementEnAttente=off&amp;idAnneeAdhesion=&amp;nom=&amp;codeSexe=&amp;mode=R&amp;idClassementMin=&amp;buttonRechercher=Rechercher&amp;d-2672472-p=1&amp;saisieNiveauxM11=0&amp;dateCertificat=&amp;d-2672472-o=2&amp;d-2672472-n=1&amp;loisirOuCompetition=&amp;d-2672472-s=echelonDynamique&amp;idCategorie=&amp;prenom=&amp;idFamille=&amp;ville=&amp;method=list&amp;soldeMax=&amp;licenceAutreClub=&amp;codePostal=&amp;idEcheance=&amp;regroupementFamilial=&amp;typeLicence=&amp;dateApplicationNiveau=&amp;ageMin=15&amp;idNiveauMax=&amp;avecEmail=off&amp;dateCertifNull=off&amp;idMillesimeDernierLicence=&amp;soldeMin=&amp;numeroDernierLicence=&amp;nouveauxAdherents=off&amp;fidelite=">Niv/Clst</a>
+                    </th>
+                    <th class="sortable">
+                        <a href="/adoc-tma/membreListe.do?idNiveauMin=&amp;idClassementMax=&amp;chefDeFamille=off&amp;recherchePartenaire=&amp;ageMax=&amp;lieuLicence=CA&amp;paiementEnAttente=off&amp;idAnneeAdhesion=&amp;nom=&amp;codeSexe=&amp;mode=R&amp;idClassementMin=&amp;buttonRechercher=Rechercher&amp;d-2672472-p=1&amp;saisieNiveauxM11=0&amp;dateCertificat=&amp;d-2672472-o=2&amp;d-2672472-n=1&amp;loisirOuCompetition=&amp;d-2672472-s=anneeDerniereAdhesion&amp;idCategorie=&amp;prenom=&amp;idFamille=&amp;ville=&amp;method=list&amp;soldeMax=&amp;licenceAutreClub=&amp;codePostal=&amp;idEcheance=&amp;regroupementFamilial=&amp;typeLicence=&amp;dateApplicationNiveau=&amp;ageMin=15&amp;idNiveauMax=&amp;avecEmail=off&amp;dateCertifNull=off&amp;idMillesimeDernierLicence=&amp;soldeMin=&amp;numeroDernierLicence=&amp;nouveauxAdherents=off&amp;fidelite=">Dernière<br>adhésion</a>
+                    </th>
+                    <th></th>
+                    <th></th>
+                    <th><input id="check_uncheck_all" name="check_uncheck_all" type="checkbox"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="odd">
+                    <td>
+                        <input type="checkbox" id="chk2207194"/>
+                        <label for="chk2207194" title="selectionner"></label>
+
+
+                        <a href="membreIdentite.do?method=read&amp;identifiantMembre=2207194" title="Modifier">
+                            <span class="icon-editer icon-active"></span>
+                        </a>
+                        <span class="icon-regroupement" data-tooltip-small="Famille ABRAHAM"></span>
+                    </td>
+                    <td>ABRAHAM</td>
+                    <td>Stéphanie</td>
+                    <td><span class="icon-femme"></span></td>
+                    <td>1985</td>
+                    <td>3557468 M (2018) Compétition</td>
+                    <td>
+                        <span class="icon-raquette" data-tooltip="Découvertes: fin de validité le 01/10/2017"></span>
+                    </td>
+                    <td>15/5 (2018)</td>
+                    <td>2015</td>
+                    <td></td>
+                    <td>
+                        <span class="icon-lic_type_VA" title="Licence valide pour l'année sportive en cours"></span>
+                    </td>
+                    <td>
+                        <input type="hidden" name="updateTime" value="1508176381240">
+                        <input type="hidden" name="identifiant" value="2207194">
+                        <input type="checkbox" name="tab" id="checked" value="2207194">
+                    </td>
+                </tr>
+                <tr class="even">
+                    <td>
+                        <input type="checkbox" id="chk2207216"/>
+                        <label for="chk2207216" title="selectionner"></label>
+
+                        <a href="membreIdentite.do?method=read&amp;identifiantMembre=2207216" title="Modifier">
+                            <span class="icon-editer icon-active"></span>
+                        </a>
+                        <span class="icon-regroupement" data-tooltip-small="Famille BARLUET DE BEAUCHESNE"></span>
+                    </td>
+
+                    <td>BARLUET DE BEAUCHESNE</td>
+                    <td>Guillaume</td>
+                    <td><span class="icon-homme"></span></td>
+                    <td>1977</td>
+                    <td>0627555 Z (2018) Compétition</td>
+                    <td></td>
+                    <td>NC (2018) <span class="classement-nd"
+                                        data-tooltip="Retour à la compétition des personnes ayant été classées en 3° série ou mieux. Obligation préalable de se tourner vers leur ligue pour attribution d'un classement manuel de retour à la compétition.">ND</span>
+                    </td>
+                    <td>2015</td>
+                    <td></td>
+                    <td>
+                        <span class="icon-lic_type_VA" title="Licence valide pour l'année sportive en cours"></span>
+                    </td>
+                    <td>
+                        <input type="hidden" name="updateTime" value="1506718395407">
+                        <input type="hidden" name="identifiant" value="2207216">
+                        <input type="checkbox" name="tab" id="checked" value="2207216">
+                    </td>
+                </tr>
+                <tr class="odd">
+                    <td>
+                        <input type="checkbox" id="chk2207198"/>
+                        <label for="chk2207198" title="selectionner"></label>
+
+                        <a href="membreIdentite.do?method=read&amp;identifiantMembre=2207198" title="Modifier">
+                            <span class="icon-editer icon-active"></span>
+                        </a>
+
+                    </td>
+                    <td>AIT MEHDI</td>
+                    <td>Mokrane</td>
+                    <td><span class="icon-homme"></span></td>
+                    <td>1955</td>
+                    <td>9711124 U (2018) Loisir</td>
+                    <td></td>
+                    <td>NC (2018)</td>
+                    <td>2015</td>
+                    <td><span class="icon-autreClub" title="Autre club : 57 92 0037"></span></td>
+                    <td>
+                        <span class="icon-lic_type_VA" title="Licence valide pour l'année sportive en cours"></span>
+                    </td>
+                    <td>
+                        <input type="hidden" name="updateTime" value="1434023989990">
+                        <input type="hidden" name="identifiant" value="2207198">
+                        <input type="checkbox" name="tab" id="checked" value="2207198">
+                    </td>
+                </tr>
+                <tr class="even">
+                    <td>
+                        <input type="checkbox" id="chk2815955">
+                        <label for="chk2815955" title="selectionner"></label>
+
+
+                        <a href="membreIdentite.do?method=read&amp;identifiantMembre=2815955" title="Modifier">
+                            <span class="icon-editer icon-active"></span>
+                        </a>
+                    </td>
+
+                    <td>ANTONICELLI</td>
+                    <td>Lucas</td>
+                    <td><span class="icon-homme"></span></td>
+                    <td>1998</td>
+                    <td><span class="red">2327284 F (2017)</span> Loisir</td>
+                    <td></td>
+                    <td>NC (2018)</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <span class="icon-lic_type_AR" title="Licence renouvelable"></span>
+                    </td>
+                    <td>
+                        <input type="hidden" name="updateTime" value="1510477186097">
+                        <input type="hidden" name="identifiant" value="2815955">
+                        <input type="checkbox" name="tab" id="checked" value="2815955">
+                    </td>
+                </tr>
+                <tr class="odd">
+                    <td>
+                        <input type="checkbox" id="chk2207472">
+                        <label for="chk2207472" title="selectionner"></label>
+
+
+                        <a href="membreIdentite.do?method=read&amp;identifiantMembre=2207472" title="Modifier">
+                            <span class="icon-editer icon-active"></span>
+                        </a>
+                    </td>
+<td>AUGUSTIN</td>
+                    <td>Arnaud</td>
+                    <td><span class="icon-homme"></span></td>
+                    <td>1986</td>
+                    <td>9431293 E (2018) Compétition</td>
+                    <td></td>
+                    <td>30/1 (2018)</td>
+                    <td>2015</td>
+                    <td>
+
+                        <span class="icon-warning" title="Volonté d'être licencié dans un autre club"></span>
+
+
+                        <span class="icon-autreClub" title="Autre club : 58 76 0410"></span></td>
+                    <td>
+                        <span class="icon-lic_type_VA" title="Licence valide pour l'année sportive en cours"></span>
+                    </td>
+                    <td>
+                        <input type="hidden" name="updateTime" value="1434024663763">
+                        <input type="hidden" name="identifiant" value="2207472">
+                        <input type="checkbox" name="tab" id="checked" value="2207472">
+                    </td>
+                </tr>
+                <tr class="even">
+                    <td>
+                        <input type="checkbox" id="chk1111111">
+                        <label for="chk1111111" title="selectionner"></label>
+
+
+                        <a href="membreIdentite.do?method=read&amp;identifiantMembre=2207472" title="Modifier">
+                            <span class="icon-editer icon-active"></span>
+                        </a>
+                    </td>
+                    <td>MARTY</td>
+                    <td>Mahé</td>
+                    <td><span class="icon-femme"></span></td>
+                    <td>2009</td>
+                    <td>7598761 X (2018) Loisir</td>
+                    <td>
+
+
+
+                    </td>
+                    <td><span class="color-bullet" style="background-color: #A262DF;"></span>8 - Niveau violet</td>
+                    <td>2015</td>
+                    <td>
+
+
+                    </td>
+                    <td>
+                        <span class="icon-lic_type_VA" title="Licence valide pour l'année sportive en cours"></span>
+                    </td>
+                    <td>
+                        <input type="hidden" name="updateTime" value="1434024029173">
+                        <input type="hidden" name="identifiant" value="2207345">
+                        <input type="checkbox" name="tab" id="checked" value="2207345">
+                    </td></tr>
+
+                <tr class="odd">
+                    <td>
+                        <input type="checkbox" id="chk2207484">
+                        <label for="chk2207484" title="selectionner"></label>
+
+
+                        <a href="membreIdentite.do?method=read&amp;identifiantMembre=2207484" title="Modifier">
+                            <span class="icon-editer icon-active"></span>
+                        </a>
+                    </td>
+
+
+                    <td>FAGNIEZ</td>
+                    <td>Christophe</td>
+                    <td><span class="icon-homme"></span></td>
+                    <td>1962</td>
+                    <td>5576507 V (2018) Loisir</td>
+                    <td></td>
+                    <td>NC (2018) <span class="classementNd" title="Retour à la compétition des personnes ayant été classées en 3° série ou mieux. Obligation préalable de se tourner vers leur ligue pour attribution d'un classement manuel de retour à la compétition.">ND</span>
+                    </td>
+                    <td>2015</td>
+                    <td>
+
+                        <span class="icon-warning" title="Volonté d'être licencié dans un autre club"></span>
+
+
+                        <span class="icon-autreClub" title="Autre club : 57 77 0481"></span></td>
+                    <td>
+                        <span class="icon-lic_type_VA" title="Licence valide pour l'année sportive en cours"></span>
+                    </td>
+                    <td>
+                        <input type="hidden" name="updateTime" value="1434024916460">
+                        <input type="hidden" name="identifiant" value="2207484">
+                        <input type="checkbox" name="tab" id="checked" value="2207484">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="fft-line-separate">
+
+                <div class="fft-line-separate-left">&nbsp;</div>
+                <div class="fft-line-separate-center">
+                    {% include "inc/pagin.twig" %}
+                </div>
+                <div class="fft-line-separate-right">
+                    <a href="javascript: dispatch(document.membreListeForm, 'exportAdherent');" title="Export Excel" class="btn2 icon-xlsx icon-empty">&nbsp;</a>
+                </div>
+            </div>
+            <div class="fft-line-separate">
+                <!-- la div.fft-line-separate-center peut être omise, pas la div.fft-line-separate-left -->
+                <div class="fft-line-separate-left">
+                    <a href="membreCreation.do?method=read" class="btn2 icon-bigplus">Ajouter</a>
+                    <button type="submit" class="btn2 icon-poubelle" onclick="return dispatch(form, 'delete');" name="buttonSuppression">Supprimer</button>
+                </div>
+                <div class="fft-line-separate-center">&nbsp;</div>
+                <div class="fft-line-separate-right">
+                    <button class="btn2" onclick="saisieNiveaux(form);">Saisie des niveaux</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="fft-main-bottom">
+
+
+        </div>
+    </main>
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "layouts/layout.twig" %}
+
+{% block main %}
+    <main class="tpl-default" id="fft-main">
+        <!-- équivalent de l'ancien div.content_top -->
+        <div class="fft-main-top">
+            <ol id="fft-breadcrumb">
+                <li>Adhérents</li>
+                <li><a class="link" href="#">Gestion</a></li>
+                <li><a class="link" href="#">Recherche</a></li>
+            </ol>
+
+        </div>
+
+        <!-- équivalent de l'ancien div.content_bottom -->
+        <div class="fft-main-content">
+            <ul id="fft-tabs">
+                <li class="current"><a href="ajout-adherent.html">Ajout d'une nouvelle personne</a></li>
+            </ul>
+
+            <form class="fft-form">
+                <div class="fieldset">
+                    <div class="grid fGrid3">
+                        <div>
+                            <p class="fft-form-line fft-form-line_auto">
+                                <label for="civilite">Civilité</label>
+                                <select name="codeCivilite" id="civilite">
+                                    <option value="">--- Veuillez Choisir ---</option>
+                                    <option value="MME">Madame</option>
+                                    <option value="M">Monsieur</option>
+                                </select>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="grid fGrid3">
+                        <div>
+                            <p class="fft-form-line">
+                                <label for="name">Nom</label>
+                                <input type="text" name="name" id="name"/>
+                            </p>
+                            <p class="fft-form-line">
+                                <label for="name">Prénom</label>
+                                <input type="text" name="name" id="name"/>
+                            </p>
+                            <p class="fft-form-line fft-form-line_auto">
+                                <label for="date1">A la date du</label>
+                                <input type="text" name="date1" id="date1" class="date"/>
+                            </p>
+                        </div>
+                        <div>
+                            <p class="fft-form-line fft-form-line-text">OU</p>
+                        </div>
+                        <div>
+                            <p class="fft-form-line">
+                                <label for="name">Nom</label>
+                                <input type="text" name="name" id="name"/>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="fft-line-separate">
+                <!-- la div.fft-line-separate-center peut être omise, pas la div.fft-line-separate-left -->
+                <div class="fft-line-separate-left">
+                    <a href="membreCreation.do?method=read" class="btn icon-bigplus">Ajouter</a>
+                    <button type="submit" class="btn2" >Fermer</button>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

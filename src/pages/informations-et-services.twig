@@ -1,0 +1,682 @@
+{% extends "layouts/layout.twig" %}
+{% block main %}
+<main class="tpl-default" id="fft-main">
+    <!-- équivalent de l'ancien div.content_top -->
+    <div class="fft-main-top">
+        <ol id="fft-breadcrumb">
+            <li>Adhérents</li>
+            <li><a class="link" href="#">Gestion</a></li>
+            <li><a class="link" href="#">Recherche</a></li>
+        </ol>
+    </div>
+    <!-- équivalent de l'ancien div.content_bottom -->
+    <div class="fft-main-content">
+        <ul id="fft-tabs">
+            <li class="current"><a href="recherche-adherents-form.html">Recherche</a></li>
+            <li><a href="recherche-adherent.html">Résultats</a></li>
+        </ul>
+        <form name="informationsEtSrvicesForm" id="" method="post" action="/adoc/parametrageAdrresseCorrespondanceListe.do" class="fft-form page-parametrage informations-et-services-form">
+            <div class="fft-notification"><span class="fft-notification_info"></span>
+                <ul>
+                    <li>Dans le but d'informer au mieux le grand public ainsi que les licenciés sur vos installations et sur les services que vous proposez, nous vous invitons à mettre à jour les informations suivantes : Evaluation du niveau de jeu, Fête du club et Fête de l'école du tennis</li>
+                </ul>
+            </div>
+            <div class="fft-notification"><span class="fft-notification_done"></span>
+                <ul>
+                    <li>Dans le but d'informer au mieux le grand public ainsi que les licenciés sur vos installations et sur les services que vous proposez, nous vous invitons à mettre à jour les informations suivantes : Evaluation du niveau de jeu, Fête du club et Fête de l'école du tennis</li>
+                </ul>
+            </div>
+            <input type="hidden" name="method" value="read">
+            <input type="hidden" name="updateTime" value="1540561028203">
+            <fieldset class="page-parametrage">
+                <legend>Coordonnées</legend>
+                <div class="blue-bar-section">
+                    <label>PÉRODE DE JEU</label>
+                    <div class="blue-bar-section-content">
+                        <div class="grid fGrid3">
+                            <div>
+                                <p class="fft-form-line">
+                                    <label>Civilité</label>
+                                    <select name="civilite">
+                                        <option value="">--- Indifférent ---</option>
+                                        <option value="MME">Madame</option>
+                                        <option value="M">Monsieur</option>
+                                    </select>
+                                </p>
+                            </div>
+                            <div>
+                                <p class="fft-form-line">
+                                    <label class="req">Nom du correspondant</label>
+                                    <input type="text" name="corNom" maxlength="50" value="TC Montastruc" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
+                                </p>
+                            </div>
+                            <div>
+                                <p class="fft-form-line">
+                                    <label>Prénom du correspondant</label>
+                                    <input type="text" name="corPrenom" maxlength="50" value="sfd">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid fGrid3">
+                    <div>
+                        <p class="fft-form-line">
+                            <label>Rés. Bat. Esc.</label>
+                            <input type="text" name="corAdresse1" maxlength="32" value="">
+                        </p>
+                    </div>
+                    <div>
+                        <p class="fft-form-line">
+                            <label>N° et voie</label>
+                            <input type="text" name="corAdresse2" maxlength="32" value="Chemin des Birats">
+                        </p>
+                    </div>
+                    <div>
+                        <p class="fft-form-line">
+                            <label class="req">Code Postal</label>
+                            <input type="text" name="corCodePostal" maxlength="5" value="31380">
+                        </p>
+                    </div>
+                </div>
+                <div class="grid fGrid3">
+                    <div>
+                        <p class="fft-form-line">
+                            <label class="req">Ville</label>
+                            <input type="text" name="corVille" maxlength="26" value="MONTASTRUC LA CONSEILLERE">
+                        </p>
+                    </div>
+                </div>
+                <hr>
+                <div class="grid fGrid3">
+                    <div>
+                        <p class="fft-form-line">
+                            <label>Email correspondance</label>
+                            <input type="text" name="corEmail" maxlength="64" value="tcmontastruc@orange.fr">
+                        </p>
+                    </div>
+                    <div>
+                        <p class="fft-form-line">
+                            <label>Téléphone bureau</label>
+                            <input type="text" name="corTelB" maxlength="25" value="0561844616">
+                        </p>
+                    </div>
+                    <div>
+                        <p class="fft-form-line">
+                            <label>Facebook</label>
+                            <input type="text" name="facebook" maxlength="256" value="https://www.facebook.com/FFTennis/">
+                        </p>
+                    </div>
+                </div>
+                <div class="grid fGrid3">
+                    <div>
+                        <p class="fft-form-line">
+                            <label>Email du club</label>
+                            <input type="text" name="corEmail" maxlength="64" value="tcmontastruc@orange.fr">
+                        </p>
+                    </div>
+                    <div>
+                        <p class="fft-form-line">
+                            <label>Téléphone domicile</label>
+                            <input type="text" name="corTelD" maxlength="25" value="">
+                        </p>
+                    </div>
+                    <div>
+                        <p class="fft-form-line">
+                            <label>Instagram</label>
+                            <input type="text" name="instagram" maxlength="256" value="https://www.instagram.com/fftennis/?hl=fr">
+                        </p>
+                    </div>
+                </div>
+                <div class="grid fGrid3">
+                    <div>
+                        <p class="fft-form-line">
+                            <label>Site Web du Club</label>
+                            <input type="text" name="cluAdrSiteWeb" maxlength="80" value="http://www.tennis-montastruc.fr/">
+                        </p>
+                    </div>
+                    <div>
+                        <p class="fft-form-line">
+                            <label>Téléphone portable</label>
+                            <input type="text" name="corPort" maxlength="25" value="">
+                        </p>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="page-parametrage mb-0">
+                <legend>Vie de club</legend>
+                <div class="blue-bar-section">
+                    <label>PÉRODE DE JEU</label>
+                    <div class="blue-bar-section-content">
+                        <table class="table fft-form-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>JANV</th>
+                                    <th>FEV</th>
+                                    <th>MAR</th>
+                                    <th>AVR</th>
+                                    <th>MAI</th>
+                                    <th>JUIN</th>
+                                    <th>JUIL</th>
+                                    <th>AOUT</th>
+                                    <th>SEPT</th>
+                                    <th>OCT</th>
+                                    <th>NOV</th>
+                                    <th>DEC</th>
+                                    <th>ANNÉE ENITÉRE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Tennis</td>
+                                    <td>
+                                        <input type="checkbox" class="check-1" id="chk1-1" />
+                                        <label for="chk1-1" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" class="check-1" id="chk1-2" />
+                                        <label for="chk1-2" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk1-3" />
+                                        <label for="chk1-3" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk1-4" />
+                                        <label for="chk1-4" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk1-5" />
+                                        <label for="chk1-5" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk1-6" />
+                                        <label for="chk1-6" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk1-7" />
+                                        <label for="chk1-7" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk1-8" />
+                                        <label for="chk1-8" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk1-9" />
+                                        <label for="chk1-9" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk1-10" />
+                                        <label for="chk1-10" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk1-11" />
+                                        <label for="chk1-11" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk1-12" />
+                                        <label for="chk1-12" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk1-All" onchange="allTennisCheck(this)" />
+                                        <label for="chk1-All" title="selectionner tout"></label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Padel</td>
+                                    <td>
+                                        <input type="checkbox" id="chk2-1" />
+                                        <label for="chk2-1" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk2-2" />
+                                        <label for="chk2-2" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk2-3" />
+                                        <label for="chk2-3" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk2-4" />
+                                        <label for="chk2-4" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk2-5" />
+                                        <label for="chk2-5" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk2-6" />
+                                        <label for="chk2-6" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk2-7" />
+                                        <label for="chk2-7" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk2-8" />
+                                        <label for="chk2-8" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk2-9" />
+                                        <label for="chk2-9" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk2-10" />
+                                        <label for="chk2-10" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk2-11" />
+                                        <label for="chk2-11" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk2-12" />
+                                        <label for="chk2-12" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk2-All" onchange="allPadelCheck(this)" />
+                                        <label for="chk2-All" title="selectionner tout"></label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Beach Tennis</td>
+                                    <td>
+                                        <input type="checkbox" id="chk3-1" />
+                                        <label for="chk3-1" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk3-2" />
+                                        <label for="chk3-2" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk3-3" />
+                                        <label for="chk3-3" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk3-4" />
+                                        <label for="chk3-4" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk3-5" />
+                                        <label for="chk3-5" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk3-6" />
+                                        <label for="chk3-6" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk3-7" />
+                                        <label for="chk3-7" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk3-8" />
+                                        <label for="chk3-8" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk3-9" />
+                                        <label for="chk3-9" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk3-10" />
+                                        <label for="chk3-10" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk3-11" />
+                                        <label for="chk3-11" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk3-12" />
+                                        <label for="chk3-12" title="selectionner tout"></label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="chk3-All" onchange="allBeachCheck(this)" />
+                                        <label for="chk3-All" title="selectionner tout"></label>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="grid fGrid3">
+                    <div>
+                        <div class="blue-bar-section">
+                            <label>PARCOURS D’ACCUEIL</label>
+                            <div class="blue-bar-section-content">
+                                <table class="item-table">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <p>Evaluation du niveau de jeu</p>
+                                                <small>A renseigner</small>
+                                            </td>
+                                            <td>
+                                                <ul class="fft-form-select-buttons fft-form-select-valid">
+                                                    <li>
+                                                        <input type="radio" value="1" name="affectation1" id="affectation_oui11" checked="checked">
+                                                        <label><span data-v-b0b95442="">Oui</span></label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="radio" value="0" name="affectation1" id="affectation_non12">
+                                                        <label data-v-b0b95442="">
+                                                            <span >Non</span>
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p>Recherche de partenaires</p>
+                                            </td>
+                                            <td>
+                                                <ul class="fft-form-select-buttons fft-form-select-valid">
+                                                    <li>
+                                                        <input type="radio" value="1" name="affectation2" id="affectation_oui21" checked="checked">
+                                                        <label><span data-v-b0b95442="">Oui</span></label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="radio" value="0" name="affectation2" id="affectation_non22">
+                                                        <label data-v-b0b95442="">
+                                                            <span >Non</span>
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="blue-bar-section">
+                            <label>ANIMATIONS</label>
+                            <div class="blue-bar-section-content">
+                                <table class="item-table">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <p>Fête du club</p>
+                                                <small>A renseigner</small>
+                                            </td>
+                                            <td>
+                                                <ul class="fft-form-select-buttons fft-form-select-valid">
+                                                    <li>
+                                                        <input type="radio" value="1" name="affectation3" id="affectation_oui31" checked="checked">
+                                                        <label><span data-v-b0b95442="">Oui</span></label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="radio" value="0" name="affectation3" id="affectation_non32">
+                                                        <label data-v-b0b95442="">
+                                                            <span >Non</span>
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p>Fête de lëcole de tennis</p>
+                                            </td>
+                                            <td>
+                                                <ul class="fft-form-select-buttons fft-form-select-valid">
+                                                    <li>
+                                                        <input type="radio" value="1" name="affectation4" id="affectation_oui41" checked="checked">
+                                                        <label><span data-v-b0b95442="">Oui</span></label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="radio" value="0" name="affectation4" id="affectation_non42">
+                                                        <label data-v-b0b95442="">
+                                                            <span >Non</span>
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p>Soirée(s) ou autres animations à thème</p>
+                                                <small>A renseigner</small>
+                                            </td>
+                                            <td>
+                                                <ul class="fft-form-select-buttons fft-form-select-valid">
+                                                    <li>
+                                                        <input type="radio" value="1" name="affectation5" id="affectation_oui51" checked="checked">
+                                                        <label><span data-v-b0b95442="">Oui</span></label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="radio" value="0" name="affectation5" id="affectation_non52">
+                                                        <label data-v-b0b95442="">
+                                                            <span >Non</span>
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p>Compétitions loisir</p>
+                                                <small>A renseigner</small>
+                                            </td>
+                                            <td>
+                                                <ul class="fft-form-select-buttons fft-form-select-valid">
+                                                    <li>
+                                                        <input type="radio" value="1" name="affectation6" id="affectation_oui61" checked="checked">
+                                                        <label><span data-v-b0b95442="">Oui</span></label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="radio" value="0" name="affectation6" id="affectation_non62">
+                                                        <label data-v-b0b95442="">
+                                                            <span >Non</span>
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="blue-bar-section">
+                            <label>SERVICES</label>
+                            <div class="blue-bar-section-content">
+                                <table class="item-table">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <p>Service de cordage</p>
+                                            </td>
+                                            <td>
+                                                <ul class="fft-form-select-buttons fft-form-select-valid">
+                                                    <li>
+                                                        <input type="radio" value="1" name="affectation9" id="affectation_oui91" checked="checked">
+                                                        <label><span data-v-b0b95442="">Oui</span></label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="radio" value="0" name="affectation9" id="affectation_non92">
+                                                        <label data-v-b0b95442="">
+                                                            <span >Non</span>
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p>Prêt de matériel</p>
+                                                <small>A renseigner</small>
+                                            </td>
+                                            <td>
+                                                <ul class="fft-form-select-buttons fft-form-select-valid">
+                                                    <li>
+                                                        <input type="radio" value="1" name="affectation10" id="affectation_oui101" checked="checked">
+                                                        <label><span data-v-b0b95442="">Oui</span></label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="radio" value="0" name="affectation10" id="affectation_non102">
+                                                        <label data-v-b0b95442="">
+                                                            <span >Non</span>
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p>Vente de matériel</p>
+                                            </td>
+                                            <td>
+                                                <ul class="fft-form-select-buttons fft-form-select-valid">
+                                                    <li>
+                                                        <input type="radio" value="1" name="vdm" id="vdm_yes">
+                                                        <label><span>Oui</span></label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="radio" value="0" name="vdm" id="vdm_no">
+                                                        <label><span >Non</span></label>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr id="preshop">
+                                            <td>
+                                                <div class="line"></div>
+                                                <span class="preshop-text">Pro-shop</span><span class="icon-cross icon-disabled ml-10"></span>
+                                            </td>
+                                            <td>
+                                                <ul class="fft-form-select-buttons fft-form-select-valid">
+                                                    <li>
+                                                        <input type="radio" value="1" name="affectation12" id="affectation_oui121" checked="checked">
+                                                        <label><span>Oui</span></label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="radio" value="0" name="affectation12" id="affectation_non122">
+                                                        <label><span >Non</span></label>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="page-parametrage pr-0 mb-0 pb-0">
+                <legend>Enseignement et actions solidaires et sociales</legend>
+                <p class="field-title">Pour toute modification des données suivantes, merci de vous rapprocher de votre ligue</p>
+                <div class="row mt-16">
+                    <div class="col-md-4 pr-68">
+                        <div>
+                            <div class="blue-bar-section">
+                                <label>MATÉRIEL</label>
+                                <div class="blue-bar-section-content">
+                                    <table class="item-table">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <p>Galaxie tennis</p>
+                                                </td>
+                                                <td>
+                                                    <ul class="fft-form-select-buttons fft-form-select-valid">
+                                                        <li>
+                                                            <input type="radio" value="1" name="affectation7" id="affectation_oui71" checked="checked">
+                                                            <label><span data-v-b0b95442="">Oui</span></label>
+                                                        </li>
+                                                        <li>
+                                                            <input type="radio" value="0" name="affectation7" id="affectation_non72">
+                                                            <label data-v-b0b95442="">
+                                                                <span >Non</span>
+                                                            </label>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>Préparation physique</p>
+                                                </td>
+                                                <td>
+                                                    <ul class="fft-form-select-buttons fft-form-select-valid">
+                                                        <li>
+                                                            <input type="radio" value="1" name="affectation8" id="affectation_oui81" checked="checked">
+                                                            <label><span data-v-b0b95442="">Oui</span></label>
+                                                        </li>
+                                                        <li>
+                                                            <input type="radio" value="0" name="affectation8" id="affectation_non82">
+                                                            <label data-v-b0b95442="">
+                                                                <span >Non</span>
+                                                            </label>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 pl-20 pr-40">
+                        <div>
+                            <div class="blue-bar-section">
+                                <label>PROGRAMME</label>
+                                <div class="blue-bar-section-content">
+                                    <table class="program-table item-table">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <p>Ecole de Beach tennis adultes</p>
+                                                </td>
+                                                <td>
+                                                    <p>Ecoles des Femmes</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>Ecole de Beach tennis jeunes</p>
+                                                </td>
+                                                <td>
+                                                    <p>Centre d’Entraînement</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>Center Initiation adultes</p>
+                                                </td>
+                                                <td>
+                                                    <p>Groupe Avenir Club</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>Club Junior</p>
+                                                </td>
+                                                <td>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="mr-32">
+            </fieldset>
+            <div class="fft-line-separate">
+                <div class="fft-line-separate-right">
+                    <button class="btn icon-tick icon-white" onclick="return dispatch(form, 'modify')">Enregistrer</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>
+{% endblock %}
+{% block scripts %}
+<script src="/js/informations-et-services.js"></script>
+<script src="/js/parametrage.js"></script>
+{% endblock %}

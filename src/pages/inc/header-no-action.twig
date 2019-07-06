@@ -1,0 +1,153 @@
+<header id="fft-header" class="header-no-action">
+    <div class="fft-header-content">
+        <a class="logoFFT" href="http://www.fft.fr" target="_blank" title="Accéder au site http://www.fft.fr">
+            <img src="/img/logo-2018.gif" alt="FFT-ADOC 2018"/>
+        </a>
+        <div id="fft-profile">
+            <div id="fft-profile-id">
+                <span>Nicolas Bouchet</span>
+                <span>
+                    <span class="fft-profile-action-club">MONTASTRUC TENNIS CLUB</span> (60 31 0472)</span>
+            </div>
+        </div>
+        <a id="fft-profile-deconnexion" href="logout.do?method=logout" title="Se déconnecter de l'application">Déconnexion</a>
+        <nav id="fft-profile-nav">
+            <!-- ce <ul> est identique l'ancien #menu ul. Excepté le 1er <li> -->
+            <ul>
+                <li class="home">
+                    <a href="/" title="Page d'accueil">Home</a>
+                </li>
+                <li class="submenu">
+                    <span>Configuration</span>
+                    <ul>
+                        <li><a href="parametrageFonctionnaliteListe.do?method=list">Paramétrage</a></li>
+                        <li><a href="personnesFonctionsListe.do?method=list">Personnes en fonction</a>
+                        </li>
+                        <li><a href="installationListe.do?method=list">Installations</a></li>
+                        <li><a href="courtRechercher.do?method=read">Courts</a></li>
+                        <li><a href="formuleAccesListe.do?method=list">Formules d'accès au club</a></li>
+                        <li><a href="produitServiceListe.do?method=list">Produits / Services</a></li>
+                        <li><a href="etatControleEdition.do?method=edition">Etat de contrôle</a></li>
+                        <li><a href="tableauDeBordRechercher.do?method=read">Tableau de bord</a></li>
+                        <li class="separator"><a href="applicationNoteVersion.do?method=consulter">Notes
+                                de version</a></li>
+                        <li class="separator"><a href="modeBorne.do?method=read">Mode borne</a></li>
+                        <li class="separator"><a href="http://www.lacentraleduclub.fft.fr/centralecat/" target="_blank">Centrale
+                                du Club</a></li>
+                        <li><a href="http://www.siege.fft.fr/adoc" target="_blank">Aide et support ADOC</a></li>
+                    </ul>
+                </li>
+                <li class="submenu current">
+                    <span>Adhérents</span>
+                    <ul>
+                        <li><a href="membreListe.do?method=read">Gestion</a></li>
+                        <li><a href="membreAttributionFormule.do?method=read">Attribution des formules</a>
+                        </li>
+                        <li><a href="repartitionAdherentListe.do?method=read">Répartition des
+                                adhérents</a></li>
+                        <li><a href="rgptFamilialListe.do?method=list">Regroupement familial</a></li>
+                        <li><a href="emargementRechercher.do?method=read">Liste d'émargement AG</a></li>
+                        <li><a href="preInscription.do?method=init">Pré-inscriptions en attente</a></li>
+                        <li><a href="rapprochementMembre.do?method=prepareRapprocherMembre">Rapprochement
+                                de membre</a></li>
+                        <li><a href="personnePhysiqueImport.do?method=list">Import de personnes
+                                physiques</a></li>
+                        <li><a href="membreCreation.do?method=read">Ajouter un membre</a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <span>Réservation</span>
+                    <ul>
+                        <li><a href="tableauCourt.do?method=read">Tableaux par court</a></li>
+                        <li><a href="tableauJour.do?method=read">Tableaux par jour</a></li>
+                        <li><a href="reservationPermanenteClubRechercher.do?method=init">Réservation
+                                permanente</a></li>
+                        <li><a href="reservationPonctuelleClubMultiple.do?method=create">Réservation
+                                ponctuelle</a></li>
+                        <li><a href="reservationPermanenteEnseignementRechercher.do?method=init">Réservation
+                                enseignement</a></li>
+                        <li><a href="reservationSansInterruptionListe.do?method=init">Interruptions en
+                                masse</a></li>
+                        <li><a href="statistiquesTauxOccupation.do?method=read">Statistiques</a></li>
+                        <li><a href="impressionTableauCourt.do?method=read">Impression des tableaux</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <span>Communication</span>
+                    <ul>
+                        <li><a href="messageListe.do?method=list">Messages</a></li>
+                        <li><a href="accueilMessageUpdate.do?method=read">Message d'accueil</a></li>
+                        <li><a href="documentsAdminListe.do?method=list">Documents administratifs</a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <span>Licence</span>
+                    <ul>
+                        <li><a href="licenceAttributionRechercher.do?method=read">Attribution</a></li>
+                        <li><a href="licenceAttestationRechercher.do?method=read">Attestation</a></li>
+                        <li><a href="changementClubRechercher.do?method=read">Changement de club</a></li>
+                        <li><a href="licenceEffectifRechercher.do?method=read">Répartition des
+                                licenciés</a></li>
+                        <li><a href="licenceStatsFidelisationRechercher.do?method=read">Statistiques</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <span>Enseignement</span>
+                    <ul>
+                        <li><a href="groupeEnseignementListe.do?method=init">Groupes</a></li>
+                        <li><a href="groupeEnseignementEditionParJour.do?method=read">Edition des groupes
+                                par journée</a></li>
+                        <li><a href="releveEnseignementEdition.do?method=read">Etat des heures
+                                d'enseignement</a></li>
+                        <li><a href="rencontrePedagogiqueListe.do?method=read">Plateaux</a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <span>Gestion financière</span>
+                    <ul>
+                        <li><a href="licencePendingValidationListe.do?method=list">Validation paiement des
+                                licences</a></li>
+                        <li><a href="suiviPrelevement.do?method=init">Suivi des prélèvements</a></li>
+                        <li><a href="achatProduitRechercher.do?method=read">Achat Produits/Services</a>
+                        </li>
+                        <li><a href="paiementRechercher.do?method=init">Paiements</a></li>
+                        <li><a href="joueursPaiementsListe.do?method=liste">Paiements tournois</a></li>
+                        <li><a href="produitRechercher.do?method=read">Stock Produits/Services</a></li>
+                        <li><a href="aideAttribueeListe.do?method=list">Aides attribuées</a></li>
+                        <li><a href="releveAdherentRechercher.do?method=init">Relevé adhérent</a></li>
+                        <li><a href="paiementEnLigneBackOffice.do?method=read&amp;isSearch=false">Back
+                                Office Paybox</a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <span>Produits / Charges</span>
+                    <ul>
+                        <li><a href="produitsChargesRechercher.do?method=init">Produits/charges</a></li>
+                        <li><a href="chequeNonRemisListe.do?method=list">Remise de chèques</a></li>
+                        <li><a href="saisieBudgetListe.do?method=read">Saisie du budget</a></li>
+                        <li><a href="suiviBudgetaireExploitation.do?method=read">Suivi budgétaire</a></li>
+                        <li><a href="rattachementProduitServiceListe.do?method=list">Rattachement
+                                produits/services</a></li>
+                        <li><a href="planComptableListe.do?method=list">Plan comptable</a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <span>Compétitions</span>
+                    <ul>
+                        <li><a href="gsEquipeListe.do?method=liste">Par équipes : Mes équipes</a></li>
+                        <li><a href="gsCompetitionListe.do?method=init">Par équipes : Inscriptions</a>
+                        </li>
+                        <li><a href="dhPeriodesHomolListe.do?method=liste">Nouvelle demande
+                                d'homologation</a></li>
+                        <li><a href="dhHomologationListe.do?method=liste&amp;suiviPrelevement=false">Gestion
+                                des homologations</a></li>
+                        <li><a href="officielsCompetitionEdition.do?method=edition">Officiels de la
+                                compétition</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>

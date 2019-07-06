@@ -1,0 +1,124 @@
+#fft-main {
+  &.group-modal {
+    .fft-form-range {
+      margin-top: 0;
+    }
+
+    .fft-line-separate {}
+
+  }
+
+  .card-list.padded {
+    padding: 0 3.1em 2em 2em;
+  }
+
+  .fft-main-content.ajusted {
+    margin-left: 2em;
+  }
+
+
+
+  .resas_sList {
+    ul {
+      display: flex;
+      flex-flow: wrap;
+      >div {
+        width: 100%;
+      }
+      li {
+        width:100%;
+        background:#fff;
+        list-style-type: none;
+        margin-top:5px;
+        border-radius:5px;
+        >div:first-child {
+          width:100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 5px;
+          >div{
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          >div:nth-child(1){
+            width:5%;
+          }
+          >div:nth-child(2){
+            width:16%;
+          }
+          >div:nth-child(3){
+            width:15%;
+          }
+          >div:nth-child(4){
+            width:6%;
+          }
+          >div:nth-child(5){
+            width:6%;
+          }
+          >div:nth-child(6){
+            width:25%;
+          }
+          >div:nth-child(7){
+            width:4%;
+          }
+          >div:nth-child(8){
+            width:7%;
+          }
+
+          span.icon{
+            top: -5px;
+          }
+        }
+
+      }
+    }
+
+    &_infos {
+      display: flex !important;
+      max-height: 0;
+      overflow: hidden;
+      -webkit-transition: all linear 150ms;
+      transition: all linear 150ms;
+      &_btn {
+        &.active{
+          transform: rotate(180deg) translateX(8px)
+        }
+      }
+      &.active{
+      max-height: 100px;
+      }
+      >div {
+        border-top:1px solid #cdcdcd;
+        width:100%;
+        margin: 5px 20px !important;
+        margin-left: 5px !important;
+        padding: 5px 0;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        position: relative;
+        >span {
+          margin:0 15px;
+
+        }
+
+        >a{
+          color:#4e4e4e;
+          text-decoration: none;
+        }
+
+        >div{
+          float: right;
+          position: absolute;
+          right: 0;
+          top: 5px;
+        }
+      }
+
+    }
+  }
+
+
+}

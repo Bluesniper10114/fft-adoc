@@ -1,0 +1,859 @@
+:not(.oldie) {
+  [type="radio"],
+  [type="checkbox"] {
+    position: absolute;
+    left: -999px;
+    visibility: hidden;
+  }
+
+  :not(.oldie) [type="radio"]:checked + label.disabled:before, :not(.oldie) .radio:checked + label.disabled:before {
+    border: 6px solid #cfcfcf !important;
+  }
+
+  [type="radio"] + label,
+  .radio + label {
+    padding: 6px 0;
+    white-space: nowrap;
+    font-size: 14px;
+    margin-right: 1.5em;
+    position: static;
+    margin-top: 0;
+
+    &:before {
+      content: "";
+      display: inline-block;
+      vertical-align: middle;
+      background: #fff;
+      width: 18px;
+      height: 18px;
+      box-sizing: border-box;
+      border-radius: 9px;
+      border: 1px solid #9B9B9B;
+      transition: border 150ms 0ms;
+      margin-right: .3em;
+    }
+
+    &:hover {
+      &:before {
+        border: 3px solid #06AED3;
+      }
+    }
+  }
+
+  [type="radio"],
+  .radio {
+    &:checked + label:before {
+      border: 6px solid #06AED3;
+    }
+  }
+
+  [type="checkbox"]:not(.radio) + label {
+    padding: 8px 0;
+    white-space: nowrap;
+    font-size: 14px;
+    margin-right: 1.5em;
+    position: static;
+    margin-top: 0;
+
+    &:before {
+      content: '';
+      color: #fff;
+      display: inline-block;
+      vertical-align: middle;
+      background: #fff url("../img/checkbox.png") no-repeat center center / 80%;
+      width: 18px;
+      height: 18px;
+      box-sizing: border-box;
+      border-radius: 4px;
+      border: 1px solid #9B9B9B;
+      transition: border 100ms 0ms, background-color 100ms 50ms;
+      margin-right: 16px;
+      text-align: center;
+    }
+
+    &:hover {
+      &:before {
+        border: 1px solid #06AED3;
+      }
+    }
+  }
+
+  [type="checkbox"]:not(.radio) {
+    &:checked + label:before {
+      background-color: #06AED3;
+      border: 4px solid #06AED3;
+    }
+  }
+
+  select {
+    appearance: none;
+
+    option {}
+  }
+
+  select:not([multiple]) {
+    background: url("../img/select.png") no-repeat right center #fff;
+    padding: 8px 48px 8px 16px;
+    max-width: 100%;
+  }
+
+  select[multiple] {
+    padding: 0;
+
+    option {
+      padding: 8px 16px;
+
+      &:hover {
+        color: #fff;
+        background-color: #06AED3;
+      }
+    }
+  }
+
+  input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]):not([type="button"]),
+  select,
+  textarea {
+    background-color: #fff;
+    border: 1px solid #CDCDCD;
+    border-radius: 4px;
+    padding: 8px 16px;
+    box-sizing: border-box;
+    appearance: none;
+    color: #4E4E4E;
+    font-size: 14px;
+    transition: border 150ms 0ms;
+    outline: none;
+
+    &:focus,
+    &:hover {
+      border-color: #06AED3;
+    }
+  }
+
+  #fft-main {
+    .fft-form {
+      // bloc ajouter groupe/selectionnez tous
+      &-corner {
+        display: flex;
+        align-items: flex-end;
+
+        label {
+          font-size: 12px;
+          color: #4E4E4E;
+          margin-left: 30px;
+        }
+      }
+
+      &-table {
+        margin-top:40px;
+
+        thead th{
+          padding: 15px;
+          text-transform: uppercase;
+        }
+      }
+
+      &-select-buttons {
+        display: flex;
+        list-style: none;
+        width: 120px;
+        height: 35px;
+        margin-right: 0 !important;
+        li {
+          flex: 1;
+          display: block;
+          width: 100%;
+          position: relative;
+          text-align: center;
+          overflow: hidden;
+
+          &:first-child {
+            border-radius: 5px 0 0 5px;
+          }
+
+          &:last-child {
+            border-radius: 0 5px 5px 0;
+          }
+
+          [type=radio],
+          .radio {
+            left: 0;
+            width: 100%;
+            height: 100%;
+            visibility: visible;
+            opacity: 0;
+            z-index: 1;
+
+            +label {
+              background: #fff;
+              display: block;
+              width: 100%;
+
+              span {
+                display: none;
+              }
+            }
+
+            &:checked {
+              +label {
+                background: #06AED3;
+
+                &:before {
+                  @extend .icon-white;
+                  background-color: transparent;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &-select-tri {
+        li {
+          &:nth-child(1) {
+            overflow: hidden;
+
+            label {
+              &:before {
+                @extend .icon-down;
+                border: 0;
+              }
+            }
+          }
+
+          &:nth-child(2) {
+            overflow: hidden;
+
+            label {
+              &:before {
+                transform: rotate(180deg);
+                @extend .icon-down;
+                border: 0;
+              }
+            }
+          }
+        }
+      }
+
+      &-select-valid {
+        li {
+          &:nth-child(1) {
+            overflow: hidden;
+
+            label {
+              &:before {
+                @extend .icon-tick;
+                border: 0;
+              }
+            }
+          }
+
+          &:nth-child(2) {
+            overflow: hidden;
+
+            label {
+              &:before {
+                transform: rotate(180deg);
+                @extend .icon-cancel;
+                border: 0;
+              }
+            }
+          }
+        }
+
+        &.disabled {
+
+          li {
+
+            [type="radio"]:checked + label {
+              background-color: #9B9B9B;
+              border-color: #9B9B9B;
+              cursor: default;
+
+            }
+          }
+        }
+      }
+
+      &-select-visible {
+        li {
+          &:nth-child(1) {
+            overflow: hidden;
+
+            label {
+              &:before {
+                @extend .icon-see;
+                border: 0;
+              }
+            }
+          }
+
+          &:nth-child(2) {
+            overflow: hidden;
+
+            label {
+              &:before {
+                transform: rotate(180deg);
+                @extend .icon-see-off;
+                border: 0;
+              }
+            }
+          }
+        }
+      }
+
+      &-select-sexe {
+        width: 180px;
+        height: 36px;
+
+        li {
+          &:nth-child(1) {
+            overflow: hidden;
+
+            label {
+              &:before {
+                @extend .icon-homme;
+                border: 0;
+              }
+            }
+          }
+
+          &:nth-child(2) {
+            label {
+              &:before {
+                @extend .icon-femme;
+                border: 0;
+              }
+            }
+          }
+
+          &:nth-child(3) {
+            label {
+              &:before {
+                @extend .icon-mixte;
+                border: 0;
+              }
+            }
+          }
+        }
+      }
+
+      &-multiple-selection {
+        border: 1px solid #D8D8D8;
+        max-height: 250px;
+        overflow: auto;
+
+        &-button {
+          float: right;
+          margin-top: 25px;
+        }
+
+        li {
+          background: #fff;
+          position: relative;
+
+          [type=checkbox] {
+            left: 0;
+            height: 32px;
+            top: 0;
+            z-index: 99;
+            width: 100%;
+            opacity: 0;
+            opacity: 0;
+            visibility: inherit;
+
+            +label {
+              cursor: pointer;
+              display: block;
+              margin: 0;
+              padding-left: 35px;
+
+              &:before {
+                left: 6px;
+                position: absolute;
+                display: inline-block;
+                text-rendering: auto;
+                -webkit-font-smoothing: antialiased;
+                font-size: 20px;
+                line-height: inherit;
+                border-radius: 50%;
+                // background: url("../img/checkbox-big.png") no-repeat center center/80%;
+              }
+            }
+
+            &:checked {
+              +label {
+                background: #06AED3;
+                color: #fff;
+
+                &:before {
+                  width: 28px;
+                  height: 28px;
+                  top: 3px;
+                  left: 2px;
+                }
+              }
+            }
+          }
+
+          [type=radio]{
+
+
+            +label {
+              cursor: pointer;
+              display: block;
+              margin: 0;
+              padding-left: 5px;
+            }
+
+          }
+        }
+      }
+
+      &-range {
+        display: flex;
+        align-items: center;
+        margin-top: 16px;
+        margin-right: 20px;
+
+        > div {
+          flex: 1;
+        }
+
+        input {
+          width: 20%;
+          margin-left: 20px;
+        }
+
+      }
+
+      &-slider {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+
+        > div {
+          flex: 1;
+        }
+
+        input {
+          width: 20%;
+          margin-left: 20px;
+        }
+
+      }
+
+      .fieldset,
+      fieldset {
+        padding: 0 32px 32px;
+        margin: 0 0 32px;
+        border: none;
+        border-bottom: 1px solid #D8D8D8;
+        box-sizing:border-box;
+        .legend,
+        legend {
+          font-size: 18px;
+          color: #033C69;
+          margin-bottom: 16px;
+        }
+
+        .legend-desc {
+          color:#4E4E4E;
+          font-size:12px;
+          margin-left:20px;
+          line-height: 1em;
+          display: inline-block;
+        }
+      }
+
+      .fft-form-line {
+        @include flex;
+        position: relative;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 38px;
+
+        >.fft-form-line {
+          margin-top:0;
+        }
+
+        &-right {
+          @extend .fft-form-line;
+          float: right;
+          &-plus {
+            @extend .fft-form-line-right;
+            margin-right: -30px;
+          }
+
+        }
+
+
+
+        &-bottom-right {
+          display: flex;
+          align-items: flex-end;
+          justify-content: flex-end;
+          height: calc(100% - 72px);
+        }
+
+        label {
+          padding: 16px 16px 8px;
+          font-size: 12px;
+          color: #4E4E4E;
+          position: absolute;
+          top: -38px;
+          min-width: 100%;
+          box-sizing: border-box;
+
+          &.inline {
+            position: relative;
+            top: 0;
+            left: 0;
+          }
+        }
+
+        input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]):not([type="button"]),
+        select,
+        textarea {
+          flex: 1;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+          flex: 0;
+        }
+        // > * {
+          //   flex: 1;
+          // }
+          > [class^="icon"] {
+            position: absolute;
+            z-index: 100;
+            width: 24px;
+            height: 24px;
+            right: 8px;
+            pointer-events: none;
+          }
+        }
+
+        .fft-form-line-between {
+          justify-content: space-between;
+
+          > select {
+            padding: 8px 8px 8px 16px;
+            width:50%;
+          }
+        }
+
+        .fft-form-line-checkable {
+          justify-content: left;
+          position: relative;
+          flex-wrap: nowrap;
+
+          > span {
+            padding: 8px 0;
+            flex: 0;
+          }
+
+          label {
+            position: static;
+            margin-right: 0;
+            padding-left: 0;
+          }
+        }
+
+        .fft-form-line-range {
+          justify-content: space-between;
+          align-content: stretch;
+          flex-wrap: nowrap;
+
+          input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]),
+          select,
+          textarea {
+            flex: 1;
+            //min-width: calc((100% - 42px) / 2);
+            //max-width: calc((100% - 42px) / 2);
+            min-width: 0;
+          }
+
+          & > span {
+            flex: 0;
+            color: #4E4E4E;
+            padding: 0 16px;
+          }
+
+          .spanRangeFont {
+            font-size: 12px !important;
+            color: #4E4E4E !important;
+            flex: 0 !important;
+          }
+
+          .oldie & {
+            font-size: 0.000001em;
+            white-space: nowrap;
+
+            input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]),
+            select,
+            textarea {
+              font-size: 1rem;
+            }
+
+            & > span {
+              font-size: 1rem;
+            }
+          }
+
+          .date-picker-control:first-of-type {
+            left: calc((100% - 40px) / 2 - 34px);
+            right: auto;
+            overflow: hidden;
+          }
+        }
+
+        .fft-form-line-list {
+          display: block;
+          list-style: none;
+
+          li {
+            display: block;
+            position: relative;
+            margin-bottom: 1em;
+
+            label {
+              position: static;
+              padding-left: 0;
+            }
+          }
+        }
+
+        .fft-form-line-fixed {
+          input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]),
+          & select,
+          & textarea {
+            flex: 1 !important;
+
+            &:first-of-type {
+              margin-right: 32px;
+            }
+          }
+        }
+
+        .fft-form-line-text {
+          display: block;
+          text-align: center;
+          color: #06AED3;
+        }
+
+        .fft-form-line_auto {
+          display: inline-flex;
+          > * {
+            flex: 0 !important;
+            min-width: auto;
+          }
+        }
+
+        .fft-form-line-btn-inline {
+          margin-top: 26px;
+        }
+
+        .date {}
+      }
+    }
+  }
+
+  .oldie #fft-main {
+    input,
+    label,
+    select,
+    textarea {
+      font-size: 12px;
+      width: 100%;
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+      width: auto;
+    }
+
+    label {
+      display: block;
+    }
+
+    .fft-form-line {
+      position: relative;
+      margin-top: 20px;
+
+      > span {
+        padding: 0 16px;
+      }
+    }
+  }
+
+  .ie7 #fft-main,
+  .ie8 #fft-main {
+    .fft-form-line-checkable,
+    .fft-form-line-list {
+      list-style: none;
+
+      > span,
+      input,
+      label {
+        width: auto;
+        display: inline;
+        vertical-align: middle;
+        zoom: 1;
+      }
+
+      > span {
+        padding: 0 16px 8px 0;
+      }
+    }
+
+    .fft-form-line-fixed {
+      input,
+      select {
+        width: auto;
+        display: inline;
+        vertical-align: middle;
+        zoom: 1;
+      }
+    }
+
+    .fft-form-line-range {
+      input,
+      select {
+        width: 30%;
+        display: inline;
+        vertical-align: middle;
+        zoom: 1;
+      }
+    }
+  }
+
+  /* datepicker */
+
+  .date-picker-control {
+    position: absolute !important;
+    background: rgba(255, 0, 0, 0) !important;
+    width: 30px;
+    right: -4px;
+    top: 0px;
+    bottom: 0px;
+    border-radius: 4px;
+    border: none !important;
+    padding: 8px 0 8px 16px;
+    box-sizing: border-box;
+    color: #4E4E4E;
+    font-size: 14px;
+    transition: 150ms 0ms;
+    outline: none;
+
+    &:hover {
+      border-color: #06AED3;
+    }
+
+    span {
+      @extend .icon-calendrier;
+      right: 4px;
+      top: 4px;
+      outline: none;
+      box-shadow: none;
+      height: 24px;
+      width: 24px;
+
+      &:not([class]) {
+        color: red;
+        position: absolute;
+        top: 5px;
+      }
+    }
+
+    &:before {
+      content: "";
+      background-color: #d6d6d6;
+      display: block;
+      height: 20px;
+      width: 1px;
+      position: absolute;
+      right: 31px;
+      top: 6px;
+    }
+
+    .fd-screen-reader {
+      display: none;
+    }
+  }
+
+  #fd-date_certificat {
+    position: absolute;
+  }
+
+  .ie7,
+  .ie8 {
+    #fft-main input.date {
+      width: 330px !important;
+    }
+
+    #fft-main [type="checkbox"] + label {
+      width: auto;
+    }
+
+    .date-picker-control {
+      height: 18px;
+      top: 18px;
+      width: 330px !important;
+      background-color: transparent !important;
+      border: none !important;
+
+      &:before {
+        display: none;
+      }
+
+      span {
+        top: -6px;
+        right: -38px;
+      }
+    }
+  }
+
+  .ie9 {
+    #fft-main .fft-form-line-list {
+      li {
+        display: block;
+      }
+    }
+  }
+
+  .oldie {
+    fieldset legend {
+      padding: 16px;
+      font-size: 20px;
+    }
+
+    #fft-main {
+      input,
+      select,
+      textarea {
+        padding: 8px 16px;
+      }
+
+      label {}
+
+      input[type="checkbox"],
+      input[type="radio"] {
+        padding: 0;
+      }
+    }
+
+  }
+
+  /*:not(.oldie) #fft-main .fft-form .fft-form-line > *:not(.btn2):not(.btn):not(.spanRangeFont):() {
+    flex: 1 !important;
+    }*/
+
+    input.btn2, input.btn {
+      flex: 0 !important;
+    }
+
+
+    .ie7 {}

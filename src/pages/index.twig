@@ -1,0 +1,79 @@
+{% extends "layouts/layout.twig" %}
+
+{% block main %}
+<main class="tpl-default" id="fft-main">
+
+<style>
+    .fft-main-content ul {
+        list-style: none;
+    }
+    .fft-main-content ul h2 {
+        margin-left: 1rem;
+    }
+    .fft-main-content ul a {
+        margin-left: 2rem;
+    }
+</style>
+
+<div class="fft-main-top">
+    <ol id="fft-breadcrumb">
+        <li>Adhérents</li>
+        <li><a class="link" href="#">Gestion</a></li>
+        <li><a class="link" href="#">Recherche</a></li>
+    </ol>
+</div>
+
+<div class="fft-main-content">
+
+    <h1>Liste des pages</h1>
+
+    <ul>
+        <li><h2>TODO</h2></li>
+        <li><a class="link" href="/formules.html">Formules</a></li>
+        <li><a class="link" href="/modification-adhesion.html">Modification Adhesion</a></li>
+        <li><a class="link" href="/choix-formules.html">Choix Formules</a></li>
+        <li><a class="link" href="/attribution.html">Attribution</a></li>
+        <hr/>
+        <li><h2>DONE</h2></li>
+        <li><a class="link" href="/autres-equipements.html">Cours et Autres équipements</a></li>
+        <li><a class="link" href="/autres-equipements-details.html">Cours et Autres équipements -- Details</a></li>
+        <li><a class="link" href="/installation.html">Installation</a></li>
+        <li><a class="link" data-toggle="modal" data-target="#popin-modal" style="text-decoration: underline; cursor: pointer;">Popin Modal</a></li>
+        <hr/>
+        <li><h2>DONE</h2></li>
+        <li><a class="link" href="/force-profil.html">Force du Profil</a></li>
+        <li><a class="link" href="/informations-et-services.html">informations-et-services</a></li>
+        <li><a class="link" href="/incitation.html">Force du Profil header</a></li>
+        <li><a class="link" href="/incitation.html">Incitation Modal</a></li>
+
+
+        <li><h2>Pages terminées</h2></li>
+        <li><a class="link" href="/home.html">Home</a></li>
+        <li><a class="link" href="/connexion.html">Connexion</a></li>
+        <li><a class="link" href="/recherche-adherent.html">Recherche Adhérents Résultats</a></li>
+        <li><a class="link" href="/recherche-adherents-form.html">Recherche Adhérents Formulaires</a></li>
+        <li><a class="link" href="/ajout-adherent.html">Ajout Adhérent Formulaires</a></li>
+        <li><a class="link" href="/enseignement-accueil.html">Accueil enseignants</a></li>
+        <li><a class="link" href="/enseignement-creation-groupe.html">Création groupe</a></li>
+        <li><a class="link" href="/enseignement-planning.html">Enseignement planning </a></li>
+        <li><a class="link" href="/groupe-popup-details.html">Groupe popup details</a></li>
+        <li><a class="link" href="/groupe-popup-disponibilites.html">Groupe disponibilités</a></li>
+        <li><a class="link" href="/groupe-popup-eleves.html">Groupe éleves</a></li>
+        <li><a class="link" href="/groupe-popup-interruptions.html">Groupe interruptions</a></li>
+
+
+
+        <li><h2>References</h2></li>
+        <li><a class="link" href="/structure.html">Structure de base</a></li>
+        <li><a class="link" href="/grid.html">Grilles</a></li>
+        <li><a class="link" href="/UI.html">Boutons, lien, pagination</a></li>
+        <li><a class="link" href="/UI.html">Boutons, lien, pagination</a></li>
+        <li><a class="link" href="/icons.html">Icônes</a></li>
+        <li><a class="link" href="/notification.html">Notifications</a></li>
+
+    </ul>
+
+</div>
+</main>
+
+{% endblock %}

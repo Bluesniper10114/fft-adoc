@@ -1,0 +1,57 @@
+$flexboxgrid-gutter-width: 2rem;
+
+#vueAppContainer {
+
+  .fft-line-separate, .fft-line-separate.footer-adjust {
+   padding: 0 32px 0 32px;
+  }
+
+}
+.section-parametrage,
+.page-parametrage {
+  hr {
+    color: #f2f2f2;
+  }
+
+  h3 {
+    &.section-title {
+      color: #033C69;
+      font-size: 18px;
+      line-height: 21px;
+      margin-bottom: 32px;
+      font-weight: 300
+    }
+  }
+
+  .section-horaires {
+    h3 {
+      color: #033C69;
+      font-size: 18px;
+      line-height: 21px;
+      margin-bottom: 32px;
+      font-weight: 300
+    }
+  }
+
+  .fft-form-line {
+    label {
+     height: 14px; width: 110px;
+     color: #4E4E4E;
+     font-size: 12px;
+     line-height: 14px;
+   }
+
+   .fft-line-separate, .fft-line-separate.footer-adjust {
+    padding: 0 32px 0 32px;
+   }
+}
+
+a.helptip {
+  border: 1px solid #06AED3;
+}
+
+.icon-tick {
+
+}
+}
+

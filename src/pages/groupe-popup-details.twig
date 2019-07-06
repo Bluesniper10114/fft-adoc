@@ -1,0 +1,235 @@
+{% extends "layouts/layout.twig" %}
+
+{% block main %}
+<main class="tpl-default" id="fft-main">
+
+  <!-- équivalent de l'ancien div.content_bottom -->
+  <div class="fft-main-content">
+    <ul id="fft-tabs">
+      <li class="current">
+        <a href="#">Détails</a>
+      </li>
+      <li>
+        <a href="groupe-popup-disponibilites.html">Disponibilités/Réservations</a>
+      </li>
+      <li>
+        <a href="groupe-popup-interruptions.html">Interruptions/Remplacements</a>
+      </li>
+      <li>
+        <a href="groupe-popup-eleves.html">Elèves</a>
+      </li>
+    </ul>
+    <form class="fft-form" action="#" method="post">
+      <fieldset>
+        <legend>Détail du groupe</legend>
+        <div class="grid fGrid3">
+          <div>
+            <p class="fft-form-line">
+              <label for="licence1">Libellé</label>
+              <input type="text" name="libelle" id="libelle" value="Groupe XXX"/>
+            </p>
+            <div class="fft-form-line">
+              <p class="fft-form-line">
+                <label>Période du</label>
+                <input type="text" name="date-period-begin" maxlength="10" size="10" value="" class="datepicker" data-toggle="datepicker">
+              </p>
+              <span class="between">au</span>
+              <p class="fft-form-line">
+                <input type="text" name="date-period-end" maxlength="10" size="10" value="" class="datepicker" data-toggle="datepicker">
+              </p>
+            </div>
+            <p class="fft-form-line">
+              <label for="name">Formule</label>
+              <select name="formule" id="formule">
+                <option>Ecole de tennis</option>
+                <option>Ecole de tennis</option>
+                <option>Ecole de tennis</option>
+                <option>Ecole de tennis</option>
+              </select>
+            </p>
+            <p class="fft-form-line fft-form-line-between">
+              <label for="select">Niveau / Classement</label>
+              <select name="niveau" id="niveau">
+              <optgroup label="4eme série">
+                <option>40</option>
+                <option>30/5</option>
+                <option>30/4</option>
+                <option>30/3</option>
+                <option>30/2</option>
+                <option>30/1</option>
+              </optgroup>
+              <optgroup label="3ème série">
+                <option>30</option>
+                <option>15/5</option>
+                <option>15/4</option>
+                <option>15/3</option>
+                <option>15/2</option>
+                <option>15/1</option>
+              </optgroup>
+              <optgroup label="2ème série">
+                <option>- 15</option>
+                <option>- 5/6</option>
+                <option>- 4/6</option>
+                <option>- 3/6</option>
+                <option>- 2/6</option>
+                <option>- 1/6</option>
+                <option>0</option>
+                <option>-2/6</option>
+                <option>-4/6</option>
+                <option>-15</option>
+                <option>-30</option>
+              </optgroup>
+              <option>promotion</option>
+              <optgroup label="1ère série">
+                <option>meilleurs français</option>
+              </optgroup>
+              </select>
+            </p>
+
+            <p class="fft-form-line">
+              <label>Visibilité</label>
+            </p>
+            <ul class="fft-form-select-buttons fft-form-select-visible">
+              <li><input type="radio" value="1" name="groupe-visible" id="groupe-visible-oui" checked="checked"/>
+                <label>
+                  <span>Oui</span></label>
+              </li>
+              <li><input type="radio" value="0" name="groupe-visible" id="groupe-visible-non"/>
+                <label>
+                  <span>Non</span></label>
+              </li>
+            </ul>
+
+          </div>
+
+          <div>
+            <p class="fft-form-line">
+              <label for="name">Durée</label>
+              <select name="duree" id="duree">
+                {% for i in 1..10 %}
+                  <option>{{ i }}h</option>
+                {% endfor %}
+              </select>
+            </p>
+            <p class="fft-form-line">
+              <label for="jours">Jours</label>
+              <select name="jours" id="jour">
+                <option>Lundi</option>
+                <option>Mardi</option>
+                <option>Mercredi</option>
+                <option>Jeudi</option>
+                <option>Vendredi</option>
+                <option>Samedi</option>
+                <option>Dimanche</option>
+              </select>
+            </p>
+            <p class="fft-form-line">
+              <label for="licence1">Nombre d'élève</label>
+              <div class="fft-form-range">
+                <div id="slider-nombre-eleve"></div>
+                <input type="text" name="eleves-number" id="eleves-number"/>
+              </div>
+            </p>
+            <p class="fft-form-line">
+              <label for="age">Age</label>
+              <input type="text" name="age" maxlength="10" size="10" value="" id="age" class="date">
+              <span class="between">au</span>
+              <input type="text" name="age" maxlength="10" size="10" value="" id="age" class="date">
+            </p>
+            <p class="fft-form-line">
+              <label>Sexe</label>
+              <ul class="fft-form-select-buttons fft-form-select-sexe">
+                <li><input type="radio" value="homme" name="sexe" id="homme" checked="checked"/>
+                  <label>
+                    <span>Homme</span></label>
+                </li>
+                <li><input type="radio" value="femme" name="sexe" id="femme"/>
+                  <label>
+                    <span>Femme</span></label>
+                </li>
+                <li><input type="radio" value="mixte" name="sexe" id="mixte"/>
+                  <label>
+                    <span>Mixte</span></label>
+                </li>
+              </ul>
+            </p>
+          </div>
+          <div>
+            <p class="fft-form-line">
+              <label for="name">Type de formule</label>
+              <select name="type_formule" id="type_formule">
+                <option>Cours</option>
+                <option>Cours</option>
+                <option>Cours</option>
+                <option>Cours</option>
+                <option>Cours</option>
+              </select>
+            </p>
+
+            <p class="fft-form-line">
+              <label for="name">Année d'adhésion</label>
+              <select name="annee-adhesion" id="annee_adhesion">
+                {% for i in 2018..1950 %}
+                  <option>{{ i }}</option>
+                {% endfor %}
+              </select>
+            </p>
+
+            <p class="fft-form-line">
+              <label>Enseignant</label>
+            </p>
+            <ul class="fft-form-multiple-selection">
+              <li>
+                <input type="checkbox" name="ens"/>
+                <label>Maurey Fabien</label>
+              </li>
+              <li>
+                <input type="checkbox" name="ens"/>
+                <label>Maurey Fabien</label>
+              </li>
+              <li>
+                <input type="checkbox" name="ens"/>
+                <label>Maurey Fabien</label>
+              </li>
+              <li>
+                <input type="checkbox" name="ens"/>
+                <label>Maurey Fabien</label>
+              </li>
+              <li>
+                <input type="checkbox" name="ens"/>
+                <label>Maurey Fabien</label>
+              </li>
+              <li>
+                <input type="checkbox" name="ens"/>
+                <label>Maurey Fabien</label>
+              </li>
+              <li>
+                <input type="checkbox" name="ens"/>
+                <label>Maurey Fabien</label>
+              </li>
+              <li>
+                <input type="checkbox" name="ens"/>
+                <label>Maurey Fabien</label>
+              </li>
+            </ul>
+
+          </div>
+
+        </div>
+
+      </fieldset>
+
+      <div class="fft-line-separate">
+        <div class="fft-line-separate-right">
+          <a class="btn icon-tick" href="#">Enregistrer</a>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</main>
+
+
+  <!-- JAVASCRIPT -->
+  {% include 'inc/js.twig' %}
+{% endblock %}

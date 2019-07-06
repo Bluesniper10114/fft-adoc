@@ -1,0 +1,47 @@
+{% extends "layouts/layout-header-ligh.twig" %}
+
+{% block main %}
+    <main class="tpl-connexion" id="fft-main" style="background-image: url(/img/connexion.JPG);">
+        <div class="fft-main-content">
+
+            <div class="tpl-connexion-box" id="fft-connexion">
+                <strong>Identification</strong>
+
+                <form name="membreLoginForm" method="post" action="/adoc-tma/loginMembre.do" class="fft-form">
+                    <input type="hidden" name="method" value="logout">
+                    <p class="fft-form-line">
+                        <label for="login">Identifiant</label>
+                        <input type="text" name="login" maxlength="60" value="" id="login" required>
+                        <span class="icon-avatar icon-active"></span>
+                    </p>
+                    <p class="fft-form-line">
+                        <label for="password">Mot de passe</label>
+                        <input type="password" name="password" maxlength="60" value="" id="password" required>
+                        <span class="icon-cadenas_on icon-active"></span>
+                    </p>
+                    <p class="fft-connexion-submit">
+                        <input type="submit" name="buttonConnecter" value="Se connecter" class="btn"/>
+                    </p>
+                </form>
+
+                <p class="txtC">
+                    <a class="link" href="https://mon-espace-tennis.fft.fr/user/password">Mot de passe oublié</a>
+                </p>
+            </div>
+            <div class="tpl-connexion-box">
+                <strong class="tpl-connexion-box-title">Opération 10 000 licences / Coupe Davis</strong>
+
+                <p>L'opération est lancée depuis le vendredi 01/12/2017 à 12h00. Détails de l'offre : ici
+                    Nombre de licences prises à ce jour: 5 575 / 10 000<br>
+                    C'est la date et l'heure de validation du paiement de la licence qui fera foi.</p>
+            </div>
+            <div class="tpl-connexion-box">
+                <strong class="tpl-connexion-box-title">Nouveau certificat médical</strong>
+
+                <p>Vous trouverez toutes les informations utiles sur le site d’aide en ligne d’ADOC
+                    (http://www.siege.fft.fr/adoc/ ) à la rubrique Mes Adhérents / Certificat médical.</p>
+            </div>
+
+        </div>
+    </main>
+{% endblock %}

@@ -1,0 +1,28 @@
+.page-equipements {
+    border-bottom: transparent !important;
+    padding: 0 !important;
+
+    label {
+        color: #4E4E4E !important;
+        font-size: 12px;
+        line-height: 14px;
+    }
+    th.sortable {
+        text-transform: uppercase;
+    }
+
+    .table-line-separate {
+        text-align: right;
+        margin: 16px 0;
+        .table-line-separate-left {
+            position: absolute;
+            p {
+                color: #9B9B9B;
+                font-size: 12px;
+                line-height: 40px;
+            }
+        }
+
+    }
+
+}

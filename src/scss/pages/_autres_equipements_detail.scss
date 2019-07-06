@@ -1,0 +1,29 @@
+.autres-equipements-details {
+    padding: 0 0 32px 0 !important;
+    .datepicker {
+        display: block !important;
+    }
+    .icon-calendrier {
+        padding-left: 3px;
+        border-left: 1px solid #cdcdcd !important;
+        z-index: 0 !important;
+    }
+    label {
+        color: #4E4E4E !important;
+        font-size: 12px;
+        line-height: 14px;
+        padding: 16px 0 8px !important;
+    }
+    label.option {
+        padding: 8px 0 !important;
+    }
+    label.req {
+        font-weight: bold;
+    }
+    .photo-select  {
+        p {
+            font-size: 12px;
+            color: #4E4E4E !important;
+        }
+    }
+}

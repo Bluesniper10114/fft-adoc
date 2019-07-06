@@ -1,0 +1,123 @@
+.form-mod-choix{
+  .adhesion_form {
+    padding: 0 0 32px !important;
+    label{
+      &.ref{
+        padding: 16px 0px 0px !important;
+        color:#4E4E4E;
+      }
+      &.skin{
+        padding: 16px 0px 0px !important;
+      }
+    }
+  }
+  .chosen-container .chosen-results li.highlighted {
+      background-color: #06AED3 !important;
+      color: #fff;
+  }
+  .fft-form-line-checkable-label{
+    &.extra-margin{
+      margin-top: 51px !important;
+    }
+  }
+  .small{
+    font-size: 12px;
+    color: #9B9B9B;
+  }
+  .adhesion{
+    display: block !important;
+    list-style: none;
+    width: 100% !important;
+    height: auto !important;
+    margin-right: 0 !important;
+    border: 1px solid #CDCDCD;
+
+
+    li {
+      flex: 1;
+      display: block;
+      width: 100%;
+      position: relative;
+      text-align: center;
+      overflow: hidden;
+
+      &:first-child {
+        border-radius: 0 !important;
+      }
+
+      &:last-child {
+        border-radius: 0 !important;
+      }
+        &:nth-child(1) {
+          display: none !important;
+        }
+
+      &:nth-child(2) {
+        display: none !important;
+      }
+      input[type="radio"]+label {
+          &:before{
+            background-image: none !important;
+            margin-right: 15px;
+          }
+          }
+      input[type="radio"]:checked+label {
+          color: white;
+          &:before{
+            border: 0 !important;
+            content: "";
+            display: inline-block;
+            background-image: url(../img/icons.png) !important;
+            background-repeat: no-repeat;
+            width: 24px;
+            height: 24px;
+            background-position-y: -2064px !important;
+            background-position-x: -72px !important;
+            margin-right: 10px;
+          }
+          }
+        }
+
+    [type="radio"] + label,
+    .radio + label {
+      padding: 5px 15px;
+      white-space: nowrap;
+      font-size: 14px;
+      margin-right: 1.5em;
+      position: static;
+      margin-top: 0;
+      text-align: left;
+      padding-left: 10px;
+
+      &:hover {
+        &:before {
+          border: 3px solid #06AED3;
+        }
+      }
+      &:checked {
+        color: white !important;
+        +label{
+          &:before{
+          @extend .icon-white;
+            background-position-x: -72px !important;
+          }
+        }
+
+      }
+      &:checked {
+        +label {
+          background: #06AED3;
+          color: white !important;
+
+        }
+      }
+    }
+
+  }
+  .tickets{
+    .padding-top{
+      padding-top: 39px!important;
+    }
+  }
+
+}

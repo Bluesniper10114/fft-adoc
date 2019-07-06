@@ -1,0 +1,23 @@
+$phone-only: 'max-width: 599px';
+$tablet-portrait: 'min-width: 600px';
+$tablet-landscape: 'min-width: 900px';
+$desktop: 'min-width: 1200px';
+$desktop-huge: 'min-width: 1800px';
+
+
+@mixin for-phone-only() {
+  @media ($phone-only) { @content; }
+}
+@mixin for-tablet-portrait-up() {
+  @media ($tablet-portrait) { @content; }
+}
+@mixin for-tablet-landscape-up() {
+  @media ($tablet-landscape) { @content; }
+}
+@mixin for-desktop-up() {
+  @media ($desktop) { @content; }
+}
+@mixin for-big-desktop-up() {
+  @media ($desktop-huge) { @content; }
+}
+

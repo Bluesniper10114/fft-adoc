@@ -1,0 +1,176 @@
+{% extends "layouts/layout.twig" %}
+
+{% block main %}
+    <main class="tpl-default" id="fft-main">
+        <!-- équivalent de l'ancien div.content_top -->
+        <div class="fft-main-top">
+            <ol id="fft-breadcrumb">
+                <li>Adhérents</li>
+                <li><a class="link" href="#">Gestion</a></li>
+                <li><a class="link" href="#">Recherche</a></li>
+            </ol>
+
+        </div>
+
+        <!-- équivalent de l'ancien div.content_bottom -->
+        <div class="fft-main-content">
+            <ul id="fft-tabs">
+                <li class="current"><a href="recherche-adherents-form.html">Recherche</a></li>
+                <li><a href="recherche-adherent.html">Résultats</a></li>
+            </ul>
+
+            <form name="courtListeForm" method="post" action="/adoc/courtListe.do" class="fft-form">
+                <input type="hidden" name="method" value="list">
+                <input type="hidden" name="autreEquipement" value="true">
+
+                <fieldset class="page-equipements">
+                    <div class="row">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-3">
+                            <p class="fft-form-line">
+                                <label>Installation</label>
+                                <select name="installationRattachement" onchange="return dispatch(form, 'list');">
+                                    <option value="">--- Indifférent ---</option>
+                                    <option value="9337">Club</option>
+                                    <option value="81908119">Avec bar</option>
+                                    <option value="81908120">Bar et resto</option>
+                                    <option value="81908121">chouse, bar, resto</option>
+                                </select>
+                            </p>
+                        </div>
+                        <div class="col-sm-3">
+                            <p class="fft-form-line">
+                                <label>Type</label>
+                                <select name="typeEquipement" onchange="return dispatch(form, 'list');">
+                                    <option value="">--- Indifférent ---</option>
+                                    <option value="1">Court</option>
+                                    <option value="2">Parking</option>
+                                    <option value="3">Salle de reception</option>
+                                    <option value="6">Piscine</option>
+                                    <option value="4">Salle de réunion</option>
+                                </select>
+                            </p>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="m-0 fft-line-separate">
+                    <div class="pl-0 fft-line-separate-left">
+                        <button type="button" class="btn icon-bigplus"
+                                onclick="document.location.href='courtCRUD.do?method=create&amp;autreEquipement=true'; return false;"
+                                name="buttonAjouter">Ajouter
+                        </button>
+                    </div>
+                    <div class="fft-line-separate-right pr-0">
+                        <button type="button" class="btn2 icon-poubelle disabled" onclick="return dispatch(form, 'delete')" name="buttonSupprimer">Supprimer</button>
+                    </div>
+                </div>
+
+                <div class="table-line-separate">
+                    <div class="table-line-separate-left">
+                        <p>3 éléments trouvés</p>
+                    </div>
+                    <div class="table-line-separate-center">
+                        <ol class="pagination">
+                            <li class="pagination-page pagination-current"><a href="#">1</a></li>
+                        </ol>
+                    </div>
+                    <div class="table-line-separate-right table-export-place">
+                        <a href="/adoc/courtListe.do?autreEquipement=true&amp;d-1342304-e=2&amp;6578706f7274=1&amp;method=list">
+                            <span class="btn2 icon-xlsx icon-empty"></span>
+                        </a>
+                    </div>
+                </div>
+                <table class="table page-equipements" id="unCourt">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th class="sortable">
+                            <a href="/adoc/courtListe.do?autreEquipement=true&amp;d-1342304-s=1&amp;method=list&amp;d-1342304-p=1&amp;d-1342304-o=2">N°</a>
+                        </th>
+                        <th class="sortable">
+                            <a href="/adoc/courtListe.do?autreEquipement=true&amp;d-1342304-s=2&amp;method=list&amp;d-1342304-p=1&amp;d-1342304-o=2">Nom</a>
+                        </th>
+                        <th class="sortable">
+                            <a href="/adoc/courtListe.do?autreEquipement=true&amp;d-1342304-s=3&amp;method=list&amp;d-1342304-p=1&amp;d-1342304-o=2">Type</a>
+                        </th>
+                        <th class="sortable">
+                            <a href="/adoc/courtListe.do?autreEquipement=true&amp;d-1342304-s=4&amp;method=list&amp;d-1342304-p=1&amp;d-1342304-o=2">Couverture</a>
+                        </th>
+                        <th class="sortable">
+                            <a href="/adoc/courtListe.do?autreEquipement=true&amp;d-1342304-s=5&amp;method=list&amp;d-1342304-p=1&amp;d-1342304-o=2">Période
+                                de réservation</a></th>
+                        <th class="sortable">
+                            <a href="/adoc/courtListe.do?autreEquipement=true&amp;d-1342304-s=6&amp;method=list&amp;d-1342304-p=1&amp;d-1342304-o=2">Ordre
+                                d'affichage</a></th>
+                        <th class="sortable">
+                            <a href="/adoc/courtListe.do?autreEquipement=true&amp;d-1342304-s=7&amp;method=list&amp;d-1342304-p=1&amp;d-1342304-o=2">Visibilité</a>
+                        </th>
+                        <th><input id="check_uncheck_all" name="check_uncheck_all" type="checkbox"><label
+                                    for="check_uncheck_all"></label></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="odd">
+                        <td>
+                            <a href="courtCRUD.do?method=modify&amp;autreEquipement=true&amp;CourtCRUD.id=49910">
+                                <span class="icon-editer icon-active"></span>
+                            </a>
+                        </td>
+                        <td>5</td>
+                        <td>Salle de réception</td>
+                        <td>Salle de reception</td>
+                        <td>Oui</td>
+                        <td>Quatre semaines</td>
+                        <td>9</td>
+                        <td>
+                            <span class="icon-see icon-disabled" data-tooltip="Visible par les adhérents de votre club sur le tableau de réservation"></span>
+                        </td>
+                        <td>
+                            <input type="hidden" name="identifiant" value="49910">
+                            <input type="hidden" name="nom" value="Salle de réception">
+                            <input type="hidden" name="updateTime" value="1542822264480">
+                            <input type="checkbox" name="tab" value="49910" id="chk_1"><label for="chk_1"></label>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <div class="table-line-separate">
+                    <div class="table-line-separate-left">
+                        <p>3 éléments trouvés</p>
+                    </div>
+                    <div class="table-line-separate-center">
+                        <ol class="pagination">
+                            <li class="pagination-page pagination-current"><a href="#">1</a></li>
+                        </ol>
+                    </div>
+                    <div class="table-line-separate-right table-export-place">
+                        <a href="/adoc/courtListe.do?autreEquipement=true&amp;d-1342304-e=2&amp;6578706f7274=1&amp;method=list">
+                            <span class="btn2 icon-xlsx icon-empty"></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="m-0 fft-line-separate">
+                    <div class="pl-0 fft-line-separate-left">
+                        <button type="button" class="btn icon-bigplus"
+                                onclick="document.location.href='courtCRUD.do?method=create&amp;autreEquipement=true'; return false;"
+                                name="buttonAjouter">Ajouter
+                        </button>
+                    </div>
+                    <div class="fft-line-separate-right pr-0">
+                        <button type="button" class="btn2 icon-poubelle disabled" onclick="return dispatch(form, 'delete')" name="buttonSupprimer">Supprimer</button>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </main>
+
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

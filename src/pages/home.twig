@@ -1,0 +1,35 @@
+{% extends "layouts/layout-header-no-action.twig" %}
+
+{% block main %}
+    <main class="tpl-home" id="fft-main">
+
+        <div class="fft-main-content">
+
+            <!-- l'attribut data-notif="0" n'est pas affiché -->
+
+
+            {% set ordre = '0 6 12 17 1 7 13 18 2 8 14 19 3 9 15 20 4 10 16 21 5 11'|split(" ") %}
+            {% set List = 'adh-rech msg-ajout gpe-enseignement rem-cheque prinsc-attente paym-survey adh-ajout annee-lic equipes suivi-budget lice-ech adh-soldneg res-tabl annee-adh paym-saisie paym-suivi lic-att lic-deli for-liste pdt-saisie maj-galaxie imp-pers'|split(" ") %}
+            {% set List2 = ['Rechercher un adhérent', 'Messages aux adhérents', 'Groupe d’enseignement' , 'Remise de chèque' , 'Pré-inscriptions en attente' , 'Paiements à surveiller' , 'Ajouter un adhérent' , 'Licenciés de l’année en cours' , 'Mes équipes' , 'Suivi budgétaire' , 'Licences échues' , 'Adhérents ayant un solde négatif' , 'Tableau de réservation' , 'Adhérents de l’année en cours' , 'Saisie d’un paiement' , 'suivi des paiements' , 'Licences en attente de validation' , 'Délivrance de licence' , 'Formules du club' , 'Saisie d’un produit/charge' , 'Mise à jour des niveaux Galaxie' , 'Personnes à importer'] %}
+            {% set List3 = [12,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,0,0,88,0,0,0] %}
+
+            {% for ind in ordre %}
+                <a href="#" class="home-box" data-notif="{{ List3[ind] }}">
+                    <span class="icon2 {{ List[ind] }}"></span>
+                    <strong>{{ List2[ind] }}</strong>
+                </a>
+            {% endfor %}
+
+
+            {# for icon in List
+                <a href="#" class="home-box" data-notif="{{ loop.index0 }}">
+                    <span class="icon2 {{ icon }}"></span>
+                    <strong>{{ List2[loop.index0] }}</strong>
+                </a>
+            {% endfor #}
+
+
+        </div>
+    </main>
+
+{% endblock %}
