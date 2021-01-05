@@ -64,7 +64,7 @@
     "webpack-require": "0.0.16"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "chosen-js": "^1.8.7",
     "dateformat": "^3.0.2",
     "flexboxgrid-sass": "^8.0.5",
